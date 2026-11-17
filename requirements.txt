@@ -1,0 +1,5 @@
+# Paquetes de Python. PENDIENTE: reemplazar ">=" por "==" con las versiones que registre
+# 02_outputs/session_info.txt (pip freeze) tras la primera corrida del script maestro.
+numpy
+pandas>=2.0
+scikit-learn>=1.3
