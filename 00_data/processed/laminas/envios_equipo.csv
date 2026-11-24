@@ -1,0 +1,28 @@
+orden,archivo,autor,familia,privado,publico
+1,LGBM_fe_leaves_31_minchild_10,César Vallejo,Boosting,180.2,179.9
+2,XGB_fe_depth_4_eta_0_06,César Vallejo,Boosting,182.5,183.7
+3,CB_fe_depth_8_l2_3,César Vallejo,Boosting,183.2,182.3
+4,LGBM_fe_leaves_31_minchild_20,César Vallejo,Boosting,179.7,180.5
+5,CB_fe_depth_8_l2_10,César Vallejo,Boosting,181.2,180.6
+6,LGBM_fe_leaves_31_minchild_40,César Vallejo,Boosting,181.4,181.8
+7,LGBM_fe_leaves_15_minchild_10,César Vallejo,Boosting,181.5,181.7
+8,XGB_fe_depth_2_eta_0_06,César Vallejo,Boosting,188.2,187.5
+9,XGB_fe_depth_3_eta_0_03,César Vallejo,Boosting,183.5,181.2
+10,CB_fe_depth_4_l2_3,César Vallejo,Boosting,182.6,181.2
+11,CB_fe_depth_6_l2_10,César Vallejo,Boosting,182.2,180.4
+12,LGBM_fe_leaves_15_minchild_40,César Vallejo,Boosting,181.9,181.4
+13,RF_fe_depth_12_leaf_5,César Vallejo,Random Forest,206.3,204.3
+14,CART_fe_depth_6_leaf_40,César Vallejo,CART,239.9,240.7
+15,LGBM_fe_leaves_63_eta_0_03,César Vallejo,Boosting,178.1,176.3
+16,NN_n_10_lr_0_01,César Vallejo,Red neuronal,196.4,191.8
+17,LR_fe_nr_1,César Vallejo,Regresión lineal,253.6,244.9
+18,superlearner_vec_boost_nn_rf,Harold Aguilera,Ensamble,194.1,197.0
+19,LGBM_fe_leaves_15_depth_6_eta_0_01,César Vallejo,Boosting,177.5,176.1
+20,boostingpond_lightgbm_osm_xy,Harold Aguilera,Boosting,184.6,183.9
+21,nn_clase_2x10_C_texto,Sebastián Vela,Red neuronal,189.24,186.42
+22,nn_clase_2x10_D_coordenadas,Sebastián Vela,Red neuronal,184.43,180.36
+23,LGBM_fe_leaves_31_depth_6_eta_0_01,César Vallejo,Boosting,177.18,175.58
+24,LGBM_fe_leaves_7_depth_3_eta_0_05,César Vallejo,Boosting,181.88,180.33
+25,envio_01_lightgbm_con_catastro,Sebastián Vela,Boosting,152.43,153.50
+26,envio_02_lightgbm_con_catastro_x108,Sebastián Vela,Boosting,150.79,152.48
+27,envio_03_mezcla_lightgbm_catboost,Sebastián Vela,Boosting,153.94,155.21

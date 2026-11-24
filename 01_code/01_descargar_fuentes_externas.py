@@ -123,6 +123,7 @@ def descargar_osm():
 def descargar_localidades():
     import osmnx as ox
 
+    ox.settings.use_cache = False                # no deja una carpeta cache/ en la raíz del repositorio
     partes = []
     for nombre in LOCALIDADES:
         d = ox.geocode_to_gdf(f"Localidad {nombre}, Bogotá, Colombia")

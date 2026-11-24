@@ -1,0 +1,71 @@
+{
+ "umbral_Chapinero fuera_0.05": {
+  "rentable_hasta": 12.941455366872322,
+  "no_rentable_desde": null
+ },
+ "umbral_Chapinero fuera_0.1": {
+  "rentable_hasta": 12.941455366872322,
+  "no_rentable_desde": null
+ },
+ "umbral_kNNDM_0.05": {
+  "rentable_hasta": 7.028248974294704,
+  "no_rentable_desde": 7.6677452803440795
+ },
+ "umbral_kNNDM_0.1": {
+  "rentable_hasta": 10.859518255512912,
+  "no_rentable_desde": 11.496377697543203
+ },
+ "mae_lightgbm_cv_clase": 143.77996160123473,
+ "error_abs_mediano_ejemplos": 14.310333023411149,
+ "desc_Chapinero": {
+  "n": 307,
+  "mediana": 750.0,
+  "media": 847.1514958534202,
+  "pct_sobre_1200": 21.172638436482085,
+  "m2_mediana": 6.836734693877551
+ },
+ "desc_Resto de Bogotá": {
+  "n": 38337,
+  "mediana": 550.0,
+  "media": 652.992213337872,
+  "pct_sobre_1200": 7.5331924772413075,
+  "m2_mediana": 5.144694533762058
+ },
+ "pronostico": {
+  "n": 10286,
+  "mediana": 799.4506725,
+  "media": 840.4736221883143,
+  "pct_sobre_1200": 17.305074859031695,
+  "n_sobre_1650": 13,
+  "pct_localidad_chapinero": 94.20571650787478,
+  "m2_mediana": 6.9723303247377615
+ },
+ "catastro_Chapinero": {
+  "manzanas_con_estrato": 1021,
+  "pct_estrato6": 33.006856023506366,
+  "vref_mediana_millones": 5.4
+ },
+ "catastro_Resto de Bogotá": {
+  "manzanas_con_estrato": 38146,
+  "pct_estrato6": 1.423478215278142,
+  "vref_mediana_millones": 1.9
+ },
+ "regla_prueba": {
+  "dentro": 2738,
+  "una": 3407,
+  "dos_o_mas": 4141,
+  "por_variable_pct": {
+   "ln_dist_area_protegida_m": 10.412210771923004,
+   "ln_n_embajada_1000m": 29.749173634065723,
+   "ln_n_hotel_1000m": 0.6027610344157106,
+   "ln_n_oficina_1000m": 0.9235854559595567,
+   "ln_vref_300m": 59.49834726813145,
+   "area_imp": 0.8069220299436127,
+   "elevacion_m": 17.917557845615402
+  }
+ },
+ "equilibrio_m10_Chapinero fuera_0.05": 4.58117240721756,
+ "equilibrio_m10_Chapinero fuera_0.1": 8.456246668881494,
+ "equilibrio_m10_kNNDM_0.05": 4.476770926056806,
+ "equilibrio_m10_kNNDM_0.1": 7.6677452803440795
+}
