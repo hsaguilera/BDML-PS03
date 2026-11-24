@@ -1,0 +1,31 @@
+cuantil,pred_media,real_media,n,sesgo,esquema,version
+1,355.234,357.782,3865,-2.548,kNNDM,Sin ajuste
+2,398.408,394.766,3864,3.641,kNNDM,Sin ajuste
+3,440.223,431.713,3867,8.51,kNNDM,Sin ajuste
+4,490.747,490.299,3863,0.448,kNNDM,Sin ajuste
+5,546.614,546.486,3863,0.128,kNNDM,Sin ajuste
+6,616.786,614.862,3864,1.924,kNNDM,Sin ajuste
+7,705.123,711.74,3865,-6.617,kNNDM,Sin ajuste
+8,814.559,816.727,3864,-2.168,kNNDM,Sin ajuste
+9,964.84,961.601,3864,3.238,kNNDM,Sin ajuste
+10,1210.45,1219.389,3865,-8.939,kNNDM,Sin ajuste
+1,331.333,357.782,3865,-26.449,kNNDM,"Con ajuste ×1,08"
+2,377.96,394.766,3864,-16.806,kNNDM,"Con ajuste ×1,08"
+3,423.121,431.713,3867,-8.592,kNNDM,"Con ajuste ×1,08"
+4,477.687,490.299,3863,-12.612,kNNDM,"Con ajuste ×1,08"
+5,538.023,546.486,3863,-8.462,kNNDM,"Con ajuste ×1,08"
+6,613.809,614.862,3864,-1.053,kNNDM,"Con ajuste ×1,08"
+7,709.213,711.74,3865,-2.527,kNNDM,"Con ajuste ×1,08"
+8,827.404,816.727,3864,10.677,kNNDM,"Con ajuste ×1,08"
+9,989.707,961.601,3864,28.106,kNNDM,"Con ajuste ×1,08"
+10,1254.966,1219.389,3865,35.577,kNNDM,"Con ajuste ×1,08"
+1,439.058,458.549,63,-19.491,Chapinero fuera,Sin ajuste
+2,585.679,609.457,61,-23.778,Chapinero fuera,Sin ajuste
+3,741.211,780.847,60,-39.635,Chapinero fuera,Sin ajuste
+4,952.356,1051.053,61,-98.698,Chapinero fuera,Sin ajuste
+5,1259.024,1339.435,62,-80.412,Chapinero fuera,Sin ajuste
+1,421.863,458.549,63,-36.686,Chapinero fuera,"Con ajuste ×1,08"
+2,580.213,609.457,61,-29.244,Chapinero fuera,"Con ajuste ×1,08"
+3,748.188,780.847,60,-32.658,Chapinero fuera,"Con ajuste ×1,08"
+4,976.224,1051.053,61,-74.829,Chapinero fuera,"Con ajuste ×1,08"
+5,1307.426,1339.435,62,-32.01,Chapinero fuera,"Con ajuste ×1,08"

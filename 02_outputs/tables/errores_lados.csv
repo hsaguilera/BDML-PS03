@@ -1,0 +1,5 @@
+esquema,version,% más de 10 % arriba,% dentro de ±10 %,% más de 10 % abajo,error abs. mediano (%),MAE
+kNNDM,Sin ajuste,35.799,40.138,24.063,12.973,111.682
+kNNDM,"Con ajuste ×1,08",32.574,40.676,26.749,12.756,112.153
+Chapinero fuera,Sin ajuste,25.733,40.717,33.55,14.345,143.78
+Chapinero fuera,"Con ajuste ×1,08",26.71,40.065,33.225,12.941,140.847

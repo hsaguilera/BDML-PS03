@@ -1,0 +1,14 @@
+medida,categoria,valor,n,MAE,error abs. mediano (%),sesgo,% más de 10 % arriba
+,Dentro del rango,,45.0,133.136,14.882,-53.921,28.889
+prueba: % fuera de p1 a p99 por variable,Distancia a los cerros,10.412,,,,,
+,Dos o más fuera,,152.0,158.5,14.505,-55.196,23.026
+prueba: % fuera de p1 a p99 por variable,Elevación,17.918,,,,,
+prueba: % fuera de p1 a p99 por variable,Embajadas a 1 km,29.749,,,,,
+prueba: % fuera de p1 a p99 por variable,Hoteles a 1 km,0.603,,,,,
+prueba: % fuera de p1 a p99 por variable,Oficinas a 1 km,0.924,,,,,
+,Una fuera,,110.0,119.607,11.601,-16.25,30.909
+prueba: % fuera de p1 a p99 por variable,Valor del suelo a 300 m,59.498,,,,,
+prueba: % de avisos por número de variables fuera,dos o más,40.259,,,,,
+prueba: % de avisos por número de variables fuera,ninguna,26.619,,,,,
+prueba: % de avisos por número de variables fuera,una,33.123,,,,,
+prueba: % fuera de p1 a p99 por variable,Área,0.807,,,,,

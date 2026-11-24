@@ -1,0 +1,163 @@
+variable,bloque,phi_abs_medio_millones
+puntaje_texto_ridge,Texto,144.105
+area_imp,Vivienda,38.6202
+banos_imp,Vivienda,34.0115
+bedrooms,Vivienda,27.1301
+ln_dist_embajada_m,"Entorno (OSM, GEE, coordenadas)",13.2901
+ln_vref_300m,Catastro,12.2842
+estrato_medio_300m,Catastro,10.9075
+prop_apartamentos_500m,"Entorno (OSM, GEE, coordenadas)",10.3727
+elevacion_m,"Entorno (OSM, GEE, coordenadas)",9.9083
+ln_dist_zonat_m,"Entorno (OSM, GEE, coordenadas)",9.2463
+lsa_09,Texto,9.2399
+ln_avaluo_ph_300m,Catastro,8.3497
+log_area,Vivienda,7.9635
+rooms,Vivienda,7.2696
+txt_terraza_balcon,Texto,6.8174
+prop_estrato6_300m,Catastro,6.4306
+y_km,"Entorno (OSM, GEE, coordenadas)",6.3322
+ln_dist_centro_internacional_m,"Entorno (OSM, GEE, coordenadas)",5.6502
+ln_avaluo_ph_manzana,Catastro,5.5018
+elevacion_relativa_1km,"Entorno (OSM, GEE, coordenadas)",5.4844
+lsa_03,Texto,4.7651
+ln_vref_manzana,Catastro,4.7347
+lsa_10,Texto,4.6476
+parqueaderos_texto,Texto,4.4993
+lsa_04,Texto,4.487
+ln_area_parque_m2,"Entorno (OSM, GEE, coordenadas)",4.0917
+ln_n_hotel_1000m,"Entorno (OSM, GEE, coordenadas)",3.9657
+parqueaderos_imp,Vivienda,3.8808
+ln_n_embajada_1000m,"Entorno (OSM, GEE, coordenadas)",3.5215
+es_apartamento,Vivienda,3.4904
+lsa_18,Texto,3.4587
+lsa_08,Texto,3.4084
+luces_nocturnas,"Entorno (OSM, GEE, coordenadas)",3.3792
+ln_n_restaurantes_2km,"Entorno (OSM, GEE, coordenadas)",3.2429
+topico_07,Texto,3.1139
+ln_n_restaurante_1km,"Entorno (OSM, GEE, coordenadas)",3.0403
+area_texto,Texto,3.0117
+ln_area_parques_500m_ha,"Entorno (OSM, GEE, coordenadas)",2.9486
+lsa_12,Texto,2.8946
+lsa_07,Texto,2.8597
+topico_02,Texto,2.7588
+lsa_00,Texto,2.6945
+pendiente_grados,"Entorno (OSM, GEE, coordenadas)",2.5218
+lsa_06,Texto,2.3872
+tiempo,Vivienda,2.1497
+lsa_28,Texto,2.1377
+lsa_21,Texto,2.1255
+lsa_05,Texto,2.0987
+ln_dist_via_principal_m,"Entorno (OSM, GEE, coordenadas)",2.0158
+alcobas_texto,Texto,1.9958
+topico_01,Texto,1.916
+estrato_manzana,Catastro,1.8748
+ln_n_avisos_500m,"Entorno (OSM, GEE, coordenadas)",1.8342
+pisos_manzana,Catastro,1.8236
+lsa_33,Texto,1.8093
+ln_n_banco_500m,"Entorno (OSM, GEE, coordenadas)",1.7987
+lsa_26,Texto,1.7682
+ndvi_200m,"Entorno (OSM, GEE, coordenadas)",1.7144
+lsa_13,Texto,1.7075
+lsa_27,Texto,1.6831
+ln_dist_area_protegida_m,"Entorno (OSM, GEE, coordenadas)",1.6536
+txt_para_remodelar,Texto,1.6516
+ln_dist_p93_m,"Entorno (OSM, GEE, coordenadas)",1.6241
+altura_construida_m,"Entorno (OSM, GEE, coordenadas)",1.6205
+txt_gimnasio,Texto,1.6076
+ln_dist_universidad_m,"Entorno (OSM, GEE, coordenadas)",1.594
+ln_n_supermercados_1km,"Entorno (OSM, GEE, coordenadas)",1.5302
+lsa_14,Texto,1.5286
+lsa_35,Texto,1.5041
+lsa_40,Texto,1.4731
+ln_dist_parque_grande_m,"Entorno (OSM, GEE, coordenadas)",1.468
+txt_nuevo_estrenar,Texto,1.4518
+lsa_01,Texto,1.4408
+topico_06,Texto,1.4366
+lsa_11,Texto,1.4136
+lsa_17,Texto,1.3759
+ln_dist_centro_comercial_m,"Entorno (OSM, GEE, coordenadas)",1.3382
+ln_n_transmilenio_1km,"Entorno (OSM, GEE, coordenadas)",1.2722
+lsa_30,Texto,1.2269
+txt_chimenea,Texto,1.2202
+lsa_19,Texto,1.2117
+lsa_44,Texto,1.1909
+lsa_37,Texto,1.1759
+ln_poblacion_100m,"Entorno (OSM, GEE, coordenadas)",1.1218
+lsa_02,Texto,1.0949
+ln_dist_policia_m,"Entorno (OSM, GEE, coordenadas)",1.0632
+ln_dist_hospital_m,"Entorno (OSM, GEE, coordenadas)",1.0627
+lsa_24,Texto,1.0503
+lsa_31,Texto,1.0473
+ln_n_oficina_1000m,"Entorno (OSM, GEE, coordenadas)",1.0361
+ln_n_restaurante_300m,"Entorno (OSM, GEE, coordenadas)",1.0358
+ln_area_mediana_500m,"Entorno (OSM, GEE, coordenadas)",1.0151
+lsa_15,Texto,1.0039
+ln_dist_transmilenio_m,"Entorno (OSM, GEE, coordenadas)",0.9924
+lsa_45,Texto,0.975
+lsa_41,Texto,0.9548
+ln_n_edificio_oficinas_500m,"Entorno (OSM, GEE, coordenadas)",0.9486
+piso_texto,Vivienda,0.9371
+ln_n_restaurantes_500m,"Entorno (OSM, GEE, coordenadas)",0.9108
+lsa_25,Texto,0.9026
+ln_n_bar_cafe_300m,"Entorno (OSM, GEE, coordenadas)",0.9022
+x_km,"Entorno (OSM, GEE, coordenadas)",0.8667
+ln_n_supermercado_1km,"Entorno (OSM, GEE, coordenadas)",0.8512
+lsa_16,Texto,0.8503
+lsa_29,Texto,0.8482
+lsa_46,Texto,0.8413
+topico_08,Texto,0.8357
+n_manzanas_300m,Catastro,0.8273
+topico_05,Texto,0.8202
+lsa_20,Texto,0.8127
+lsa_49,Texto,0.7925
+lsa_43,Texto,0.7807
+lsa_38,Texto,0.7621
+topico_00,Texto,0.7602
+lsa_22,Texto,0.7588
+ln_n_gimnasio_1000m,"Entorno (OSM, GEE, coordenadas)",0.7569
+lsa_42,Texto,0.7371
+banos_texto,Texto,0.7135
+ln_n_oficina_500m,"Entorno (OSM, GEE, coordenadas)",0.698
+lsa_23,Texto,0.6623
+lsa_48,Texto,0.6483
+lsa_39,Texto,0.6427
+ln_dist_parque_m,"Entorno (OSM, GEE, coordenadas)",0.6187
+lsa_32,Texto,0.6107
+txt_piscina,Texto,0.6077
+ln_n_paradero_1km,"Entorno (OSM, GEE, coordenadas)",0.6063
+topico_03,Texto,0.6028
+ln_n_bar_cafe_1km,"Entorno (OSM, GEE, coordenadas)",0.5992
+dist_manzana_m,Catastro,0.5802
+txt_vista,Texto,0.5767
+ln_n_colegios_1km,"Entorno (OSM, GEE, coordenadas)",0.5717
+topico_04,Texto,0.5589
+ln_n_bares_cafes_500m,"Entorno (OSM, GEE, coordenadas)",0.5554
+lsa_36,Texto,0.5291
+lsa_34,Texto,0.4956
+topico_09,Texto,0.4911
+lsa_47,Texto,0.4584
+ln_n_paraderos_500m,"Entorno (OSM, GEE, coordenadas)",0.4223
+txt_remodelado,Texto,0.4215
+ln_n_paradero_300m,"Entorno (OSM, GEE, coordenadas)",0.3781
+txt_apartaestudio,Texto,0.367
+antiguedad_texto,Vivienda,0.3536
+pisos_300m,Catastro,0.3354
+ln_n_colegio_1km,"Entorno (OSM, GEE, coordenadas)",0.2896
+ln_n_supermercado_300m,"Entorno (OSM, GEE, coordenadas)",0.2819
+txt_deposito,Texto,0.1914
+txt_ascensor,Texto,0.1729
+estrato_texto,Vivienda,0.1453
+txt_duplex_penthouse,Texto,0.1431
+area_inconsistente,Vivienda,0.1177
+txt_exterior,Texto,0.1095
+ln_n_colegio_300m,"Entorno (OSM, GEE, coordenadas)",0.1084
+area_desde_texto,Vivienda,0.1046
+txt_parqueadero,Texto,0.0889
+coord_redondeada,"Entorno (OSM, GEE, coordenadas)",0.0816
+area_falta,Vivienda,0.0627
+txt_estudio,Texto,0.0513
+txt_zona_social,Texto,0.0166
+banos_desde_texto,Vivienda,0.0131
+txt_cocina_integral,Texto,0.0
+txt_conjunto,Texto,0.0
+txt_vigilancia,Texto,0.0
