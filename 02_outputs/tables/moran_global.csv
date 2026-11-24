@@ -1,0 +1,14 @@
+,I de Moran,p-valor,ubicaciones,nombre
+luces_nocturnas,0.9140639987273131,0.005,22015.0,Luces nocturnas
+altura_construida_m,0.910434385103989,0.005,22015.0,Altura construida (m)
+elevacion_m,0.8683753652828169,0.005,22015.0,Elevación (m)
+ndvi_200m,0.8461147901240587,0.005,22015.0,Vegetación NDVI (200 m)
+poblacion_100m,0.7450951600669166,0.005,22015.0,Población (celda de 100 m)
+pendiente_grados,0.673413751731673,0.005,22015.0,Pendiente (°)
+es_apartamento,0.5237533058666665,0.005,22015.0,Es apartamento (0/1)
+bedrooms,0.39073454169815336,0.005,22015.0,Alcobas
+log_precio,0.34292373348999944,0.005,18245.0,Logaritmo del precio
+precio_mill,0.32170428593941525,0.005,18245.0,Precio (millones)
+precio_m2_mill,0.3042827834225515,0.005,4608.0,Precio por m² (millones)
+surface_covered,0.24379823517963753,0.005,3046.0,Área cubierta (m²)
+bathrooms,0.15435741063948194,0.005,14438.0,Baños

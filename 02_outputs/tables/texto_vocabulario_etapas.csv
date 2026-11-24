@@ -1,0 +1,7 @@
+etapa,terminos
+"1. Términos distintos (palabras y números de 1 o 2 dígitos, tras normalizar)",17611
+2. Sin stopwords (DNP y NLTK),17428
+3. Con stemming Snowball y sin palabras de dominio,11949
+"4. Unigramas y bigramas con df de 5 o más y df/N menor que 0,9",44888
+"   de ellos, unigramas",4528
+"   de ellos, bigramas",40360

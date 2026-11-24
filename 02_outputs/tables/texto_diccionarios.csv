@@ -1,0 +1,20 @@
+indicador,% entrenamiento,% prueba,menciones negadas descartadas
+txt_parqueadero,70.06,69.45,63.0
+txt_terraza_balcon,46.24,49.26,3.0
+txt_deposito,40.34,40.34,117.0
+txt_zona_social,32.36,33.38,7.0
+txt_vista,23.84,32.69,0.0
+txt_estudio,35.25,31.64,0.0
+txt_chimenea,23.49,29.95,0.0
+txt_exterior,22.73,28.41,0.0
+txt_vigilancia,25.0,26.33,38.0
+txt_gimnasio,23.8,24.45,0.0
+txt_ascensor,16.52,20.31,596.0
+txt_cocina_integral,27.61,18.31,0.0
+txt_remodelado,12.72,16.79,0.0
+txt_duplex_penthouse,8.42,9.68,0.0
+txt_apartaestudio,4.36,7.58,0.0
+txt_piscina,7.82,7.13,0.0
+txt_nuevo_estrenar,4.29,4.74,1.0
+txt_conjunto,17.93,4.33,0.0
+txt_para_remodelar,1.93,2.66,0.0

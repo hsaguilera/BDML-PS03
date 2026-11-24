@@ -1,0 +1,8 @@
+cantidad,% entrenamiento,% prueba,mediana,avisos con ambos datos,% que coincide con Kaggle
+area_texto,30.06,32.63,111.0,4064.0,79.68
+alcobas_texto,68.81,65.17,3.0,33294.0,83.97
+banos_texto,39.41,32.42,2.0,13122.0,66.83
+parqueaderos_texto,47.89,54.31,2.0,,
+piso_texto,29.48,25.92,2.0,,
+estrato_texto,7.38,5.41,4.0,,
+antiguedad_texto,2.92,3.72,9.0,,

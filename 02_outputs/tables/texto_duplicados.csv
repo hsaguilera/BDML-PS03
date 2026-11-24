@@ -1,0 +1,6 @@
+indicador,valor
+Documentos,48930.0
+Textos distintos (tras normalizar),41744.0
+% de avisos de entrenamiento con texto repetido,22.77
+% de avisos de prueba con texto repetido (dentro de prueba),24.3
+% de avisos de prueba con gemelo exacto en entrenamiento,0.76
