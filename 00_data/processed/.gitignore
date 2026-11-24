@@ -1,0 +1,41 @@
+# Intermedios que los scripts regeneran en cada corrida (sin internet ni GPU) o que solo existen al recalcular.
+# No se versionan por tamaño o porque se reconstruyen; ver el README (sección "Qué no está en el repositorio").
+
+# Script 06 (texto como datos): se regeneran en CPU en cada corrida (unos 80 MB)
+texto/texto_variables.parquet
+texto/dtm_conteos.npz
+texto/tfidf.npz
+texto/dtm_filas.parquet
+texto/vocabulario.csv
+texto/texto_normalizado.parquet
+# Script 06 con PS3_RECALCULAR=06: embeddings completos de BETO (144 MB)
+texto/beto_embeddings.npy
+
+# Scripts 01 a 03 con PS3_RECALCULAR: extracto de OpenStreetMap (21 MB) y objetos nuevos que se extraen de él
+osm/Bogota.osm.pbf
+osm/amenidades_osm_extra.parquet
+
+# Script 02 con PS3_RECALCULAR=02: capas de Catastro Bogotá (58 MB)
+catastro/
+
+# Puntajes de texto por pliegue (los recalcula functions/flujo_final.py cuando faltan)
+cache_puntajes_texto/
+
+# Datos de las láminas: se regeneran en cada corrida (scripts 12 a 15, 18 y 19), salvo los que dependen de Catastro
+# (scripts 16 y 17) y las dos tablas de Kaggle escritas a mano, que sí se versionan
+laminas/*
+!laminas/clasificacion.csv
+!laminas/envios_equipo.csv
+!laminas/ppt_calibracion2.csv
+!laminas/ppt_lados.csv
+!laminas/ppt_lados_quintil.csv
+!laminas/ppt_compras.csv
+!laminas/ppt_precision_requerida.csv
+!laminas/ppt_bootstrap2.json
+!laminas/ppt_tres_avisos.json
+!laminas/ppt_histograma_precios.csv
+!laminas/ppt_regla_rango2.csv
+!laminas/ppt_prueba_fuera7.parquet
+!laminas/ppt_palabras_ridge.csv
+!laminas/ppt_varios2.json
+!laminas/ppt_ganancia_precision.csv
