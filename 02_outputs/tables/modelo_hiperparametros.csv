@@ -1,0 +1,10 @@
+hiperparametro,valor,significado
+objective,l2,pérdida cuadrática: estima la media condicional
+learning_rate,"0,05",tasa de aprendizaje η
+num_leaves,63,hojas máximas por árbol
+min_child_samples,20,avisos mínimos por hoja
+subsample / subsample_freq,"0,8 / 1",80 % de los avisos en cada árbol
+colsample_bytree,"0,7",70 % de las variables en cada árbol
+reg_lambda,"1,0",penalidad L2 de los valores de las hojas
+n_estimators,parada temprana (252 con la semilla 2026),hasta 5.000; paciencia de 100 árboles
+semillas,5,promedio de 2026 a 2030

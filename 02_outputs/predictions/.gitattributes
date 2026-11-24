@@ -1,0 +1,4 @@
+# Envíos a Kaggle de J. S. Vela: se guardan byte a byte (fin de línea CRLF) para que su SHA-256 coincida con el de los
+# archivos subidos (registro_envios_sebastian_vela.csv). Git no debe convertir sus fines de línea.
+lightgbm_l2_*.csv -text
+mezcla_lightgbm*.csv -text

@@ -1,0 +1,163 @@
+variable,bloque,% faltante entrenamiento,% faltante prueba,mediana entrenamiento,mediana prueba,d (prueba menos entrenamiento)
+es_apartamento,Vivienda (Kaggle completado con el texto),0.0,0.0,1.0,1.0,0.5077
+bedrooms,Vivienda (Kaggle completado con el texto),0.0,0.0,3.0,2.0,-0.4976
+rooms,Vivienda (Kaggle completado con el texto),47.2518,44.546,3.0,2.0,-0.4721
+banos_imp,Vivienda (Kaggle completado con el texto),14.8225,13.5427,3.0,3.0,-0.1396
+area_imp,Vivienda (Kaggle completado con el texto),46.7032,43.3016,112.0,119.0,-0.119
+log_area,Vivienda (Kaggle completado con el texto),46.7032,43.3016,4.7185,4.7791,-0.0905
+parqueaderos_imp,Vivienda (Kaggle completado con el texto),0.0,0.0,1.0,1.0,0.0792
+piso_texto,Vivienda (Kaggle completado con el texto),70.5155,74.0813,2.0,3.0,0.1318
+estrato_texto,Vivienda (Kaggle completado con el texto),92.6172,94.5946,4.0,5.0,0.7348
+antiguedad_texto,Vivienda (Kaggle completado con el texto),97.0759,96.2765,9.0,10.0,0.1824
+tiempo,Vivienda (Kaggle completado con el texto),0.0,0.0,2020.9167,2021.0,0.1307
+area_desde_texto,Vivienda (Kaggle completado con el texto),0.0,0.0,0.0,0.0,0.0301
+area_falta,Vivienda (Kaggle completado con el texto),0.0,0.0,0.0,0.0,-0.0682
+banos_desde_texto,Vivienda (Kaggle completado con el texto),0.0,0.0,0.0,0.0,-0.0179
+area_inconsistente,Vivienda (Kaggle completado con el texto),0.0,0.0,0.0,0.0,-0.0856
+ln_dist_parque_m,OpenStreetMap y distancias a centros,0.0,0.0,4.491,4.6959,0.1525
+ln_area_parque_m2,OpenStreetMap y distancias a centros,0.0,0.0,8.4355,7.826,-0.4054
+ln_n_restaurantes_2km,OpenStreetMap y distancias a centros,0.0,0.0,5.273,6.0981,1.6688
+ln_dist_parque_grande_m,OpenStreetMap y distancias a centros,0.0,0.0,5.6754,6.088,0.3111
+ln_n_restaurantes_500m,OpenStreetMap y distancias a centros,0.0,0.0,2.3979,3.2189,0.7021
+ln_n_bares_cafes_500m,OpenStreetMap y distancias a centros,0.0,0.0,1.7918,2.5649,0.8079
+ln_dist_transmilenio_m,OpenStreetMap y distancias a centros,0.0,0.0,6.7248,6.4907,-0.237
+ln_dist_via_principal_m,OpenStreetMap y distancias a centros,0.0,0.0,5.3656,5.0478,-0.2746
+ln_dist_universidad_m,OpenStreetMap y distancias a centros,0.0,0.0,6.6662,6.1856,-0.6388
+ln_n_colegios_1km,OpenStreetMap y distancias a centros,0.0,0.0,1.7918,1.7918,-0.3393
+ln_dist_centro_comercial_m,OpenStreetMap y distancias a centros,0.0,0.0,6.2399,6.5222,0.3056
+ln_n_supermercados_1km,OpenStreetMap y distancias a centros,0.0,0.0,2.9957,2.8904,-0.368
+ln_dist_hospital_m,OpenStreetMap y distancias a centros,0.0,0.0,5.9121,5.7655,-0.1449
+ln_dist_policia_m,OpenStreetMap y distancias a centros,0.0,0.0,6.5165,6.0428,-0.7743
+ln_n_paraderos_500m,OpenStreetMap y distancias a centros,0.0,0.0,2.3026,2.5649,0.2424
+ln_dist_p93_m,OpenStreetMap y distancias a centros,0.0,0.0,8.4526,7.0733,-2.123
+ln_dist_zonat_m,OpenStreetMap y distancias a centros,0.0,0.0,8.5781,7.2665,-3.0142
+ln_dist_centro_internacional_m,OpenStreetMap y distancias a centros,0.0,0.0,9.2008,8.7739,-0.6615
+elevacion_m,Google Earth Engine,0.0,0.0,2557.0,2572.0,1.741
+pendiente_grados,Google Earth Engine,0.0,0.0,2.6259,4.6372,1.2372
+ndvi_200m,Google Earth Engine,0.0,0.0,0.1911,0.1891,-0.0051
+luces_nocturnas,Google Earth Engine,0.0,0.0,55.84,58.4133,0.1283
+altura_construida_m,Google Earth Engine,0.0,0.0,12.6099,11.9827,-0.1772
+ln_poblacion_100m,Google Earth Engine,0.0,0.0,5.9056,5.8724,-0.0803
+ln_n_oficina_500m,Entorno adicional (OSM y avisos sin precio),0.0,0.0,1.3863,2.4849,0.733
+ln_n_oficina_1000m,Entorno adicional (OSM y avisos sin precio),0.0,0.0,2.6391,3.8918,1.2995
+ln_n_edificio_oficinas_500m,Entorno adicional (OSM y avisos sin precio),0.0,0.0,2.0794,2.5649,0.5206
+ln_n_hotel_1000m,Entorno adicional (OSM y avisos sin precio),0.0,0.0,1.0986,3.2189,1.5571
+ln_n_banco_500m,Entorno adicional (OSM y avisos sin precio),0.0,0.0,1.0986,2.0794,0.7035
+ln_n_gimnasio_1000m,Entorno adicional (OSM y avisos sin precio),0.0,0.0,1.7918,2.4849,0.8712
+ln_n_embajada_1000m,Entorno adicional (OSM y avisos sin precio),0.0,0.0,0.0,2.4849,2.0047
+ln_dist_embajada_m,Entorno adicional (OSM y avisos sin precio),0.0,0.0,7.4179,5.8372,-1.3783
+ln_n_restaurante_300m,Entorno adicional (OSM y avisos sin precio),0.0,0.0,1.3863,1.9459,0.5079
+ln_n_restaurante_1km,Entorno adicional (OSM y avisos sin precio),0.0,0.0,4.0073,4.8283,1.3897
+ln_n_bar_cafe_300m,Entorno adicional (OSM y avisos sin precio),0.0,0.0,0.6931,1.3863,0.602
+ln_n_bar_cafe_1km,Entorno adicional (OSM y avisos sin precio),0.0,0.0,3.091,4.1589,1.4759
+ln_n_supermercado_300m,Entorno adicional (OSM y avisos sin precio),0.0,0.0,0.6931,0.6931,-0.3153
+ln_n_supermercado_1km,Entorno adicional (OSM y avisos sin precio),0.0,0.0,2.9957,2.8904,-0.368
+ln_n_paradero_300m,Entorno adicional (OSM y avisos sin precio),0.0,0.0,1.3863,1.6094,0.1587
+ln_n_paradero_1km,Entorno adicional (OSM y avisos sin precio),0.0,0.0,3.6109,3.8286,0.6957
+ln_n_colegio_300m,Entorno adicional (OSM y avisos sin precio),0.0,0.0,0.0,0.0,-0.1322
+ln_n_colegio_1km,Entorno adicional (OSM y avisos sin precio),0.0,0.0,1.7918,1.7918,-0.3393
+ln_n_transmilenio_1km,Entorno adicional (OSM y avisos sin precio),0.0,0.0,0.6931,1.0986,0.137
+ln_area_parques_500m_ha,Entorno adicional (OSM y avisos sin precio),0.0,0.0,1.645,1.1588,-0.6795
+ln_dist_area_protegida_m,Entorno adicional (OSM y avisos sin precio),0.0,0.0,8.439,7.4851,-2.2111
+elevacion_relativa_1km,Entorno adicional (OSM y avisos sin precio),0.0,0.0,0.0,2.0,0.8569
+ln_n_avisos_500m,Entorno adicional (OSM y avisos sin precio),0.0,0.0,6.4816,6.7856,0.5279
+prop_apartamentos_500m,Entorno adicional (OSM y avisos sin precio),0.0,0.0,0.8655,0.9786,0.773
+ln_area_mediana_500m,Entorno adicional (OSM y avisos sin precio),0.2355,0.0292,4.7362,4.7579,-0.0823
+coord_redondeada,Entorno adicional (OSM y avisos sin precio),0.0,0.0,0.0,1.0,0.246
+txt_parqueadero,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,1.0,1.0,-0.0132
+txt_piscina,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0,0.0,-0.0258
+txt_ascensor,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0,0.0,0.102
+txt_terraza_balcon,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0,0.0,0.0606
+txt_vigilancia,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0,0.0,0.0307
+txt_remodelado,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0,0.0,0.1222
+txt_cocina_integral,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0,0.0,-0.208
+txt_zona_social,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0,0.0,0.0218
+txt_chimenea,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0,0.0,0.1525
+txt_vista,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0,0.0,0.2077
+txt_estudio,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0,0.0,-0.0754
+txt_apartaestudio,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0,0.0,0.1576
+txt_duplex_penthouse,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0,0.0,0.0455
+txt_exterior,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0,0.0,0.1354
+txt_gimnasio,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0,0.0,0.0154
+txt_deposito,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0,0.0,-0.0001
+txt_conjunto,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0,0.0,-0.3547
+txt_nuevo_estrenar,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0,0.0,0.0224
+txt_para_remodelar,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0,0.0,0.0537
+topico_00,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0023,0.0028,0.0001
+topico_01,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0033,0.0027,-0.3049
+topico_02,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0031,0.0043,0.3386
+topico_03,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0024,0.0024,-0.1166
+topico_04,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.003,0.0026,-0.1742
+topico_05,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0038,0.003,-0.2576
+topico_06,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0034,0.0045,0.3505
+topico_07,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0036,0.0026,-0.4798
+topico_08,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.1772,0.4388,0.5044
+topico_09,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0023,0.0024,-0.0616
+lsa_00,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.1806,0.1828,0.093
+lsa_01,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.0072,-0.0091,-0.0861
+lsa_02,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.0046,-0.0087,-0.0986
+lsa_03,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0155,-0.0146,-0.5964
+lsa_04,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.0071,-0.0105,-0.068
+lsa_05,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0056,-0.0145,-0.0782
+lsa_06,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.0039,0.0024,0.0894
+lsa_07,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.0059,-0.0156,-0.2248
+lsa_08,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0008,0.0349,0.6052
+lsa_09,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.0055,0.01,0.3463
+lsa_10,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.0031,0.0326,0.7538
+lsa_11,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.007,-0.0154,-0.403
+lsa_12,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.0027,0.0079,0.2424
+lsa_13,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.0002,0.0014,0.0924
+lsa_14,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.001,-0.001,-0.1129
+lsa_15,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0018,0.0054,0.106
+lsa_16,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0009,-0.0009,0.0538
+lsa_17,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.0021,0.0045,0.1114
+lsa_18,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0007,0.0163,0.4313
+lsa_19,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.0004,0.0008,-0.069
+lsa_20,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.0037,-0.0066,-0.1155
+lsa_21,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.0008,-0.0054,-0.1378
+lsa_22,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.0015,-0.0023,-0.0321
+lsa_23,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0038,-0.0062,-0.3306
+lsa_24,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.0027,0.0081,0.2341
+lsa_25,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.001,0.0033,0.0884
+lsa_26,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.0031,0.0054,0.4124
+lsa_27,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.0019,-0.0065,-0.2896
+lsa_28,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.0038,0.0058,0.272
+lsa_29,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.0002,-0.0009,0.0862
+lsa_30,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0013,0.0031,0.1376
+lsa_31,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.0028,-0.0037,0.0909
+lsa_32,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.0021,-0.0022,0.0447
+lsa_33,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.0,-0.0028,-0.0345
+lsa_34,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.0017,-0.0006,0.0201
+lsa_35,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.001,-0.0003,0.0709
+lsa_36,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0013,0.0012,-0.0081
+lsa_37,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.0013,0.001,0.0801
+lsa_38,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0001,0.0014,0.0606
+lsa_39,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.0001,-0.0031,-0.0603
+lsa_40,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.0007,0.0029,0.1256
+lsa_41,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.003,-0.0015,-0.0136
+lsa_42,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0011,-0.0048,-0.2252
+lsa_43,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0017,-0.0006,-0.0515
+lsa_44,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0001,-0.0024,-0.096
+lsa_45,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0006,-0.0016,-0.1062
+lsa_46,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.0014,-0.0004,-0.005
+lsa_47,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.0006,-0.0048,-0.1274
+lsa_48,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,0.0014,-0.0022,-0.1021
+lsa_49,"Texto (diccionarios, cantidades, LDA, LSA)",0.0,0.0,-0.0005,-0.0039,-0.1171
+alcobas_texto,"Texto (diccionarios, cantidades, LDA, LSA)",31.1898,34.8338,3.0,3.0,-0.3695
+banos_texto,"Texto (diccionarios, cantidades, LDA, LSA)",60.5941,67.5773,2.0,2.0,-0.0204
+parqueaderos_texto,"Texto (diccionarios, cantidades, LDA, LSA)",52.1116,45.6932,2.0,2.0,0.0633
+area_texto,"Texto (diccionarios, cantidades, LDA, LSA)",69.9358,67.3731,110.0,117.0,-0.117
+x_km,"Coordenadas (km, EPSG:9377)",0.0,0.0,4883.5461,4883.3626,0.3304
+y_km,"Coordenadas (km, EPSG:9377)",0.0,0.0,2077.4283,2074.1156,-0.6593
+ln_vref_manzana,Catastro de Bogotá (manzana y 300 m),0.3183,0.6416,14.9787,15.6073,1.0077
+ln_vref_300m,Catastro de Bogotá (manzana y 300 m),0.1346,0.0583,14.9629,15.6073,1.307
+ln_avaluo_ph_manzana,Catastro de Bogotá (manzana y 300 m),15.0864,6.4165,14.901,15.155,0.7339
+ln_avaluo_ph_300m,Catastro de Bogotá (manzana y 300 m),0.4503,0.2042,14.9253,15.2404,1.0857
+pisos_manzana,Catastro de Bogotá (manzana y 300 m),0.0388,0.3792,3.0,5.0,0.6131
+pisos_300m,Catastro de Bogotá (manzana y 300 m),0.1009,0.0194,2.0,4.0,1.5443
+estrato_manzana,Catastro de Bogotá (manzana y 300 m),0.0155,0.3305,4.0,6.0,0.6279
+estrato_medio_300m,Catastro de Bogotá (manzana y 300 m),0.3778,0.0292,4.4667,5.88,0.8056
+prop_estrato6_300m,Catastro de Bogotá (manzana y 300 m),0.3778,0.0292,0.0,0.9167,1.1388
+n_manzanas_300m,Catastro de Bogotá (manzana y 300 m),0.0,0.0,22.0,23.0,0.0667
+dist_manzana_m,Catastro de Bogotá (manzana y 300 m),0.0233,0.3792,0.0,0.0,-0.0858
+puntaje_texto_ridge,Puntaje de texto (ridge fuera de pliegue),0.0,0.0,6.3644,6.5184,0.3944

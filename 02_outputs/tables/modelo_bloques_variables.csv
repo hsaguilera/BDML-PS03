@@ -1,0 +1,9 @@
+bloque,variables,construidas_en
+Vivienda (Kaggle completado con el texto),15,Kaggle + script 06
+OpenStreetMap y distancias a centros,18,script 01 + functions/flujo_final.py
+Google Earth Engine,6,script 01
+Entorno adicional (OSM y avisos sin precio),26,script 03
+Catastro de Bogotá (manzana y 300 m),11,scripts 02 y 04
+"Texto (diccionarios, cantidades, LDA, LSA)",83,script 06
+"Coordenadas (km, EPSG:9377)",2,functions/flujo_final.py
+Puntaje de texto (ridge fuera de pliegue),1,functions/flujo_final.py

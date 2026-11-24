@@ -1,0 +1,7 @@
+esquema,n,MAE,RMSE,Sesgo,Kaggle privado (envío 01) menos validación
+CV aleatoria (5 pliegues),38644.0,78.832,128.736,2.281,73.602
+Bloques de 2 km,38644.0,119.08,171.282,1.532,33.354
+Bloques de 2 km con buffer de 300 m,38644.0,123.129,175.041,3.284,29.305
+Clústeres k-means (10),38644.0,124.987,175.844,5.422,27.447
+Chapinero fuera (307 avisos),307.0,143.78,197.784,-52.321,8.654
+kNNDM (q = 1.600),38644.0,111.682,162.241,-0.238,40.752
