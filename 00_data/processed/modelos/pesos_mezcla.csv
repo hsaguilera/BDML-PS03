@@ -1,0 +1,3 @@
+catastro,peso_lightgbm,peso_catboost
+sin,0.5,0.5
+con,0.4,0.6

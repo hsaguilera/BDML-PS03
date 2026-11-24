@@ -1,0 +1,8 @@
+modelo,CV aleatoria,Bloques de 2 km,Bloques con buffer,Clústeres k-means,Chapinero fuera,kNNDM
+LightGBM,78.832,119.08,123.129,124.987,143.78,111.682
+CatBoost,,,,124.126,150.125,
+Random Forest,91.582,,,131.752,158.625,
+CART,117.925,,,150.863,174.108,
+Red con atención,86.836,,,128.798,176.715,
+Elastic Net,124.49,,,149.786,185.242,
+Regresión lineal,124.677,,,150.032,185.66,

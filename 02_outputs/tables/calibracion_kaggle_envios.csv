@@ -1,0 +1,4 @@
+envio,MAE clústeres,MAE Chapinero fuera,Kaggle público,Kaggle privado,orden MAE clústeres,orden MAE Chapinero fuera,orden Kaggle privado
+01 LightGBM,125.0,143.8,153.504,152.434,3,2,2
+"02 LightGBM ×1,08",124.1,140.8,152.476,150.79,2,1,1
+"03 Mezcla 0,4 LightGBM + 0,6 CatBoost",123.6,146.8,155.214,153.941,1,3,3

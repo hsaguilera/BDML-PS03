@@ -1,0 +1,10 @@
+prueba,MAE clústeres,MAE Chapinero fuera,sesgo Chapinero fuera,MAE kNNDM,MAE Chapinero dentro de kNNDM,sesgo Chapinero dentro de kNNDM
+LightGBM sin Catastro,127.362,152.819,-76.923,,,
+CatBoost sin Catastro,127.148,161.418,-82.017,,,
+LightGBM con Catastro,124.987,143.78,-52.321,,,
+CatBoost con Catastro,124.126,150.125,-66.194,,,
+"Mezcla LightGBM + CatBoost elegida en clústeres, sin Catastro",126.318,156.395,-79.47,,,
+"Mezcla LightGBM + CatBoost elegida en clústeres, con Catastro",123.556,146.773,-60.645,,,
+"LightGBM con Catastro, kNNDM, sin kriging",,,,111.682,137.247,-18.995
+"LightGBM con Catastro, kNNDM, RK en niveles",,,,114.66,139.57,-14.395
+"LightGBM con Catastro, kNNDM, RK relativo (log)",,,,112.046,138.263,-38.722

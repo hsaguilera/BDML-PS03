@@ -1,0 +1,30 @@
+familia_taller,modelo,catastro,especificacion,esquema,n,MAE,RMSE,Sesgo,MAE ponderado
+Boosting,LightGBM,con,lightgbm_con,aleatoria,38644,78.832,128.736,2.281,
+Boosting,LightGBM,con,lightgbm_con,bloques,38644,119.08,171.282,1.532,
+Boosting,LightGBM,con,lightgbm_con,bloques_buffer,38644,123.129,175.041,3.284,
+Boosting,LightGBM,con,lightgbm_con,clusters,38644,124.987,175.844,5.422,
+Boosting,LightGBM,con,lightgbm_con,Chapinero (imitando el taller),307,143.78,197.784,-52.321,153.473
+Boosting,LightGBM,sin,lightgbm_sin,aleatoria,38644,79.27,129.43,2.126,
+Boosting,LightGBM,sin,lightgbm_sin,bloques,38644,120.739,173.32,0.738,
+Boosting,LightGBM,sin,lightgbm_sin,bloques_buffer,38644,124.879,177.246,5.107,
+Boosting,LightGBM,sin,lightgbm_sin,clusters,38644,127.362,179.002,3.584,
+Boosting,LightGBM,sin,lightgbm_sin,Chapinero (imitando el taller),307,152.819,207.991,-76.923,165.83
+Boosting,CatBoost,con,catboost_con,clusters,38644,124.126,175.2,3.769,
+Boosting,CatBoost,con,catboost_con,Chapinero (imitando el taller),307,150.125,203.481,-66.194,162.27
+Boosting,CatBoost,sin,catboost_sin,clusters,38644,127.148,179.209,0.916,
+Boosting,CatBoost,sin,catboost_sin,Chapinero (imitando el taller),307,161.418,218.799,-82.017,176.053
+Random Forest,Random Forest,con,random_forest_con,aleatoria,38644,91.582,142.183,1.872,
+Random Forest,Random Forest,con,random_forest_con,clusters,38644,131.752,183.331,7.14,
+Random Forest,Random Forest,con,random_forest_con,Chapinero (imitando el taller),307,158.625,214.913,-82.119,174.219
+CART,CART,con,cart_con,aleatoria,38644,117.925,175.326,1.791,
+CART,CART,con,cart_con,clusters,38644,150.863,211.516,-7.904,
+CART,CART,con,cart_con,Chapinero (imitando el taller),307,174.108,246.452,-104.674,191.984
+Red neuronal,Red con atención,con,nn_atencion_con,aleatoria,38644,86.836,141.123,-18.304,
+Red neuronal,Red con atención,con,nn_atencion_con,clusters,38644,128.798,187.315,-21.473,
+Red neuronal,Red con atención,con,nn_atencion_con,Chapinero (imitando el taller),307,176.715,242.653,-115.525,199.787
+Elastic Net,Elastic Net,con,elastic_net_con,aleatoria,38644,124.49,171.831,0.164,
+Elastic Net,Elastic Net,con,elastic_net_con,clusters,38644,149.786,200.858,4.832,
+Elastic Net,Elastic Net,con,elastic_net_con,Chapinero (imitando el taller),307,185.242,239.551,-33.901,213.232
+Regresión lineal,Regresión lineal,con,ols_con,aleatoria,38644,124.677,171.817,0.198,
+Regresión lineal,Regresión lineal,con,ols_con,clusters,38644,150.032,201.096,4.666,
+Regresión lineal,Regresión lineal,con,ols_con,Chapinero (imitando el taller),307,185.66,240.845,-33.592,215.497

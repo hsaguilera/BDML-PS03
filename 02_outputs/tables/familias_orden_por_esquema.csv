@@ -1,0 +1,7 @@
+modelo,CV aleatoria,Clústeres k-means,Chapinero fuera,rho CV aleatoria frente a Chapinero fuera
+LightGBM,1,1,1,0.829
+Random Forest,3,3,2,0.829
+CART,4,6,3,0.829
+Red con atención,2,2,4,0.829
+Elastic Net,5,4,5,0.829
+Regresión lineal,6,5,6,0.829

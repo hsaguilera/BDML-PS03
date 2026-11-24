@@ -1,0 +1,8 @@
+esquema,% a 0 m (misma coordenada),mediana (m),percentil 90 (m)
+Prueba real (Kaggle),18.96,96.06,274.99
+CV aleatoria,65.51,0.0,54.35
+Bloques de 2 km,0.0,375.31,830.23
+Bloques con buffer de 300 m,0.0,630.77,1074.27
+Clústeres k-means,0.0,985.15,1921.36
+kNNDM,0.0,79.4,240.33
+Chapinero fuera,0.0,553.22,1437.36

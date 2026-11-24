@@ -1,0 +1,4 @@
+variante,MAE kNNDM,RMSE kNNDM,Sesgo,MAE ponderado,MAE Chapinero (307),Sesgo Chapinero,Sesgo > 1.000 M,modelo,catastro
+sin kriging,111.682,162.241,-0.238,111.644,137.247,-18.995,-209.509,LightGBM,con
+RK en niveles,114.66,164.94,2.136,115.121,139.57,-14.395,-193.72,LightGBM,con
+RK relativo (log),112.046,164.695,-14.294,113.016,138.263,-38.722,-221.751,LightGBM,con
