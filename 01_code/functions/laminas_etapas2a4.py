@@ -601,9 +601,12 @@ def _busqueda(deck):
         cl = R_.dropna(subset=["mae_clusters"])
         rk_cl = int((cl["mae_clusters"] < fin["mae_clusters"]).sum()) + 1
         lin.append(f"Clústeres va de {n(cl['mae_clusters'].min())} a {n(cl['mae_clusters'].max())}; la final da "
-                   f"{n(fin['mae_clusters'])} (puesto {rk_cl} de {len(cl)}).")
+                   f"{n(fin['mae_clusters'])} (puesto {rk_cl} de {len(cl)})"
+                   + (f"; el tope de unos 60 minutos alcanzó para {len(cl)} de {len(R_)} combinaciones." if len(cl) < len(R_)
+                      else "."))
     lin.append(f"Con 307 avisos, el intervalo de 95 % de Chapinero fuera mide unos {n(ic['ic_alto'] - ic['ic_bajo'], 0)} millones "
-               "de ancho: diferencias de pocos millones entre combinaciones están dentro del ruido.")
+               "de ancho: diferencias de pocos millones entre combinaciones están dentro del ruido. La pérdida y las hojas ya se "
+               "habían comparado antes dejando Chapinero fuera, con otras variables.")
     tarjeta(s, 7.15, 1.3, 5.65, 3.0, "", lin, tipo="neutra", maximo=14)
     texto(s, 0.55, y1 + 0.05, 12.25, 6.95 - y1 - 0.05, f"Rangos sorteados: η 0,02 a 0,1; hojas 15 a 127; avisos por hoja 10 a 100; avisos por árbol 60 a 100 %; "
           f"variables por árbol 40 a 100 %; λ 0 a 10. Una semilla (2026); parada temprana como en el modelo final.",

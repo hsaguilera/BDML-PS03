@@ -1,8 +1,10 @@
 """23 · Exporta las presentaciones a PDF con PowerPoint (paso opcional; solo Windows con Microsoft PowerPoint instalado).
 
 Qué hace
-    Abre 03_slides/best_equipo_02.pptx y 03_slides/compare_equipo_02.pptx con PowerPoint por COM (PowerShell) y las
-    guarda como PDF en la misma carpeta, con el mismo nombre. Si PowerPoint ya estaba abierto, no lo cierra.
+    Abre 03_slides/best_equipo_02.pptx y 03_slides/compare_equipo_02.pptx con PowerPoint por COM (PowerShell), como copias
+    sin título y de solo lectura (así no choca con otra presentación del mismo nombre que esté abierta), y las guarda como
+    PDF en la misma carpeta, con el mismo nombre: best_equipo_02.pdf y compare_equipo_02.pdf, los que se entregan. Si
+    PowerPoint ya estaba abierto, no lo cierra.
 
 Cuándo corre
     Solo si se pide con la variable de entorno PS3_EXPORTAR_PDF=1. Sin ella, o si no hay Windows o PowerPoint, el script
@@ -33,7 +35,7 @@ for nombre in ("best_equipo_02", "compare_equipo_02"):
         continue
     orden = (f"$antes = Get-Process POWERPNT -ErrorAction SilentlyContinue; "
              f"$app = New-Object -ComObject PowerPoint.Application; "
-             f"$p = $app.Presentations.Open('{pptx}', $true, $false, $false); "
+             f"$p = $app.Presentations.Open('{pptx}', $true, $true, $false); "
              f"$p.SaveAs('{pdf}', 32); $p.Close(); if (-not $antes) {{ $app.Quit() }}")
     try:
         subprocess.run(["powershell", "-NoProfile", "-Command", orden], check=True, timeout=600)
