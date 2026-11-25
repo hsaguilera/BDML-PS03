@@ -197,19 +197,15 @@ def _problema(deck):
     texto(s, 0.55, 5.5, 12.25, 1.45, [
         "Avisos: anuncios de venta de vivienda publicados en Properati, un portal de internet. Todos los precios van en "
         "millones de pesos colombianos.",
-        "Kaggle, la plataforma de la competencia del curso, califica con el error absoluto medio: cuánto se equivoca el "
+        "Kaggle, la plataforma de la competencia, califica con el error absoluto medio: cuánto se equivoca el "
         "modelo en promedio, en millones, sin importar si es hacia arriba o hacia abajo. Trata igual los dos errores: es un "
         "resultado más, no el objetivo."], size=14, color="tinta", espacio=8)
-    notas = ("Empecemos por el problema. Una empresa quiere comprar muchas viviendas en Chapinero gastando lo menos posible, y "
-             "decide cuánto ofrecer con el precio que calcula un modelo. Un modelo, para esta charla, es un programa que "
-             "aprende de avisos que sí traen precio y predice el de los que no. Los dos errores no cuestan lo mismo. Si el "
-             "modelo predice de más, la empresa compra caro: pierde plata al revender y además paga los costos de tener la "
-             "vivienda mientras la vende. Eso le pasó a Zillow, que compraba casas guiada por un modelo y cerró ese negocio "
-             "con pérdidas de cerca de 500 millones de dólares. Si predice de menos, el dueño no vende y se pierde un "
-             "negocio, pero no plata. El reto es difícil: hay que predecir 10.286 avisos, casi todos de Chapinero, "
-             "aprendiendo de 38.644 avisos de Bogotá de los que solo 307 están en Chapinero. Kaggle, la plataforma de la "
-             "competencia, mide el error absoluto medio: cuántos millones se equivoca en promedio el modelo, hacia arriba o "
-             "hacia abajo. Como trata igual los dos errores, para nosotros es un resultado más, no el objetivo.")
+    notas = ("Una empresa quiere comprar muchas viviendas en Chapinero gastando lo menos posible, y decide cuánto ofrecer "
+             "con el precio que calcula un modelo. Los dos errores no cuestan lo mismo. Si el modelo predice de más, la "
+             "empresa compra caro y pierde plata al revender. Eso le pasó a Zillow, que cerró ese negocio con pérdidas de "
+             "cerca de 500 millones de dólares. Si predice de menos, el dueño no vende y se pierde un negocio, pero no plata. "
+             "El reto: predecir 10.286 avisos, casi todos de Chapinero, aprendiendo de 38.644 avisos de Bogotá, de los que "
+             "solo 307 están en Chapinero.")
     return s, notas
 
 
@@ -230,7 +226,7 @@ def _ruta(deck):
         ("Catastro de Bogotá", "registro oficial: suelo, avalúo, estrato")])]
     variables = [_caja_dag(s, X(1), y, Wc(1), 1.0, t, d) for y, (t, d) in zip([1.72, 2.92, 4.12, 5.4], [
         ("Avisos (21)", "vivienda, fecha, ubicación y avisos vecinos; el texto completa área y baños"),
-        ("Texto (84)", "palabras clave, cifras escritas, temas y un puntaje de precio"),
+        ("Texto (84)", "palabras clave, cifras escritas, temas y el puntaje de precio del texto"),
         ("Mapa y satélite (46)", "lugares y distancias alrededor del aviso; terreno y luces"),
         ("Catastro (11)", "suelo, avalúo, pisos y estrato de la manzana y a 300 m")])]
     union = _caja_dag(s, X(2), 3.4, Wc(2), 1.3, "162 variables", "las mismas para todos los modelos",
@@ -242,8 +238,8 @@ def _ruta(deck):
     yE, hE = [1.72, 2.9, 4.08, 5.26], 1.05
     gana = _caja_dag(s, X(4), yE[0], Wc(4), hE, "Gana LightGBM (árboles)", "al predecir Chapinero sin "
                      "haberlo visto, yerra en promedio 143,8 millones por aviso")
-    final = _caja_dag(s, X(4), yE[1], Wc(4), hE, "Modelo final", "aprende de los 38.644 avisos (5 repeticiones); "
-                      "ajustes: estira 8 % (×1,08) y gemelos de texto")
+    final = _caja_dag(s, X(4), yE[1], Wc(4), hE, "Modelo final", "aprende de los 38.644 avisos (5 repeticiones) y "
+                      "estira sus precios 8 % alrededor del promedio (×1,08)")
     prono = _caja_dag(s, X(4), yE[2], Wc(4), hE, "Pronóstico", "precio de los 10.286 avisos de prueba; en Kaggle, "
                       "error de 150,8 millones: segundo de seis equipos", relleno="verde_claro", borde="verde",
                       color_titulo="verde")
@@ -261,21 +257,11 @@ def _ruta(deck):
     texto(s, 0.55, 6.42, 12.25, 0.6, "Variable: cada dato que describe un aviso, como el área o la distancia a un parque; "
           "entre paréntesis, cuántas hay. Entrenamiento: avisos con precio, de los que el modelo aprende. Prueba: avisos sin "
           "precio, los que hay que predecir. Se lee de izquierda a derecha.", size=12, color="navy")
-    notas = ("Este es el camino completo, de izquierda a derecha. Antes, tres palabras que vamos a usar todo el tiempo. Una "
-             "variable es cada dato que describe un aviso, como el área o la distancia a un parque. El entrenamiento son los "
-             "avisos que traen precio, de los que el modelo aprende; la prueba son los que no lo traen y hay que predecir. "
-             "Partimos de cinco fuentes: los avisos de Properati, su texto, OpenStreetMap, que es un mapa abierto de "
-             "internet, imágenes de satélite y el Catastro de Bogotá. Con ellas armamos 162 variables, contadas por fuente: "
-             "21 de los avisos, 84 del texto, 46 del mapa y el satélite, y 11 de Catastro. El texto también ayuda al bloque "
-             "de avisos: completa el área y los baños que faltan y aporta parqueaderos, piso, estrato y antigüedad. Las 162 "
-             "variables son las mismas para todos los modelos. Comparamos seis tipos de modelo y los probamos de seis formas, "
-             "desde apartar avisos al azar hasta esconder todo Chapinero. Ganó LightGBM, un modelo de árboles de decisión: al "
-             "predecir Chapinero sin haberlo visto se equivoca en promedio 143,8 millones por aviso. El modelo final aprende "
-             "de los 38.644 avisos y promedia cinco repeticiones, con dos ajustes que explicamos más adelante: estira sus "
-             "precios un 8 % alrededor del promedio, el ×1,08, y en los 78 avisos de prueba cuya descripción repite la "
-             "de un aviso de entrenamiento, los gemelos de texto, usa sobre todo el precio de ese gemelo. En Kaggle quedó con un error de 150,8 millones, segundo de "
-             "seis equipos. Para la empresa sirve para ordenar avisos de barato a caro, pero ofertar en automático pierde "
-             "14,8 millones por oferta. El resto de la presentación recorre este camino.")
+    notas = ("Este es el camino completo, de izquierda a derecha. Partimos de cinco fuentes: los avisos, su texto, "
+             "OpenStreetMap, imágenes de satélite y Catastro. Con ellas armamos 162 variables, las mismas para todos"
+             " los modelos. Comparamos seis tipos de modelo y los probamos de seis formas, desde apartar avisos al "
+             "azar hasta esconder todo Chapinero. Ganó LightGBM. El modelo final aprende de todos los avisos y da el"
+             " pronóstico que subimos a Kaggle. Al final, lo que eso significa para la empresa. Vamos por partes.")
     return s, notas
 
 
@@ -328,14 +314,11 @@ def _mapa_precio(deck):
             texto(s, xv - 1.55, y0 - 0.02, 1.5, 0.3, f"{nombre}: {n(valor, 0)}", size=12, color="tinta", align="right")
         else:
             texto(s, xv + 0.05, y0 - 0.02, 1.6, 0.3, f"{nombre}: {n(valor, 0)}", size=12, color="tinta")
-    notas = ("Los datos son avisos de Properati de 2019 a 2021, en dos grupos. En gris, los 38.644 de entrenamiento: traen el "
-             "precio y el modelo aprende de ellos; solo 307 están en Chapinero, cuyo borde es la línea negra. En naranja, los "
-             "10.286 de prueba: no traen precio, son los que hay que predecir, y casi todos están en Chapinero. Cada punto "
-             "está en su coordenada exacta. El histograma muestra cómo se reparte el precio del entrenamiento, en millones de "
-             "pesos: va de 300 a 1.650, se concentra entre 300 y 600 y tiene una cola larga hacia los precios altos. Dos "
-             f"medidas del centro: la mediana, {n(med, 0)} millones, es el precio que deja la mitad de los avisos por debajo; "
-             f"el promedio, {n(prom, 0)}, queda a la derecha porque los avisos caros lo jalan hacia arriba. Y la prueba es "
-             "casi toda de apartamentos.")
+    notas = ("Los datos son avisos de Properati de 2019 a 2021. En gris, los 38.644 de entrenamiento: traen precio y"
+             " el modelo aprende de ellos; solo 307 están en Chapinero, cuyo borde es la línea negra. En naranja, "
+             "los 10.286 de prueba: no traen precio y casi todos están en Chapinero. El precio del entrenamiento va "
+             f"de 300 a 1.650 millones, con mediana de {n(med, 0)} y promedio de {n(prom, 0)}: hay una cola de avisos caros. Y la "
+             "prueba es casi toda de apartamentos: 97 % frente a 76 %.")
     return s, notas
 
 
@@ -561,28 +544,26 @@ def _pasos_modelos(deck):
     a = _cuadro(s, xr, 2.9, wr, 0.7, "Indicadores y cifras: 23 variables",
                 "con el texto del paso 4; reglas que no miran el precio", modelo=False)
     texto(s, xr, 3.66, wr, 0.95, "No supervisado: no mira el precio. Supervisado: aprende del precio. DNP: "
-          "Departamento Nacional de Planeación. NLTK: herramienta de análisis de texto. Cada uno tiene su lámina.", size=12,
+          "Departamento Nacional de Planeación. NLTK: herramienta de análisis de texto.", size=12,
           color="muted")
     b = _cuadro(s, xr, 4.62, wr, 0.74, "LDA: 10 variables", "con los conteos del paso 7: agrupa las palabras "
                 "en 10 temas; no supervisado")
     c = _cuadro(s, xr, 5.42, wr, 0.74, "LSA: 50 variables", "con los pesos del paso 8: resume la tabla en 50 "
                 "números por aviso; no supervisado")
     d = _cuadro(s, xr, 6.22, wr, 0.74, "Ridge: 1 variable", "con los pesos del paso 8 y el precio: puntaje de "
-                "precio; supervisado")
+                "precio del texto; supervisado")
     for o, d_ in ((cajas[3], a), (cajas[6], b), (cajas[7], c), (cajas[7], d)):
         _arista(s, o, d_)
-    notas = ("Este es el camino completo del texto. A la izquierda, ocho pasos; a la derecha de cada uno, la herramienta que "
-             "usa; en azul, las que vienen de un modelo o de una lista externa. Los cuatro primeros limpian: normalizamos con "
-             "reglas fijas y borramos las cifras tapadas con X en los datos de la competencia; reponemos la ñ y las vocales "
-             "que se perdieron en los datos; BETO corrige la ortografía según el contexto; y con las listas de nombres del "
-             "Departamento Nacional de Planeación borramos la firma del agente. Sobre ese texto limpio se leen 19 "
-             "indicadores y 4 cifras: 23 variables. Los pasos 5 a 7 preparan el conteo: quitamos palabras vacías, recortamos "
-             "cada palabra a su raíz, con stemming y no con lematización, porque predice igual de bien "
-             "a una fracción del costo, y contamos palabras y pares en la matriz documento-término. Con esos conteos, LDA da 10 "
-             "variables de temas. El paso 8, TF-IDF, da más peso a lo raro; de esa tabla salen las 50 variables de LSA y, "
-             "con el precio del entrenamiento, el puntaje del ridge. Son ramas paralelas: ninguna alimenta a otra. LDA y LSA "
-             "no miran el precio, son no supervisados; el ridge sí, es supervisado. Las 84 entran juntas al modelo final, "
-             "con las otras 78 variables. BETO, las listas y TF-IDF no son variables: solo preparan el texto.")
+    notas = ("Este es el camino del texto. A la izquierda, ocho pasos. Los cuatro primeros limpian: se normaliza, se"
+             " reponen letras perdidas, un modelo de lenguaje, BETO, corrige la ortografía según el contexto, y se "
+             "borra la firma del agente. Sobre ese texto se leen 19 indicadores de sí o no y 4 cifras: 23 variables."
+             " Los pasos 5 a 7 quitan palabras vacías, recortan cada palabra a su raíz y cuentan palabras y pares de"
+             " palabras. Con esos conteos, un modelo de temas, LDA, da 10 variables. El paso 8, TF-IDF, da más peso "
+             "a lo que distingue a un aviso; de ahí salen 50 componentes que resumen las palabras, LSA, y el puntaje"
+             " de precio del texto, de un ridge que se calcula sin usar el precio del propio aviso. LDA y LSA no "
+             "miran el precio; el ridge sí. Las 84 entran juntas al modelo.\n"
+             "Para preguntas: BETO corrigió 732 palabras de 3.652 revisadas; los 50 componentes de LSA recogen el "
+             "12,8 % de la varianza; los 10 temas de LDA se eligieron por perplejidad.")
     return s, notas
 
 
@@ -627,9 +608,9 @@ def _aviso_real(deck):
               "palabra de las listas de indicadores, sin negación", f"8 indicadores: {ind}", "sí, cada uno"),
              ("no dice ascensor", "sin mención (igual si dijera sin ascensor)", "Ascensor y los otros 10 indicadores", "no"),
              ("informes X", "cifra tapada en los datos de la competencia", "se borra y no se usa", "no aplica"),
-             ("todo el texto", "modelo de temas (LDA; ver su lámina)", "Tema 8: apartamento y servicios del edificio",
+             ("todo el texto", "modelo de temas (LDA): grupos de palabras que suelen ir juntas", "Tema 8: apartamento y servicios del edificio",
               "0,98 de 1"),
-             ("todo el texto", "precio que sugieren sus palabras (ridge; ver su lámina)",
+             ("todo el texto", "precio que sugieren sus palabras (ridge)",
               "Puntaje de precio del texto", f"{n(av['puntaje_millones'], 0)} millones")]
     colores = {(r_, 0): ("naranja" if filas[r_][0] == "informes X" else "azul") for r_ in range(1, len(filas))}
     y_fin = _tabla(s, 0.55, 2.52, filas, [3.55, 3.2, 4.3, 1.2], colores=colores, minimo=0.26)
@@ -639,18 +620,13 @@ def _aviso_real(deck):
           f"% y los avisos con baños, de {n(R['avisos_brutas_no_nulos_grupo']['bathrooms']['entrenamiento'], 0)} % a "
           f"{n(ar['banos_imp']['entrenamiento'], 0)} %.", size=14, color="verde")
     FIN[id(s)] = y_fin
-    notas = ("Ahora sigamos un aviso real de Chapinero, de punta a punta. Sus datos no traen área ni baños. Así viene el texto: "
-             "sin tildes ni ñ, por eso dice bano. Con expresiones regulares, la regla del área busca una "
-             "cifra antes de m2 y encuentra 86: esa es su área, y una marca recuerda que salió del texto. Con listas fijas, "
-             "sin ningún modelo, habitaciones se vuelve alcoba y segundo piso se vuelve piso 2; después se toma la cifra "
-             "junto a alcoba o a piso. El parqueadero, mencionado sin cifra, cuenta como uno. Los baños no tienen cifra, así "
-             "que siguen sin dato. Ocho palabras de las listas de indicadores prenden sus marcas de sí; el ascensor no se "
-             "menciona y queda en no, igual que si dijera sin ascensor. La X es una cifra tapada en los datos de la "
-             "competencia y se borra. Con todo el texto, el modelo de temas dice que el aviso habla casi por completo del "
-             "tema 8, apartamento y servicios del edificio, y el ridge, que veremos más adelante, le da un puntaje de "
-             f"{n(av['puntaje_millones'], 0)} millones frente a un precio publicado de {n(av['price'] / 1e6, 0)}. Abajo, lo "
-             "más importante: usamos la descripción para llenar datos que faltan; así, la parte "
-             "del entrenamiento con área pasa de 31 % a 53 %, y con baños, de 74 % a 85 %.")
+    notas = ("Sigamos un aviso real de Chapinero. Sus datos no traen área ni baños. La regla del área busca una "
+             "cifra antes de m2 y encuentra 86. Habitaciones se vuelve alcoba y segundo piso se vuelve piso 2. El "
+             "parqueadero, sin cifra, cuenta como uno. Ocho palabras prenden sus indicadores; el ascensor no se "
+             "menciona y queda en no, igual que si dijera sin ascensor. Con todo el texto, el modelo de temas lo "
+             "ubica en apartamento con servicios del edificio, y el ridge le da un puntaje de 673 millones frente a "
+             "un precio publicado de 749. Lo más importante está abajo: gracias al texto, el área pasa de 31 % a 53 "
+             "% de los avisos.")
     return s, notas
 
 
@@ -973,7 +949,7 @@ def _ridge(deck):
     Rr = M["ridge"]
     mejor = min(G["palabras"], key=lambda r: r["mse"])
     alfas = [r["alfa"] for r in G["palabras"]]
-    s = _nueva(deck, "Ridge: un puntaje de precio aprendido de las palabras")
+    s = _nueva(deck, "Ridge: el puntaje de precio del texto, aprendido de las palabras")
     _tres_tarjetas(s,
                    ["En palabras simples: el ridge da a cada término un número, su coeficiente, que dice cuánto sube o baja "
                     "el precio cuando aparece; el puntaje de un aviso suma los de sus términos.",
@@ -985,7 +961,7 @@ def _ridge(deck):
                     "todo el entrenamiento.",
                     f"2. Penalización (λ) fija en {n(mejor['alfa'], 0)}. Con esos 5 grupos (validación cruzada) vimos "
                     f"después que da el menor error entre {n(min(alfas), 2)} y {n(max(alfas), 0)}.",
-                    "3. Al probar el modelo, se recalcula sin los avisos de prueba."],
+                    "3. En cada validación se recalcula sin los avisos que se van a predecir."],
                    ["1 variable: el precio que sugieren las palabras, en logaritmo.",
                     f"Sin ver el precio de cada aviso, se parece mucho al precio real: correlación de {n(Rr['corr_oof'], 2)} "
                     "con el logaritmo del precio (1 sería acierto perfecto; 0, ninguna relación).",
@@ -1010,19 +986,13 @@ def _ridge(deck):
     texto(s, 8.85, y_fin + 0.04, 3.95, 0.7, "Los nombran muy pocos avisos de entrenamiento: su coeficiente se aprende "
           "de muy pocos ejemplos.", size=12, color="muted")
     FIN[id(s)] = y_fin
-    notas = ("El ridge es el modelo del texto que más aporta. Es una regresión del logaritmo del precio sobre los 44.888 pesos "
-             "de TF-IDF: a cada término le da un coeficiente que dice cuánto sube o baja el precio cuando aparece, y el "
-             "puntaje de un aviso suma los de sus términos. Es la misma idea del LASSO que usan Gentzkow y Shapiro con "
-             "los discursos del Congreso, con una diferencia: el LASSO lleva a cero los términos que no predicen; el ridge "
-             "los encoge sin anularlos, para que un término raro no explique un precio por casualidad. La fuerza de esa "
-             "penalización, lambda, la dejamos fija en 1; después comprobamos con validación cruzada que 1 da el menor error "
-             "entre 0,03 y 100. Lo más importante es cómo se calcula: sin trampa, fuera de pliegue. Partimos el entrenamiento "
-             "en 5 grupos, con los textos repetidos siempre juntos, y el puntaje de cada aviso lo calcula un ridge que no vio "
-             "su precio. Así el puntaje tiene correlación 0,81 con el precio sin hacer trampa. Los coeficientes se leen bien: "
-             "3 o 4 parqueaderos, casa, ascensor privado o Chicó suben el puntaje; apartaestudio, un solo parqueadero o "
-             "Cedritos lo bajan. Carolina mezcla el barrio La Carolina y la firma de una agente. Y a la derecha: los barrios "
-             "de Chapinero los nombran muy pocos avisos del entrenamiento, así que su coeficiente se aprende de muy pocos "
-             "ejemplos. A Rosales y Cabrera el ridge sí les da una prima alta; a Chicó Norte o al Parque 93, casi nada.")
+    notas = ("El puntaje de precio del texto es la variable que más pesa en el modelo. Sale de un ridge: una "
+             "regresión del logaritmo del precio sobre las palabras del aviso, que da a cada término un coeficiente "
+             "y los encoge para que un término raro no explique un precio por casualidad. Lo clave es que se calcula"
+             " sin trampa: el puntaje de cada aviso lo da un ridge que no vio su precio. Aun así tiene correlación "
+             "de 0,81 con el precio. Los coeficientes se leen bien: 3 parqueaderos, casa o Chicó suben el puntaje; "
+             "apartaestudio o Cedritos lo bajan. A la derecha, la advertencia: los barrios de Chapinero casi no "
+             "aparecen en el entrenamiento, así que su coeficiente se aprende de muy pocos ejemplos.")
     return s, notas
 
 
@@ -1264,53 +1234,106 @@ def _externas(deck):
 # 23. 162 variables y precios hedónicos
 # ------------------------------------------------------------------------------------------------------------------
 def _hedonicas(deck):
-    rid = pd.read_csv(D / "ppt_palabras_ridge.csv")
+    """Las 162 variables en una tabla de una fila por fuente, con la idea de precios hedónicos como entrada."""
+    R = json.load(open(D / "ppt_fuentes.json", encoding="utf-8"))
+    F = R["osm_conteos"]
+    area = n(R["avisos_variables_grupo"]["area_imp"]["entrenamiento"], 0)
+    emb_p = n(F["n_embajada_1000m"]["prueba"], 0)
+    emb_r = n(F["n_embajada_1000m"]["entrenamiento_resto"], 0)
     s = _nueva(deck, "162 variables: el precio refleja la vivienda y su entorno (precios hedónicos)")
-    texto(s, 0.55, 1.3, 7.4, 0.5, "P = f(c1, c2, …, cn) + u", size=24, color="navy")
-    texto(s, 0.55, 1.85, 7.4, 1.25, ["P: precio del aviso. c: sus características (área, baños, entorno). f: la regla que las "
-                                     "convierte en precio; el modelo la aprende de los datos. u: lo que las características "
-                                     "no explican (Rosen, 1974).",
-                                     "La ubicación cuenta dos veces: como variables (esta tabla) y porque los vecinos se "
-                                     "parecen; por eso el modelo se prueba en un lugar que no vio (Etapa 3)."],
-          size=13, color="tinta", espacio=6)
-    filas = [("Fuente", "Variables", "Qué mide"),
-             ("Avisos de Properati", "21", "la vivienda (área, baños, alcobas, parqueaderos, tipo), la fecha, la ubicación y "
-                                           "los avisos vecinos"),
-             ("Texto del aviso", "84", "19 indicadores de sí o no, 4 cifras escritas, 10 temas (LDA), 50 componentes que "
-                                       "resumen las palabras (LSA) y un puntaje de precio (ridge)"),
-             ("OpenStreetMap", "39", "comercio, transporte, colegios, oficinas, embajadas, parques, vías y lugares de "
-                                     "referencia"),
-             ("Imágenes de satélite", "7", "terreno, vegetación, luces de noche, altura construida y población"),
-             ("Catastro", "11", "valor del suelo, avalúo, pisos y estrato de la manzana y a 300 m"),
-             ("Total", "162", "57 de fuentes externas (mapa, satélite y Catastro) y 84 de texto")]
-    y_fin = _tabla(s, 0.55, 3.2, filas, [2.1, 1.05, 4.25], minimo=0.3)
+    texto(s, 0.55, 1.2, 12.25, 0.62, "Precios hedónicos (Rosen, 1974): P = f(c1, c2, …, cn) + u. El precio P refleja las "
+          "características c de la vivienda y de su entorno; la regla f no se impone, el modelo la aprende de los datos; u "
+          "es lo que las características no explican. Variable: cada dato que describe un aviso.", size=13, color="navy")
+    filas = [("Fuente", "Variables", "Qué se construye", "Dato clave"),
+             ("Avisos de Properati", "21", "vivienda (10): tipo, alcobas, ambientes, área y su logaritmo, baños y cuatro "
+              "marcas de dónde salió el dato o si falta; del texto (4): parqueaderos, piso, estrato y antigüedad; fecha (1); "
+              "ubicación (3): dos coordenadas y una marca de ubicación aproximada; avisos vecinos a 500 m (3), sin usar su "
+              "precio",
+              f"El área viene en el 31 % del entrenamiento; con la cifra escrita en el texto, en el {area} %. El 43 % de los "
+              "avisos trae ubicación aproximada"),
+             ("Texto del aviso", "84", "19 indicadores de sí o no por palabra clave, sin contar las negadas; 4 cifras "
+              "escritas; 10 temas (LDA); 50 componentes que resumen las palabras (LSA) y el puntaje de precio del texto "
+              "(ridge)", "Se explica a continuación"),
+             ("OpenStreetMap, el mapa abierto de internet", "39", "conteos de lugares a 300 m, 500 m, 1 km o 2 km (24): "
+              "comercio, transporte, colegios, oficinas, hoteles, bancos, gimnasios y embajadas; distancias (13): a parques, "
+              "vías, universidad, centro comercial, hospital, policía, área protegida, TransMilenio, embajada, Parque 93, "
+              "Zona T y Centro Internacional; área de parques (2)",
+              f"A 1 km de un aviso de prueba hay, en mediana, {emb_p} embajadas; en el entrenamiento fuera de Chapinero, "
+              f"{emb_r}"),
+             ("Imágenes de satélite", "7", "elevación, pendiente, elevación frente a los vecinos, vegetación, luces de "
+              "noche, altura construida y población", "Todas tienen dato en todos los avisos"),
+             ("Catastro de Bogotá, por manzana y año", "11", "valor del suelo, avalúo de los apartamentos, pisos y estrato, "
+              "en la manzana y a 300 m; manzanas a 300 m y distancia a la manzana",
+              "El 57 % de la prueba tiene un valor del suelo a 300 m mayor que el percentil 99 del entrenamiento: 5,9 "
+              "millones por m², que solo supera el 1 % de sus avisos"),
+             ("Total", "162", "57 de fuentes externas (mapa, satélite y Catastro) y 84 de texto",
+              "Las mismas 162 para todos los modelos")]
+    y_fin = _tabla(s, 0.55, 1.88, filas, [1.75, 0.9, 5.95, 3.65], size=12, minimo=0.28)
     t = s.shapes[-1].table
-    for c_ in range(3):
+    for c_ in range(4):
         t.cell(len(filas) - 1, c_).fill.solid()
         t.cell(len(filas) - 1, c_).fill.fore_color.rgb = rgb("E8EEF5")
-    texto(s, 8.25, 1.35, 4.6, 1.4, "El puntaje de precio del texto: el precio que sugieren las palabras del aviso, aprendido "
-          "de otros avisos. Ni su precio ni el de sus copias entran a su puntaje.", size=14, color="navy")
-    sube = rid[rid["lado"] == "sube"].sort_values("coef", ascending=False).head(8)
-    baja = rid[rid["lado"] == "baja"].sort_values("coef").head(8)
-    texto(s, 8.25, 2.8, 4.6, 0.36, "Términos que más suben el puntaje", size=14, color="azul")
-    y_ = chips(s, 8.25, 3.2, 4.6, [LEG_RIDGE.get(t_, t_) for t_ in sube["termino"]], relleno="azul_claro", size=13,
-               alto=0.36, sep=0.08)
-    texto(s, 8.25, y_ + 0.1, 4.6, 0.36, "Términos que más lo bajan", size=14, color="ambar")
-    y2 = chips(s, 8.25, y_ + 0.5, 4.6, [LEG_RIDGE.get(t_, t_) for t_ in baja["termino"]], relleno="ambar_claro", size=13,
-               alto=0.36, sep=0.08)
-    texto(s, 8.25, y2 + 0.1, 4.6, 0.6, "Los mismos de la lámina del ridge: los 8 de cada lado entre los términos que "
-          "aparecen en 300 avisos o más.", size=12, color="muted")
-    FIN[id(s)] = max(y_fin, y2 + 0.7)
-    notas = ("Cerramos los datos con la idea que los une: los precios hedónicos de Rosen. El precio de una vivienda refleja lo "
-             "que tiene: su área, sus baños, su entorno. La regla que convierte esas características en precio, la f, no la "
-             "imponemos: el modelo la aprende de los datos; la u es lo que las características no explican. Por eso juntamos "
-             "162 variables de cinco fuentes: 21 de los avisos, 84 del texto, 39 de OpenStreetMap, 7 de satélite y 11 de "
-             "Catastro. El taller pide al menos cuatro predictores externos y cuatro de texto: aquí hay 57 de fuentes "
-             "externas, entre mapa, satélite y Catastro, y 84 de texto. La ubicación cuenta dos veces: como variables y "
-             "porque los vecinos se parecen, y por eso en la Etapa 3 probamos el modelo en un lugar que no vio. A la derecha, "
-             "el puntaje del texto, con los mismos términos de la lámina del ridge. Varias palabras son barrios, así que el "
-             "puntaje también mide ubicación: es útil, pero Ash y Hansen (2023) advierten que un predictor así puede fallar "
-             "en un lugar nuevo, y los barrios de Chapinero los nombran muy pocos avisos del entrenamiento.")
+    texto(s, 0.55, y_fin + 0.04, 12.25, 0.5, "Logaritmo: escala comprimida; pasar de 50 a 100 m² pesa igual que pasar de "
+          "100 a 200. Conteos, distancias, suelo y avalúo entran al modelo en logaritmo. Mediana: el valor que deja la mitad "
+          "de los avisos por debajo.", size=12, color="muted")
+    FIN[id(s)] = y_fin + 0.54
+    notas = ("La idea que une los datos es la de precios hedónicos: el precio de una vivienda refleja lo que tiene y dónde "
+             "está. La regla que convierte esas características en precio no la imponemos; el modelo la aprende. Por eso "
+             "juntamos 162 variables de cinco fuentes. De los avisos salen 21: la vivienda, la fecha, la ubicación y los "
+             f"avisos vecinos. El área es el gran faltante: viene en el 31 % del entrenamiento y con la cifra del texto sube "
+             f"al {area} %. Del texto salen 84, que explicamos enseguida. Del mapa abierto, 39: conteos y distancias a "
+             "comercio, transporte, oficinas y embajadas, que se concentran en Chapinero. Del satélite, 7, y de Catastro, 11. "
+             "Ojo con el valor del suelo: más de la mitad de la prueba está por encima de casi todo el entrenamiento. Eso va "
+             "a importar.\n"
+             "Para preguntas: dos conteos del mapa quedaron repetidos por error, supermercados y colegios a 1 km; son copias "
+             "exactas y no agregan información. El total de 162 los incluye.")
+    return s, notas
+
+
+# ------------------------------------------------------------------------------------------------------------------
+# LSA y LDA en una sola lámina (versión reducida de best)
+# ------------------------------------------------------------------------------------------------------------------
+def _lsa_lda(deck):
+    """Los dos modelos de texto que no miran el precio: qué es cada uno, cómo se construye y qué deja en los datos."""
+    lim = json.load(open(D / "ppt_texto_limpieza.json", encoding="utf-8"))
+    M = json.load(open(D / "ppt_modelos_texto.json", encoding="utf-8"))
+    L = M["lsa"]
+    e = L["pve_pct_por_componente"]
+    top = pd.read_csv(D / "ppt_texto_topicos.csv")
+    s = _nueva(deck, "LSA y LDA: dos resúmenes de las palabras que no miran el precio")
+    tarjeta(s, 0.55, 1.3, 5.95, 2.0, "LSA: 50 componentes que resumen las palabras", [
+        f"Qué es: resume los {n(lim['terminos'], 0)} términos de la tabla TF-IDF en 50 números por aviso; cada uno mide "
+        "cuánto usa el aviso un grupo de palabras que suelen ir juntas.",
+        "Cómo se construye: una descomposición de esa tabla (SVD truncada) que guarda los 50 componentes que más "
+        "diferencian a los avisos.",
+        f"Qué deja: 50 variables sin faltantes; juntas recogen el {n(L['pve_pct_acumulada_50'], 1)} % de las diferencias "
+        "entre avisos."], tipo="definicion", maximo=13)
+    tarjeta(s, 6.85, 1.3, 5.95, 2.0, "LDA: cada aviso como una mezcla de 10 temas", [
+        "Qué es: supone que cada aviso mezcla unos pocos temas y que cada tema usa más ciertas palabras.",
+        f"Cómo se construye: con los conteos de {n(lim['unigramas'], 0)} palabras sueltas; se probaron de 5 a 25 temas y con "
+        "10 el modelo predijo mejor las palabras de avisos que no vio.",
+        "Qué deja: 10 variables que suman 1: la parte del aviso que habla de cada tema."], tipo="definicion", maximo=13)
+    texto(s, 0.55, 3.42, 5.95, 0.3, "LSA: varianza explicada por cada componente (%)", size=12, color="navy")
+    lineas_xy(s, 0.45, 3.75, 6.05, 2.6, [dict(nombre="v", x=list(range(1, 51)), y=e, color="azul", ancho=1.5,
+                                              marcador="circulo", tam=4)],
+              leyenda=False, minx=0, maxx=50, miny=0, maxy=1.5, fmt_x="0", fmt_y="0.0", titulo_x="Componente",
+              unidad_x=10, unidad_y=0.5)
+    texto(s, 0.55, 6.42, 5.95, 0.5, f"Ningún componente domina: cada uno aporta menos de 1,5 % y los 50 juntos, "
+          f"{n(L['pve_pct_acumulada_50'], 1)} %.", size=12, color="muted")
+    texto(s, 6.85, 3.4, 5.95, 0.5, "LDA: parte del aviso que habla de cada tema, en promedio; el entrenamiento, fuera "
+          "de Chapinero", size=12, color="navy")
+    filas = [("Tema", "Nombre que le puso el equipo", "Prueba", "Entrenamiento")]
+    for _, r in top.iterrows():
+        k = int(r["topico"])
+        filas.append((str(k), NOMBRE_TEMA[k], f"{n(100 * r['media_chapinero'], 0)} %", f"{n(100 * r['media_resto'], 0)} %"))
+    y_fin = _tabla(s, 6.85, 3.9, filas, [0.6, 3.05, 0.95, 1.35], minimo=0.24)
+    FIN[id(s)] = y_fin
+    notas = ("Dos grupos de variables del texto resumen las palabras sin mirar el precio. LSA toma la tabla de "
+             "TF-IDF, con casi 45.000 términos, y la resume en 50 números por aviso. La gráfica muestra que ningún "
+             "componente domina: juntos recogen el 12,8 % de las diferencias, porque los avisos usan palabras muy "
+             "variadas. LDA supone que cada aviso mezcla unos pocos temas; con 10 temas predijo mejor las palabras "
+             "de avisos que no vio. La tabla muestra que la prueba habla mucho más de apartamentos y casi nada de "
+             "casas.")
     return s, notas
 
 
@@ -1321,7 +1344,7 @@ def etapa1(deck):
     salida += _fuente1(deck)
     salida += [_apertura_clase(deck), _pasos_modelos(deck), _aviso_real(deck), _beto(deck), _listas(deck)]
     salida += _fuente2ab(deck)
-    salida += [_tfidf(deck), _lsa(deck), _lda(deck), _ridge(deck), _fuente2c(deck)]
+    salida += [_tfidf(deck), _lsa(deck), _lda(deck), _ridge(deck), _fuente2c(deck), _lsa_lda(deck)]
     salida += _externas(deck)
     salida.append(_hedonicas(deck))
     for s, nt in salida:

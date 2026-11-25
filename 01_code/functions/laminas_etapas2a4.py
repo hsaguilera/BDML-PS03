@@ -179,14 +179,13 @@ def _general_arbol(deck):
         "Un árbol grande memoriza el ruido y uno pequeño es tosco: aquí A y B reciben 400 aunque valen 300 y 500. El boosting "
         "suma muchos árboles pequeños."], tipo="recordar")
     FIN[id(s)] = 6.95
-    notas = ("Antes de ver nuestro modelo, la idea con un ejemplo inventado de cuatro avisos: dos pequeños, de 300 y 500 "
-             "millones, y dos grandes, de 700 y 900. Un árbol de decisión es una secuencia de preguntas de sí o no. Este árbol "
-             "tiene una sola pregunta, o corte: ¿el área es de 100 metros o menos? Las respuestas, sí o no, son las ramas, y "
-             "al final de cada rama hay una hoja: un grupo de avisos que recibe el mismo valor, el promedio de sus precios. "
-             "¿Por qué esa pregunta y no otra? Porque el árbol prueba todos los umbrales posibles y mide cuánto se equivoca "
-             "con cada uno: sin pregunta, prediciendo 600 para todos, la suma de errores al cuadrado es 200.000; con área de "
-             "100 o menos baja a 40.000, la menor. El problema: un solo árbol es tosco, A y B reciben 400 aunque valen 300 y "
-             "500, y si lo hacemos muy grande memoriza el ruido. La solución es sumar muchos árboles pequeños: el boosting.")
+    notas = ("Antes de nuestro modelo, la idea con cuatro avisos inventados: dos pequeños, de 300 y 500 millones, y "
+             "dos grandes, de 700 y 900. Un árbol de decisión es una secuencia de preguntas de sí o no. Este tiene "
+             "una sola: ¿el área es de 100 metros o menos? Cada respuesta lleva a una hoja, un grupo de avisos que "
+             "recibe el mismo valor: el promedio de sus precios. ¿Por qué esa pregunta? Porque el árbol prueba los "
+             "umbrales posibles y se queda con el que menos se equivoca: la suma de errores al cuadrado baja de "
+             "200.000 a 40.000. El problema: un árbol solo es tosco, y si se hace muy grande memoriza el ruido. La "
+             "solución es sumar muchos árboles pequeños.")
     return s, notas
 
 
@@ -231,14 +230,13 @@ def _general_boosting(deck):
         "necesitan muchos árboles.",
         "LightGBM: una implementación rápida del boosting (Ke y otros, 2017)."], tipo="definicion", maximo=13)
     FIN[id(s)] = 6.95
-    notas = ("Así funciona el boosting, con los mismos cuatro avisos. Paso cero: se predice el promedio, 600, para todos. Paso "
-             "uno: se calcula el residuo, lo que falta por explicar: A vale 300, así que su residuo es menos 300; D, más 300. "
-             "Paso dos: un árbol pequeño aprende esos residuos; con la pregunta del área, la hoja de A y B vale menos 200 y la de "
-             "C y D, más 200. Paso tres: no se suma la corrección completa sino una fracción, la tasa de aprendizaje eta; con "
-             "0,1, A pasa de 600 a 580. Paso cuatro: se recalculan los residuos y se repite. Tras dos árboles A va en 562; tras "
-             "50, en 401. La predicción final es el promedio más eta por la suma de las hojas de todos los árboles. Los pasos "
-             "cortos evitan aprender el ruido, y otras preguntas sobre otras variables corrigen lo que una sola no puede. "
-             "LightGBM es una implementación rápida de esta idea; es la que usamos.")
+    notas = ("Así funciona el boosting, con los mismos cuatro avisos. Paso cero: se predice el promedio, 600, para "
+             "todos. Paso uno: se calcula el residuo, lo que falta por explicar: para A, que vale 300, es menos 300."
+             " Paso dos: un árbol pequeño aprende esos residuos; la hoja de A y B vale menos 200. Paso tres: no se "
+             "suma la corrección completa sino una fracción, la tasa de aprendizaje; con 0,1, A pasa de 600 a 580. "
+             "Paso cuatro: se recalculan los residuos y se repite. Tras 50 árboles A va en 401. La predicción final "
+             "es el promedio más la suma de las hojas de todos los árboles, multiplicada por la tasa. Los pasos "
+             "cortos evitan aprender el ruido. LightGBM es una implementación rápida de esta idea; es la que usamos.")
     return s, notas
 
 
@@ -438,17 +436,12 @@ def _corte(deck):
     texto(s, x0 + 2.45 + wh + 0.1, y5 + 0.12, w0 - (2.45 + wh + 0.1), 0.65, "y entra multiplicado por η = 0,05.", size=14,
           color="tinta")
     FIN[id(s)] = max(y5 + hh, 6.95)
-    notas = ("En los cuatro avisos de juguete el árbol eligió su pregunta probando umbrales; aquí está lo mismo con nuestros datos. "
-             "Aquí está el ejemplo real de la primera pregunta con los 38.644 avisos: para cada variable buscamos su mejor "
-             "umbral y medimos cuánto baja el error cuadrático, es decir, la suma de los errores al cuadrado. Gana el puntaje "
-             f"del texto, que solo con esa pregunta baja el error en {n(g0['reduccion_pct'], 0)} %; después vienen los baños y "
-             "el área. La regla tiene cuatro pasos. Uno: para cada variable prueba los umbrales; LightGBM, para ser rápido, "
-             "agrupa los valores en hasta 255 intervalos y prueba solo sus bordes. Dos: mide cada umbral con la ganancia de "
-             "la fórmula, que es cuánto baja el error; S es la suma de los residuos, es decir, de lo que falta por explicar, "
-             "y lambda es una penalización. Tres: se queda con la mejor; los avisos con el dato vacío se prueban a los dos "
-             "lados. Cuatro: LightGBM crece por hojas: el siguiente corte va donde más baja el error, hasta 63 hojas y sin "
-             "hojas de menos de 20 avisos. El valor de cada hoja es el promedio de sus residuos, encogido un poco por lambda, "
-             "y se multiplica por la tasa de aprendizaje de 0,05, que explicamos ahora.")
+    notas = ("Lo mismo con nuestros datos. Al modelo le entra una tabla con una fila por aviso y 162 columnas, y "
+             "predice el precio en millones. Para la primera pregunta prueba todas las variables y sus umbrales, y "
+             "mide con la ganancia cuánto baja el error cuadrático. Gana el puntaje de precio del texto: con una "
+             "sola pregunta baja el error 47 %; siguen los baños y el área. Los vacíos no se rellenan: se prueban a "
+             "los dos lados de cada pregunta. LightGBM crece por hojas, hasta 63 por árbol, y el valor de cada hoja "
+             "entra multiplicado por la tasa de aprendizaje de 0,05.")
     return s, notas
 
 
@@ -519,45 +512,58 @@ def _objetivo(deck):
 
 
 def _hiperparametros(deck):
-    s = _nueva(deck, "Hiperparámetros: qué controla cada uno, su valor y cómo se eligió", ETQ2M, SEC2)
-    filas = [("Hiperparámetro (nombre en LightGBM)", "Qué controla", "Valor", "Cómo se eligió"),
-             ("Pérdida (objective)", "qué error se minimiza", "L2: error cuadrático",
-              "Comparada en validación espacial con L1 (error absoluto), logaritmo y precio por m²: L2 tuvo menos error y "
-              "sesgo en Chapinero."),
-             ("Tasa de aprendizaje η (learning_rate)", "cuánto pesa cada árbol nuevo", n(float(HIPER["learning_rate"]), 2),
-              "Fijada a mano, sin búsqueda (por defecto, 0,1); la parada temprana compensa con más árboles."),
-             ("Número de árboles (n_estimators)", "cuántos árboles se suman", f"{N_ARB} con la semilla 2026",
-              "Parada temprana: hasta 5.000; para si el error en el 20 % de las celdas de 2 km no baja en 100 árboles."),
-             ("Hojas por árbol (num_leaves)", "qué tan complejo es cada árbol", f"hasta {int(HIPER['num_leaves'])}",
-              "Comparado en validación espacial con 31 hojas y 50 avisos por hoja: casi igual (150,1 frente a 148,8 "
-              "en Chapinero); se dejó 63."),
-             ("Avisos por hoja (min_child_samples)", "tamaño mínimo de una hoja", str(int(HIPER["min_child_samples"])),
-              "Valor por defecto de LightGBM; comparado con 50 en la misma prueba."),
-             ("Muestreo de avisos (subsample)", "parte de los avisos por árbol",
-              f"{n(100 * float(HIPER['subsample']), 0)} %, sorteo por árbol", "Fijado a mano, sin búsqueda (por defecto, 100 %)."),
-             ("Muestreo de variables (colsample_bytree)", "parte de las variables por árbol",
-              f"{n(100 * float(HIPER['colsample_bytree']), 0)} %", "Fijado a mano, sin búsqueda (por defecto, 100 %)."),
-             ("Penalización λ (reg_lambda)", "cuánto se encogen las hojas", n(float(HIPER["reg_lambda"]), 0),
-              "Fijada a mano, sin búsqueda (por defecto, 0)."),
-             ("Semillas (random_state)", "los sorteos de avisos y variables", "5 corridas promediadas",
-              "Fijado a mano: semillas 2026 a 2030; promediar reduce la variación del sorteo."),
-             ("Resto (max_depth, max_bin, reg_alpha, min_split_gain)", "profundidad, intervalos, L1 y ganancia mínima",
-              "sin límite, 255, 0 y 0", "Por defecto de LightGBM; no se cambiaron.")]
-    anchos = [3.05, 2.45, 2.0, 4.75]
-    y1 = _tabla(s, 0.55, 1.3, filas, anchos, size=12, minimo=0.3)
-    texto(s, 0.55, y1 + 0.06, 12.25, max(6.95 - y1 - 0.06, 0.5), "Validación espacial de la pérdida y las hojas: sin Chapinero, cada localidad fuera y bloques de 4 km, con "
-          "variables anteriores. El ridge del texto usa α = 1, el de menor error entre 0,03 y 100. Después de la competencia, "
-          "una búsqueda al azar con validación espacial comprobó estos valores (lámina siguiente).", size=12, color="muted")
+    """El modelo estimado: qué minimiza, sus hiperparámetros y cómo se eligieron (fusiona función objetivo, ficha y búsqueda)."""
+    B = _leer("busqueda_hiperparametros.json")
+    R_ = pd.DataFrame(B["resultados"])
+    ev = R_.dropna(subset=["mae_chapinero"])
+    fin = R_.iloc[0]
+    rk_ch = int((ev["mae_chapinero"] < fin["mae_chapinero"]).sum()) + 1
+    otras = ev.iloc[1:]
+    cl = R_.dropna(subset=["mae_clusters"])
+    rk_cl = int((cl["mae_clusters"] < fin["mae_clusters"]).sum()) + 1
+    otras_cl = cl.drop(index=0, errors="ignore")
+    s = _nueva(deck, "El modelo estimado: qué minimiza, sus hiperparámetros y cómo se eligieron", ETQ2M, SEC2)
+    texto(s, 0.55, 1.25, 12.25, 0.62, "Cada árbol elige sus cortes y los valores de sus hojas para minimizar la suma de los "
+          "errores al cuadrado más una penalización λ sobre los valores de las hojas. Parámetros: lo que el algoritmo aprende "
+          "de los datos (cortes y valores de hoja). Hiperparámetros: lo que se fija antes de entrenar.", size=13, color="navy")
+    filas = [("Hiperparámetro", "Qué controla", "Valor", "Cómo se eligió"),
+             ("Pérdida", "qué error se minimiza", "error cuadrático (L2), sobre el precio en millones",
+              "Comparada, probando el modelo en zonas que no vio (validación espacial), con el error absoluto (L1), el "
+              "logaritmo y el precio por m²: en Chapinero, 150,1 con L2 y 160,7 con L1 (variables anteriores). El "
+              "cuadrático apunta a la media; el absoluto, a la mediana, que se queda más corta"),
+             ("Tasa de aprendizaje η", "cuánto pesa cada árbol nuevo", n(float(HIPER["learning_rate"]), 2),
+              "Fijada a mano (por defecto, 0,1)"),
+             ("Número de árboles", "cuántos árboles se suman", f"{N_ARB} con la semilla 2026",
+              "Parada temprana (lámina siguiente)"),
+             ("Hojas por árbol y avisos por hoja", "qué tan complejo es cada árbol",
+              f"hasta {int(HIPER['num_leaves'])} hojas; {int(HIPER['min_child_samples'])} avisos o más por hoja",
+              "Comparado en validación espacial con 31 hojas y 50 avisos: casi igual (150,1 frente a 148,8 en Chapinero); "
+              "se dejó 63 y 20"),
+             ("Muestreo por árbol", "parte de los avisos y de las variables que ve cada árbol",
+              f"{n(100 * float(HIPER['subsample']), 0)} % de los avisos y {n(100 * float(HIPER['colsample_bytree']), 0)} % "
+              "de las variables", "Fijado a mano (por defecto, 100 %)"),
+             ("Penalización λ", "cuánto se encogen los valores de las hojas", n(float(HIPER["reg_lambda"]), 0),
+              "Fijada a mano (por defecto, 0)"),
+             ("Semillas", "los sorteos de avisos y variables", "5 corridas promediadas",
+              "Fijado a mano: semillas 2026 a 2030; promediar reduce la variación del sorteo")]
+    y1 = _tabla(s, 0.55, 1.98, filas, [2.35, 2.55, 2.55, 4.8], size=12, minimo=0.3)
+    texto(s, 0.55, y1 + 0.08, 12.25, max(6.95 - y1 - 0.08, 0.5), "Antes del envío no hubo búsqueda sistemática. Comprobación "
+          f"posterior: búsqueda al azar de {len(otras)} combinaciones, evaluadas dejando Chapinero fuera del entrenamiento; la "
+          f"configuración final quedó en el puesto {rk_ch} de {len(ev)} ({n(fin['mae_chapinero'])}; las demás, de "
+          f"{n(otras['mae_chapinero'].min())} a {n(otras['mae_chapinero'].max())}) y, con otra validación por zonas "
+          f"(clústeres), en el {rk_cl} de {len(cl)} evaluadas ({n(fin['mae_clusters'])}; de {n(cl['mae_clusters'].min())} a "
+          f"{n(cl['mae_clusters'].max())}). Con 307 avisos, diferencias de pocos millones están dentro del ruido.",
+          size=12, color="muted")
     FIN[id(s)] = y1
-    notas = ("Esta es la ficha técnica, con honestidad sobre cómo se eligió cada valor. La pérdida cuadrática y las 63 hojas "
-             "se compararon con validación espacial, con un conjunto anterior de variables: la pérdida absoluta subestimaba más "
-             "a Chapinero, y 31 hojas con 50 avisos por hoja daba casi lo mismo, así que dejamos 63. El número de árboles es el "
-             f"único que el modelo final elige con sus datos, con parada temprana: {N_ARB} en la corrida de la semilla 2026. "
-             "La tasa de aprendizaje de 0,05, los sorteos del 80 % de avisos y 70 % de variables, lambda igual a 1 y las cinco "
-             "semillas se fijaron a mano, sin búsqueda. Los demás quedaron en los valores por defecto de LightGBM. Antes del "
-             "envío no hubo una búsqueda sistemática con la validación final; la hicimos después, como comprobación, y la "
-             "mostramos en la lámina siguiente. El ridge "
-             "del texto usa alfa igual a 1; lo fijamos y después comprobamos que es el de menor error entre 0,03 y 100.")
+    notas = ("Esta es la ficha del modelo. Minimiza el error cuadrático, no el absoluto que mide Kaggle: lo comparamos y el "
+             "cuadrático se equivocó menos en Chapinero, 150 frente a 161 millones, porque apunta a la media y no a la "
+             "mediana. Las 63 hojas también se compararon y daba casi igual. El número de árboles lo elige el modelo con sus "
+             f"datos, con parada temprana: {N_ARB}. Lo demás, la tasa de 0,05, los sorteos de 80 % de avisos y 70 % de "
+             "variables, la penalización y las cinco semillas, se fijó a mano. Lo decimos de frente: antes del envío no hubo "
+             "una búsqueda sistemática. La hicimos después: 35 combinaciones al azar, y la nuestra quedó primera de 36 dejando "
+             "Chapinero fuera, con diferencias de pocos millones, dentro del ruido.\n"
+             "Para preguntas: los demás hiperparámetros quedaron en el valor por defecto de LightGBM (profundidad sin límite, "
+             "255 intervalos); se predice el precio en millones y no su logaritmo porque Kaggle mide el error en pesos.")
     return s, notas
 
 
@@ -628,7 +634,8 @@ def _parada(deck):
     cv = CURVA
     i_par = int(np.where(cv["arboles"] == TRES["parada"])[0][0])
     imin = int(cv["mae_chapinero"].idxmin())
-    texto(s, 0.55, 1.3, 6.5, 0.4, "Error absoluto medio (millones) según el número de árboles", size=13, color="muted")
+    texto(s, 0.55, 1.25, 6.5, 0.45, "Error absoluto medio (millones) según el número de árboles; modelo de ilustración, "
+          "entrenado sin Chapinero", size=13, color="muted")
     ch = lineas_xy(s, 0.45, 1.65, 6.6, 3.85, [
         dict(nombre="Chapinero", x=list(cv["arboles"]), y=list(cv["mae_chapinero"]), color="naranja", ancho=2.5),
         dict(nombre="Entrenamiento", x=list(cv["arboles"]), y=list(cv["mae_entrenamiento"]), color="gris", ancho=2.0),
@@ -643,10 +650,9 @@ def _parada(deck):
     ch.plots[0].series[1].points[k].data_label.position = XL_LABEL_POSITION.BELOW
     ch.plots[0].series[2].points[1].data_label.position = XL_LABEL_POSITION.RIGHT
     texto(s, 0.55, 5.55, 6.5, 1.4, "Modelo de ilustración: la misma especificación con una semilla, entrenada sin los 307 avisos "
-          f"de Chapinero. Paró en {TRES['parada']} árboles sin mirar Chapinero; ahí su error en Chapinero es "
-          f"{n(cv['mae_chapinero'][i_par])}. El mínimo, {n(cv['mae_chapinero'][imin])}, llega en el árbol "
-          f"{int(cv['arboles'][imin])}, pero elegirlo mirando Chapinero sería usar la misma prueba para decidir y para medir.",
-          size=12, color="muted")
+          f"de Chapinero; paró en {TRES['parada']} árboles sin mirar Chapinero. Con más árboles el error de entrenamiento sigue "
+          f"bajando, pero el de Chapinero se aplana entre {n(cv['mae_chapinero'][i_par:].min(), 0)} y "
+          f"{n(cv['mae_chapinero'][i_par], 0)} millones.", size=12, color="muted")
     x0, w0 = 7.35, 5.45
     tarjeta(s, x0, 1.3, w0, 1.25, "Parada temprana", [
         "Sumar árboles mientras baje el error en avisos que no se usan para ajustar, y parar cuando deje de bajar. Es una "
@@ -667,13 +673,14 @@ def _parada(deck):
         "Con avisos al azar, el vecino de la misma coordenada quedaría a los dos lados y el error apartado premiaría "
         "memorizar el ruido de cada lugar."], tipo="recordar")
     FIN[id(s)] = 6.95
-    notas = ("El hiperparámetro que el modelo sí elige con sus datos es el número de árboles, con parada temprana. La idea: seguir sumando árboles mientras el error baje en avisos que el modelo no usa para "
-             "ajustar, y parar cuando deje de bajar. En el modelo final apartamos el 20 % de las celdas de 2 kilómetros: unos "
-             "7.800 avisos. Sumamos árboles de uno en uno y, si en 100 árboles el error de esos avisos no baja, paramos: con la "
-             f"semilla 2026 fueron {N_ARB}. Luego reentrenamos con todos los avisos y ese número. La gráfica muestra por qué "
-             "importa: con un modelo de ilustración entrenado sin Chapinero, el error de entrenamiento, en gris, sigue bajando "
-             "sin fin, pero el de Chapinero, en naranja, se aplana: más árboles solo memorizan. Apartamos celdas y no avisos al "
-             "azar para que un aviso y su vecino de la misma coordenada no queden a los dos lados.")
+    notas = ("El número de árboles se elige con parada temprana: se suman árboles mientras baje el error en avisos "
+             "que el modelo no usa para ajustar, y se para cuando deja de bajar. Apartamos el 20 % de las celdas de "
+             "2 kilómetros, no avisos al azar, para que un aviso y su vecino no queden a los dos lados. Con la "
+             "semilla 2026 fueron 252 árboles. La gráfica muestra por qué importa: el error de entrenamiento, en "
+             "gris, sigue bajando sin fin; el de Chapinero, en naranja, se aplana. Más árboles solo memorizan.\n"
+             "Para preguntas: en el modelo de ilustración el error en Chapinero es 142,2 en el árbol 241 y su "
+             "mínimo, 138,7, llega en el árbol 577; elegirlo mirando Chapinero sería usar la misma prueba para "
+             "decidir y para medir.")
     return s, notas
 
 
@@ -713,15 +720,12 @@ def _shap_importancia(deck):
                                                                     "azul")], minimo=0, maximo=60, gap=35, grid=False)
     etiquetas_puntos(chb, [[f"{n(100 * SHAP_BLQ[k] / tot, 0)} %" for k, _ in orden]])
     FIN[id(s)] = 6.95
-    notas = ("Ya sabemos cómo predice el modelo; ahora, qué aprendió. Para eso usamos los valores SHAP. Toman la predicción de "
-             "un aviso y la reparten entre sus variables: parten de la predicción promedio y cada variable suma o resta su "
-             "parte, de modo que todo suma exactamente la predicción. La importancia de una variable es el promedio de esos "
-             "aportes sin signo en los avisos de prueba. El puntaje de precio del texto, el precio que sugieren las palabras del "
-             "aviso según el ridge, es, por lejos, lo que más mueve la predicción: "
-             f"{n(SHAP_IMP.iloc[0], 0)} millones en promedio. Le siguen el área, los baños y las alcobas, y después variables de "
-             "ubicación, como la distancia a una embajada, el valor del suelo y el estrato alrededor. Por bloques, el texto "
-             "pesa casi la mitad. Ojo: el puntaje de precio del texto también recoge tamaño y barrio, así que parte de su peso es "
-             "ubicación y tamaño dichos con palabras.")
+    notas = ("Ya sabemos cómo predice; ahora, qué aprendió. Los valores SHAP reparten la predicción de cada aviso "
+             "entre sus variables: parten de la predicción promedio y cada variable suma o resta su parte. La "
+             "importancia es el promedio de esos aportes sin signo. El puntaje de precio del texto es, por lejos, lo"
+             " que más mueve la predicción: 144 millones en promedio. Siguen el área, los baños y las alcobas, y "
+             "después la ubicación: la distancia a una embajada, el valor del suelo, el estrato. Por bloques, el "
+             "texto pesa casi la mitad. Ojo: el puntaje también recoge tamaño y barrio dichos con palabras.")
     return s, notas
 
 
@@ -739,13 +743,12 @@ def _shap_enjambre(deck):
         "Un efecto causal: describe cómo reparte el modelo, y entre variables parecidas el aporte se divide."],
         tipo="recordar", maximo=13)
     FIN[id(s)] = 6.95
-    notas = ("Este es el gráfico de enjambre. Cada fila es una variable, ordenada por importancia, y cada punto es uno de los "
-             "10.286 avisos de prueba. La posición a lo ancho es su valor SHAP: a la derecha de cero, la variable sube la "
-             "predicción de ese aviso; a la izquierda, la baja. El color es el valor de la variable en ese aviso: gris si es "
-             "bajo, azul oscuro si es alto. Así se lee la dirección: en el puntaje de precio del texto, los puntos oscuros están a la "
-             "derecha, es decir, un texto que suena caro sube el precio, hasta unos 500 millones. En área, baños y alcobas, "
-             "más es más caro. En la distancia a una embajada, los puntos claros, los cercanos, están a la derecha: estar "
-             "cerca sube el precio, que es la geografía de Chapinero. No son efectos causales: es cómo el modelo reparte.")
+    notas = ("El enjambre agrega la dirección. Cada punto es un aviso de prueba; a la derecha de cero, la variable "
+             "sube su predicción, y a la izquierda la baja. El color es el valor de la variable: oscuro si es alto. "
+             "En el puntaje de precio del texto los puntos oscuros están a la derecha: un texto que suena caro sube "
+             "el precio, hasta unos 500 millones. En área, baños y alcobas, más es más caro. Estar cerca de una "
+             "embajada sube el precio: es la geografía de Chapinero. No son efectos causales: es cómo reparte el "
+             "modelo.")
     return s, notas
 
 
@@ -835,16 +838,17 @@ def _shap_dependencia(deck):
         "El aporte sube con el área hasta unos 250 m² y luego se aplana. En la prueba, en naranja, pesa más en los dos "
         "sentidos: el área se cruza con la ubicación."], tipo="neutra")
     tarjeta(s, 8.85, 5.05, 3.95, 1.9, "Valor del suelo", [
-        f"Pasado el percentil 99 del entrenamiento, 5,9 millones por m², el aporte deja de subir: un árbol no extrapola. Ahí "
-        f"está el {n(pp, 0)} % de la prueba."], tipo="cuidado")
+        f"El aporte sube hasta unos 5 millones por m² y se aplana. Sobre el percentil 99 del entrenamiento (5,9 millones por "
+        f"m²) está el {n(pp, 0)} % de la prueba: ahí el modelo no tuvo datos para aprender otro corte, porque un árbol no "
+        "extrapola."], tipo="cuidado")
     FIN[id(s)] = 6.95
-    notas = ("Los gráficos de dependencia muestran la forma que aprendió el modelo para una variable. En gris, avisos de "
-             "entrenamiento; en naranja, de prueba. A la izquierda, el área: los pequeños restan, el aporte sube hasta unos 250 "
-             "metros y luego se aplana. En la prueba el área pesa más en los dos sentidos: el modelo combina tamaño y "
-             "ubicación. A la derecha, el valor del suelo alrededor, en escala logarítmica: sube el precio hasta unos 5 "
-             "millones por metro cuadrado y después se aplana. La línea es el percentil 99 del entrenamiento. Un árbol no "
-             "puede inventar un corte donde no tuvo datos: todo lo que está por encima recibe lo mismo. Y más de la mitad de "
-             "la prueba está ahí. Es una causa probable de que el modelo subestime Chapinero, como veremos en la Etapa 4.")
+    notas = ("Estos gráficos muestran la forma que aprendió el modelo. A la izquierda, el área: el aporte sube hasta"
+             " unos 250 metros y luego se aplana, y en la prueba, en naranja, pesa más. A la derecha, el valor del "
+             "suelo: sube hasta unos 5 millones por metro cuadrado y se aplana. La línea es el percentil 99 del "
+             "entrenamiento; el 57 % de la prueba está por encima. Un árbol no puede inventar un corte donde no tuvo"
+             " datos: todo lo que está más arriba recibe lo mismo. Es una causa probable de que el modelo se quede "
+             "corto en Chapinero. De hecho, el 40 % de la prueba tiene dos o más variables fuera del rango del "
+             "entrenamiento.")
     return s, notas
 
 
@@ -903,13 +907,13 @@ def _validar(deck):
 
 
 def _esquemas(deck):
-    s = _nueva(deck, "Seis formas de esconder avisos: del azar a dejar Chapinero fuera", ETQ3, SEC3)
+    s = _nueva(deck, "Validar: esconder avisos con precio y predecirlos, de seis formas", ETQ3, SEC3)
     imagen(s, IMG2 / "pliegues_6.png", 0.45, 1.3, w=6.3, alt="Mapas de un pliegue de cada esquema y de la prueba real")
 
     def d_(e):
         return f"{n(DV[e]['mediana'], 0)} m"
 
-    filas = [("Esquema", "Cómo se arma cada pliegue", "Vecino mediano"),
+    filas = [("Esquema", "Cómo se arma cada pliegue (el grupo de avisos que se esconde y se predice)", "Vecino mediano"),
              ("CV aleatoria", f"{PL['aleatoria']['pliegues']} pliegues: cada aviso se sortea a uno.", d_("aleatoria")),
              ("Bloques de 2 km", f"{PL['bloques']['pliegues']} pliegues: una cuadrícula de 2 km; cada cuadro se sortea a un "
                                  "pliegue.", d_("bloques")),
@@ -925,19 +929,23 @@ def _esquemas(deck):
               ("96 m", "naranja"))]
     anchos = [1.55, 3.35, 0.95]
     y1 = _tabla(s, 6.95, 1.3, filas, anchos, size=12, minimo=0.3)
-    texto(s, 6.95, y1 + 0.06, 5.85, 6.95 - y1 - 0.06, "Vecino mediano: distancia mediana de cada aviso que se predice a su "
-          "aviso de entrenamiento más cercano. Todos, salvo Chapinero fuera, predicen los 38.644 avisos una vez. Sorteos con "
-          "semilla 2026. kNNDM: emparejamiento de distancias al vecino más cercano (Milà y otros, 2022; Linnenbrink y otros, 2024). El buffer no se "
-          "dibuja.", size=12, color="muted")
+    texto(s, 6.95, y1 + 0.04, 5.85, 6.97 - y1 - 0.04, "CV: validación cruzada. Con pliegues al azar, el "
+          "64 % de los avisos validados tiene uno de entrenamiento en su misma coordenada y el modelo se apoya en él; en la "
+          "prueba real, el 18 %. Vecino mediano: distancia mediana de cada aviso que se predice a su aviso de entrenamiento "
+          "más cercano. En las seis, el mismo LightGBM y el puntaje de precio del texto recalculado sin los avisos que se "
+          "predicen. Roberts y otros (2017); kNNDM: Milà y otros (2022) y Linnenbrink y otros (2024).", size=12,
+          color="muted")
     FIN[id(s)] = max(y1, 6.75)
-    notas = ("Probamos seis formas de armar los pliegues, de la más optimista a la más exigente. En los mapas, en naranja, los "
-             "avisos que se predicen en un pliegue, y en gris, con los que se entrena. La CV aleatoria sortea avisos sueltos: "
-             "el vecino más cercano está, en la mediana, en la misma coordenada. Los bloques sortean cuadros de 2 kilómetros, "
-             "y la variante con buffer además quita del entrenamiento lo que esté a 300 metros de lo validado. Los clústeres "
-             "parten la ciudad en 10 zonas con k-means. kNNDM arma pliegues para que la distancia al vecino de entrenamiento se "
-             "parezca a la de la prueba real, que es de 96 metros. Y Chapinero fuera imita el reto: entrenamos sin los 307 "
-             "avisos de Chapinero y los predecimos. El último mapa es la prueba real de Kaggle, para comparar: se parece más a "
-             "Chapinero fuera que a cualquier otro.")
+    notas = ("¿Cómo sabemos qué tan bien predice si la prueba no trae precios? Validando: escondemos avisos cuyo "
+             "precio sí conocemos, los predecimos y medimos el error. El problema es cómo esconderlos. Si se sortean"
+             " al azar, dos de cada tres avisos escondidos tienen otro de entrenamiento en la misma coordenada, a "
+             "veces el mismo inmueble publicado dos veces; el modelo se apoya en ese vecino y parece mejor de lo que"
+             " es. En Chapinero casi no va a tener vecinos. Por eso probamos seis formas, de la más optimista a la "
+             "más exigente: al azar; por bloques de 2 kilómetros, con y sin una franja de 300 metros; por 10 zonas "
+             "de la ciudad; kNNDM, que imita la distancia al vecino de la prueba; y la que imita el reto: entrenar "
+             "sin los 307 avisos de Chapinero y predecirlos. El último mapa es la prueba real.\n"
+             "Para preguntas: entre avisos validados al azar que comparten coordenada con uno de entrenamiento, los "
+             "errores tienen correlación de 0,31.")
     return s, notas
 
 
@@ -955,7 +963,8 @@ def _resultado_validacion(deck):
     ic = BO["lightgbm"]
     texto(s, 0.55, 5.75, 6.3, 1.2, [
         f"La CV aleatoria promete un error {n(100 * (1 - MAE['aleatoria'] / P01), 0)} % menor que el de Kaggle. Chapinero fuera "
-        f"queda a {n(P01 - MAE['chapinero'], 0)} millones de la tabla privada.",
+        f"queda a {n(P01 - MAE['chapinero'], 0)} millones de la tabla privada y a {n(U01 - MAE['chapinero'], 0)} de la "
+        "pública.",
         f"Con 307 avisos, su intervalo de 95 % va de {n(ic['ic_bajo'], 0)} a {n(ic['ic_alto'], 0)} (bootstrap de 10.000 "
         "réplicas, que trata los avisos como independientes)."], size=12, color="tinta", espacio=4)
     cat_cl = CV_SIN.loc["clusters", "MAE"] - CV_CON.loc["clusters", "MAE"]
@@ -976,15 +985,17 @@ def _resultado_validacion(deck):
         "Todas las validaciones eligen el mismo algoritmo; lo que cambia es el nivel del error. El riesgo de negocio se mide "
         "con Chapinero fuera."], tipo="clave")
     FIN[id(s)] = 6.95
-    notas = (f"Este es el hallazgo de validación. Con el mismo modelo, la CV aleatoria promete {n(MAE['aleatoria'])} millones de "
-             f"error; Kaggle dio {n(P01)}, casi el doble. A medida que la validación se aleja en el espacio, el error sube, y "
-             f"la única que llega cerca de Kaggle es dejar Chapinero fuera: {n(MAE['chapinero'])}. Con solo 307 avisos, su "
-             f"intervalo va de {n(ic['ic_bajo'], 0)} a {n(ic['ic_alto'], 0)}. A la derecha, qué decidió cada validación: todas "
-             "eligen el boosting, así que la validación al azar no se equivoca de ganador, se equivoca en el nivel del error. "
-             "Catastro bajó el error en clústeres y en Chapinero fuera. La pérdida y las hojas se compararon antes, con otra "
-             "validación espacial; el número de árboles lo decide la parada temprana; y el ajuste por 1,08 se eligió mirando "
-             "Chapinero fuera, así que su mejora ahí es optimista: Kaggle la confirmó después. Por eso medimos el riesgo de "
-             "negocio con Chapinero fuera.")
+    notas = ("Este es el hallazgo. Con el mismo modelo, la validación al azar promete 78,8 millones de error; Kaggle"
+             " dio 152,4, casi el doble. A medida que la validación se aleja en el espacio, el error sube, y la "
+             "única que llega cerca de Kaggle es dejar Chapinero fuera: 143,8, con un intervalo de 129 a 159 porque "
+             "son solo 307 avisos. A la derecha, qué decidió cada validación. Todas eligen el boosting: la "
+             "validación al azar no se equivoca de ganador, se equivoca en el nivel del error. Catastro bajó el "
+             "error 9 millones en Chapinero. Y el ajuste por 1,08 se eligió mirando Chapinero fuera, así que su "
+             "mejora ahí es optimista; Kaggle la confirmó después. Por eso el riesgo de negocio lo medimos con "
+             "Chapinero fuera.\n"
+             "Para preguntas: en Chapinero fuera el RMSE es 197,8 y el R² 0,72; el error de un aviso se parece al de"
+             " sus 10 vecinos (correlación de 0,10 al azar y de 0,38 a 0,44 por lugar), pero interpolar esos errores"
+             " con kriging no ayudó (111,7 a 114,7).")
     return s, notas
 
 
@@ -1095,8 +1106,7 @@ def _pronostico(deck):
     pasos = [
         ("Cinco corridas", "El modelo se entrena 5 veces con los 38.644 avisos, incluidos los 307 de Chapinero, con semillas "
                            "2026 a 2030; cada corrida elige su número de árboles.", None),
-        ("Promedio", f"Para cada aviso de prueba, ŷ es el promedio de las 5 predicciones: mediana de {n(lgb_['mediana'])} "
-                     f"millones, de {n(lgb_['min'])} a {n(lgb_['max'])}.", None),
+        ("Promedio", "Para cada aviso de prueba, ŷ es el promedio de las 5 predicciones.", None),
         ("Ajuste ×1,08", f"El modelo comprime los precios hacia el centro: en Chapinero fuera, cuando la predicción sube "
                          f"1 millón, el precio real sube {n(E['pendiente_chapinero'], 2)} en promedio. Se aleja cada predicción de 654, el "
                          "promedio del entrenamiento. 1,08 se eligió con Chapinero fuera y la zona a 1 km de la prueba.",
@@ -1137,16 +1147,13 @@ def _pronostico(deck):
         x_ = 7.45 + i * 1.8
         texto(s, x_, 4.9, 1.75, 0.6, v_, size=28, color="naranja")
         texto(s, x_, 5.5, 1.7, 1.45, e_, size=12, color="muted")
-    notas = ("¿Cómo se pasa del modelo al archivo que subimos? Cinco pasos. Uno: entrenamos el modelo cinco veces con todos los "
-             "avisos de entrenamiento, incluidos los 307 de Chapinero, cambiando la semilla de los sorteos. Dos: promediamos "
-             "las cinco predicciones. Tres: un ajuste. Todas las validaciones espaciales mostraban que el modelo comprime: "
-             "predice de menos lo caro y de más lo barato. Por eso alejamos cada predicción del promedio de 654 millones, "
-             "multiplicando la distancia por 1,08; ese factor se eligió mirando Chapinero fuera y la zona cercana a la prueba. "
-             f"Cuatro: {FINAL['n_gemelos']} avisos de prueba tienen exactamente la misma descripción que avisos del "
-             "entrenamiento, probablemente el mismo inmueble; ahí pesamos 70 % el precio del gemelo y 30 % el modelo. Cinco: "
-             f"pasamos a pesos. Con el ajuste, el error en Kaggle bajó de {n(P01, 1)} a {n(P02, 1)}. A la derecha, el pronóstico: "
-             f"mediana de {n(fin['mediana'], 0)} millones, por encima del resto de Bogotá y parecido a los avisos de Chapinero "
-             "que sí teníamos. Parecerse en la distribución no es acertar aviso por aviso: eso lo vemos ahora.")
+    notas = ("¿Cómo se pasa del modelo al archivo que subimos? Entrenamos cinco veces con todos los avisos, "
+             "cambiando la semilla, y promediamos. Luego, un ajuste: la validación mostraba que el modelo comprime, "
+             "predice de menos lo caro; por eso alejamos cada predicción del promedio un 8 %. Y en 78 avisos de "
+             "prueba cuya descripción repite la de un aviso de entrenamiento, probablemente el mismo inmueble, pesa "
+             "70 % el precio de ese gemelo. Con el ajuste, el error en Kaggle bajó de 152,4 a 150,8. A la derecha, "
+             "el pronóstico: mediana de 799 millones, por encima del resto de Bogotá y parecido a los avisos de "
+             "Chapinero que sí teníamos.")
     return s, notas
 
 
@@ -1154,8 +1161,9 @@ def _calibracion(deck):
     s = _nueva(deck, "Calibración: en Chapinero predice de menos en todos los niveles; en Bogotá, no", ETQ4, SEC4)
     cc = CAL[CAL["esquema"] == "Chapinero fuera"]
     sa, ca = cc[cc["version"] == "Sin ajuste"]["sesgo"].tolist(), cc[cc["version"] == "Con ajuste x1,08"]["sesgo"].tolist()
-    texto(s, 0.55, 1.3, 6.0, 0.62, "Chapinero fuera (307 avisos): predicción menos precio, promedio por quintil de la "
-          "predicción (millones)", size=13, color="muted")
+    texto(s, 0.55, 1.25, 6.0, 0.66, "Chapinero fuera (307 avisos): predicción menos precio, promedio por quintil de la "
+          f"predicción (millones). Promedio de todos: {n(L_CH0.sesgo, 0)} sin ajuste y {n(L_CH.sesgo, 0)} con ajuste",
+          size=12, color="muted")
     ch = barras(s, 0.45, 1.9, 6.1, 3.3, ["1 (más barato)", "2", "3", "4", "5 (más caro)"],
                 [("Sin ajuste", sa, "gris_claro"), ("Con ajuste ×1,08", ca, "navy")], horizontal=False, minimo=-120, maximo=40,
                 unidad=40, leyenda=True, gap=60, overlap=-5, valor_visible=True, fmt=MENOS, etiquetas_abajo=True)
@@ -1170,7 +1178,8 @@ def _calibracion(deck):
                  fmt=MENOS, etiquetas_abajo=True, etiquetas=False)
     _ = ch2
     tarjeta(s, 0.55, 5.35, 4.0, 1.6, "Calibración", [
-        "Comparar, por grupos de la predicción, lo predicho con lo real. Un modelo calibrado da barras cercanas a cero."],
+        "Comparar, por grupos de la predicción, lo predicho con lo real. Un modelo calibrado da barras cercanas a cero. "
+        "Quintiles y deciles: cinco o diez grupos iguales de avisos, ordenados por su predicción."],
         tipo="definicion")
     tarjeta(s, 4.7, 5.35, 4.0, 1.6, "Por qué agrupar por la predicción", [
         "La empresa solo ve la predicción. Agrupar por el precio real mostraría un sesgo falso por regresión a la media."],
@@ -1180,13 +1189,14 @@ def _calibracion(deck):
         f"ubicación. El ×1,08 la reduce arriba, pero en Bogotá sube los deciles altos ({n(ck[-2], 0, True)} y "
         f"{n(ck[-1], 0, True)})."], tipo="recordar")
     FIN[id(s)] = 6.95
-    notas = ("Ahora, dónde se equivoca. Primero, en promedio: la calibración compara, por grupos de la predicción, lo predicho "
-             "con lo real. Agrupamos por la predicción porque es lo único que la empresa ve. A la izquierda, Chapinero fuera: "
-             "en los cinco quintiles la barra es negativa, el modelo predice de menos en todos los niveles de precio. Es una "
-             "prima de ubicación de Chapinero que el modelo no capta, y encaja con el valor del suelo que se aplana fuera del "
-             "rango. A la derecha, el mismo gráfico para toda Bogotá con kNNDM: sin ajuste las barras están cerca de cero, el "
-             "modelo está calibrado en la ciudad. El ajuste por 1,08 corrige parte de Chapinero, pero en Bogotá sobrestima las "
-             "predicciones más altas. Por eso, para ofertar, no lo recomendamos.")
+    notas = ("Ahora, dónde se equivoca. La calibración compara, por grupos de la predicción, lo predicho con lo "
+             "real; agrupamos por la predicción porque es lo único que la empresa ve. A la izquierda, Chapinero: en "
+             "los cinco grupos la barra es negativa. El modelo predice de menos en todos los niveles, 52 millones en"
+             " promedio: falta una prima de ubicación que no capta. A la derecha, toda Bogotá: sin ajuste las barras"
+             " están cerca de cero. El ajuste por 1,08 corrige parte de Chapinero, pero en Bogotá sobrestima las "
+             "predicciones más altas. Entonces, si predice de menos, ¿no hay riesgo de pagar de más? Sí lo hay.\n"
+             "Para preguntas: en la gráfica de predicho frente a real, el 56 % de los puntos queda sobre la "
+             "diagonal; el error es de 97 millones en la mitad de menor predicción y de 185 en la de mayor.")
     return s, notas
 
 
@@ -1365,13 +1375,14 @@ def _recomendacion(deck, eq10):
            ("No usarlo para", "rojo_claro", "rojo", f"{n(err, 1)} %", "de error mediano al predecir Chapinero sin haberlo "
             "visto", [
                 "Ofertas automáticas: los dueños aceptan cuando el modelo sobrestima y la regla pierde dinero.",
-                "Confiar en un aviso por estar dentro del rango del entrenamiento: en porcentaje, yerra igual.",
+                f"Confiar en el promedio: en Chapinero el modelo predice de menos en promedio y, aun así, el "
+                f"{n(L_CH.sobre_10, 0)} % de los avisos queda más de 10 % arriba.",
                 "Ofertar con el ×1,08: sube las predicciones altas y pierde más (−14,8 frente a −13,2 millones por oferta)."]),
            ("Cómo hacerlo", "tinte", "navy", f"{n(eq10, 0)} %", "de error mediano haría falta para no perder con margen de 10 %",
             ["Toda alerta pasa por comparables y tasación antes de ofertar.",
              "La oferta se ancla en el menor valor entre la predicción con margen y el precio pedido.",
-             "Siguiente paso: predecir cuantiles para ofertar de forma conservadora y sumar variables de imágenes satelitales "
-             "con una red convolucional preentrenada, que no necesitan precios de Chapinero."])]
+             "Siguiente paso: predecir un valor conservador, que la vivienda supere casi siempre (un cuantil bajo), para "
+             "ofertar con cautela, y sumar variables de imágenes de satélite, que no necesitan precios de Chapinero."])]
     for i, (tit, fondo, borde, cifra_, etq_, items) in enumerate(col):
         x0 = 0.55 + i * 4.13
         forma(s, MSO_SHAPE.ROUNDED_RECTANGLE, x0, 1.4, 3.95, 5.5, relleno=fondo, radio=0.04)
@@ -1381,13 +1392,14 @@ def _recomendacion(deck, eq10):
         linea(s, x0 + 0.2, 3.55, x0 + 3.75, 3.55, color="gris_claro")
         texto(s, x0 + 0.2, 3.65, 3.6, 3.2, items, size=14, color="tinta", espacio=8)
     FIN[id(s)] = 6.9
-    notas = ("Nuestra recomendación. Sí usar el modelo para ordenar y filtrar avisos y como referencia de precio: ordena bien, "
-             "con una correlación de rangos de 0,87 entre predicción y precio en Chapinero. No usarlo para ofertar de forma "
-             f"automática: con un error mediano de {n(err, 1)} %, los dueños aceptan justo cuando el modelo se equivoca hacia "
-             "arriba y la empresa pierde plata; tampoco confiar en un aviso solo porque se parece al entrenamiento, ni ofertar "
-             "con el ajuste por 1,08. Cómo hacerlo: toda alerta pasa por comparables y tasación, y la oferta se ancla en el "
-             "menor valor entre la predicción con margen y el precio pedido. El siguiente paso es predecir cuantiles para "
-             "ofertar de forma conservadora y sumar variables de imágenes satelitales, que no necesitan precios de Chapinero.")
+    notas = ("Nuestra recomendación. Sí usar el modelo para ordenar y filtrar avisos y como referencia de precio: "
+             "ordena bien, con una correlación de rangos de 0,87. No usarlo para ofertar de forma automática: con un"
+             " error mediano de 12,9 %, los dueños aceptan justo cuando el modelo se equivoca hacia arriba y la "
+             "empresa pierde plata. Tampoco confiar en el promedio: aunque en promedio predice de menos, más de uno "
+             "de cada cuatro avisos queda más de 10 % arriba. Cómo hacerlo: toda alerta pasa por comparables y "
+             "tasación, y la oferta se ancla en el menor valor entre la predicción con margen y el precio pedido. "
+             "¿Podemos confiar en el modelo para comprar? Para decidir qué mirar, sí; para decidir cuánto pagar, "
+             "todavía no.")
     return s, notas
 
 
@@ -1418,7 +1430,7 @@ def _fuentes(deck):
             "Stanford GSB Insights (2021). Flip Flop: Why Zillow's algorithmic home buying venture imploded."]
     texto(s, 0.55, 1.3, 12.25, 5.65, refs, size=13, color="tinta", espacio=3)
     FIN[id(s)] = 6.95
-    notas = "Referencias citadas en la presentación."
+    notas = "Fuentes de los datos y de los métodos usados."
     return s, notas
 
 
@@ -1426,9 +1438,10 @@ def resultados_mejor_modelo(deck):
     """Lámina de resultados del mejor modelo (va como lámina 2 de best, justo después de la portada)."""
     from scipy.stats import spearmanr
     s = _nueva(deck, "El modelo ordena bien Chapinero, pero no basta para ofertar sin tasación", "Resultados", "Resultados")
-    texto(s, 0.55, 1.28, 12.25, 0.62, "Mejor modelo: LightGBM, un boosting de árboles de decisión con 162 variables por aviso, "
-          "promedio de 5 corridas, ajuste ×1,08 y gemelos de texto. Medido en los 307 avisos de Chapinero, predichos con un "
-          "modelo entrenado sin ellos.", size=14, color="tinta")
+    texto(s, 0.55, 1.25, 12.25, 0.68, "Mejor modelo: LightGBM, un boosting de árboles de decisión: muchos árboles pequeños "
+          "que se corrigen en secuencia, con 162 variables por aviso. Las cifras se miden en los 307 avisos de Chapinero, "
+          "predichos por un modelo entrenado sin ellos. Salvo la primera, llevan el ajuste ×1,08 del envío a Kaggle: cada "
+          "predicción se aleja 8 % del promedio del entrenamiento.", size=13, color="tinta")
     dsp = E["dispersion_chapinero"]
     pr, re_ = np.array(dsp["pred_x108"]), np.array(dsp["real"])
     rho = spearmanr(pr, re_).correlation
@@ -1437,8 +1450,9 @@ def resultados_mejor_modelo(deck):
     ic = BO["lightgbm"]
     pos = CLAS.sort_values("privado").reset_index(drop=True)
     puesto = int(pos.index[pos["equipo"] == "Grupo_02"][0]) + 1
-    stats = [(n(MAE["chapinero"]), "azul", f"millones de error absoluto medio por aviso (intervalo de 95 %: {n(ic['ic_bajo'], 0)} "
-              f"a {n(ic['ic_alto'], 0)}); con el ajuste ×1,08, {n(BO['lightgbm_x108']['mae'])}"),
+    stats = [(n(MAE["chapinero"]), "azul", "millones de error absoluto medio: cuánto se aleja en promedio la predicción del "
+              f"precio (intervalo de 95 %: {n(ic['ic_bajo'], 0)} a {n(ic['ic_alto'], 0)}; con el ajuste, "
+              f"{n(BO['lightgbm_x108']['mae'])})"),
              (f"{n(L_CH.error_abs_mediano, 1)} %", "azul", "de error mediano en porcentaje del precio: la mitad de los avisos "
               "yerra menos que eso"),
              (n(rho, 2), "azul", "de correlación de rangos entre predicción y precio: ordena bien los avisos de barato a caro"),
@@ -1462,17 +1476,16 @@ def resultados_mejor_modelo(deck):
         "Para ordenar, filtrar y negociar, sí. Para ofertar en automático, no: con este error, los dueños aceptan justo "
         "cuando el modelo sobrestima. Toda compra pasa por comparables y tasación."], tipo="neutra", maximo=16)
     FIN[id(s)] = 6.95
-    notas = ("Empezamos por el resultado. Nuestro mejor modelo es un LightGBM, un boosting de árboles de decisión, con 162 "
-             "variables por aviso. Como la prueba de Kaggle no trae precios, lo medimos así: entrenamos sin los 307 avisos de "
-             "Chapinero que tiene el entrenamiento y los predijimos. Se equivoca en promedio "
-             f"{n(MAE['chapinero'], 0)} millones por aviso; en porcentaje, la mitad de los avisos yerra menos de "
-             f"{n(L_CH.error_abs_mediano, 0)} %. Ordena bien: la correlación de rangos entre predicción y precio es "
-             f"{n(rho, 2)}. Pero el riesgo es claro: el {n(L_CH.sobre_10, 0)} % de los avisos queda más de 10 % por encima de "
-             "su precio, y si la empresa ofertara en automático perdería unos "
-             f"{n(-c10['ganancia_por_oferta'], 0)} millones por oferta, porque los dueños aceptan justo cuando el modelo "
-             f"sobrestima. La respuesta: sirve para ordenar, filtrar y negociar, no para ofertar sin tasación. En Kaggle "
-             f"quedamos en el puesto {puesto} de {len(CLAS)}, con {n(P02, 1)} millones. El resto de la presentación muestra "
-             "cómo llegamos a esto.")
+    notas = ("Empezamos por el resultado. Nuestro mejor modelo es un LightGBM, un boosting de árboles de decisión: "
+             "muchos árboles pequeños que se corrigen en secuencia, con 162 variables por aviso. Como la prueba de "
+             "Kaggle no trae precios, lo medimos así: entrenamos sin los 307 avisos de Chapinero que tiene el "
+             "entrenamiento y los predijimos. Se equivoca en promedio 144 millones por aviso, con un intervalo de "
+             "129 a 159; en porcentaje, la mitad de los avisos yerra menos de 13 %. Ordena bien: la correlación de "
+             "rangos entre predicción y precio es 0,87. Pero el riesgo es claro: el 27 % de los avisos queda más de "
+             "10 % por encima de su precio, y si la empresa ofertara en automático perdería unos 15 millones por "
+             "oferta, porque los dueños aceptan justo cuando el modelo sobrestima. En Kaggle quedamos en el puesto 2"
+             " de 6, con 150,8 millones. La respuesta: sirve para ordenar, filtrar y negociar, no para ofertar sin "
+             "tasación. El resto de la presentación muestra cómo llegamos a esto.")
     return s, notas
 
 

@@ -44,42 +44,20 @@ SELECCION = [
     "portada",                         # Qué modelo predice mejor los precios de vivienda en Chapinero
     # El mejor modelo
     "cmp.mejor_modelo",                # El mejor modelo: boosting de árboles (LightGBM) con texto, entorno y Catastro
-    # Problema, hoja de ruta y Etapa 1 (datos): las mismas láminas de best
+    # Problema y Etapa 1 (datos): las mismas láminas de best
     "e1.problema",                     # Para la empresa, pagar de más cuesta más que dejar de comprar
-    "e1.ruta",                         # De los avisos al pronóstico: el camino completo
     "e1.mapa_precio",                  # Entrenamos con Bogotá, casi sin Chapinero, para predecir Chapinero
-    "e1.fuente1_1",                    # Fuente 1a. Avisos de Properati: el precio que se predice y la vivienda
-    "e1.fuente1_2",                    # Fuente 1b. Avisos de Properati: texto, fecha, ubicación y avisos vecinos
-    "e1.apertura_clase",               # Del texto a variables: nueve técnicas y dónde entra cada una
-    "e1.pasos_modelos",                # Del texto crudo a 84 variables: pasos, modelos y lo que queda en los datos
-    "e1.aviso_real",                   # Un aviso real: qué sacamos de su texto y con qué regla
-    "e1.beto",                         # BETO: un modelo de lenguaje que corrige la ortografía según el contexto
-    "e1.listas",                       # Listas de palabras que se quitan del texto: de dónde salen y cómo se usan
-    "e1.fuente2ab_1",                  # Fuente 2a. Texto del aviso: marcas de sí o no por palabra clave, sin contar las negadas
-    "e1.fuente2ab_2",                  # Fuente 2b. Texto del aviso: más marcas de sí o no y las cifras escritas
-    "e1.tfidf",                        # TF-IDF: cuánto pesa cada término en cada aviso
-    "e1.lsa",                          # LSA: la tabla de pesos resumida en 50 componentes
-    "e1.lda",                          # LDA: cada aviso como una mezcla de 10 tópicos (temas)
-    "e1.ridge",                        # Ridge: un puntaje de precio aprendido de las palabras
-    "e1.fuente2c",                     # Fuente 2c. Texto del aviso: temas, resumen en 50 números y puntaje de precio
-    "e1.externas_1",                   # Fuente 3a. OpenStreetMap: comercio y transporte alrededor del aviso
-    "e1.externas_2",                   # Fuente 3b. OpenStreetMap: colegios, TransMilenio, oficinas y embajadas
-    "e1.externas_3",                   # Fuente 3c. OpenStreetMap: distancias a parques, vías, servicios y referencias
-    "e1.externas_4",                   # Fuente 4. Imágenes de satélite: 7 variables del terreno y de lo construido
-    "e1.externas_5",                   # Fuente 5. Catastro: 11 variables del valor del suelo y de la manzana
     "e1.hedonicas",                    # 162 variables: el precio refleja la vivienda y su entorno (precios hedónicos)
+    "e1.pasos_modelos",                # Del texto crudo a 84 variables: pasos, modelos y lo que queda en los datos
     # Cuerpo de la comparación
     "cmp.criterios",                   # Cómo comparamos: el error en avisos que el modelo no vio
     "cmp.como_predice",                # Cómo predice cada familia y qué controla su flexibilidad
-    "cmp.lineales",                    # Regresión lineal y Elastic Net: una suma ponderada, con o sin encoger
-    "cmp.arboles",                     # CART y Random Forest: un árbol de reglas y el promedio de 300 árboles
     "cmp.boosting",                    # Boosting: árboles pequeños en secuencia que corrigen el error anterior
     "cmp.red",                         # Red con atención: capas de neuronas que además miran el precio de 20 vecinos
     "cmp.hiperparametros",             # Hiperparámetros de cada familia: qué fija su flexibilidad y cómo se eligió
-    "cmp.reglas",                      # Las mismas reglas para las seis familias
     "cmp.validaciones",                # Tres validaciones: del azar a predecir una zona que el modelo no vio
+    "cmp.reglas",                      # Las mismas reglas para las seis familias
     "cmp.resultado",                   # Resultado: el boosting tiene el menor error en las tres validaciones
-    "cmp.flexibilidad",                # Más flexible no siempre es mejor cuando hay que predecir una zona nueva
     "cmp.diferencias",                 # ¿Son reales las diferencias? Sí: ningún intervalo toca el cero
     "cmp.estandar_espacial",           # Validación estándar y espacial: el mismo ganador, distinto orden detrás
     "cmp.kaggle",                      # ¿Qué validación refleja Kaggle? En el nivel, Chapinero fuera
@@ -87,8 +65,7 @@ SELECCION = [
     "cmp.promediar_corregir",          # Por qué gana el boosting (2): promediar baja la varianza; corregir baja el sesgo
     "cmp.subestiman",                  # Dónde fallan: todas subestiman Chapinero, y más los avisos que predicen caros
     "cmp.riesgo",                      # Para la empresa: un sesgo medio bajo no es un riesgo bajo
-    "cmp.algoritmo_datos",             # Qué movió el resultado: entre familias, el algoritmo; dentro del boosting, los datos
-    "cmp.complejidad",                 # Añadir complejidad al LightGBM no ayudó; describir mejor Chapinero, sí
+    "cmp.complejidad",                 # Qué movió el resultado: entre familias, el algoritmo; dentro del boosting, los datos
     "cmp.compromisos",                 # Compromisos: qué se gana y qué se pierde con cada familia
     "cmp.conclusion",                  # Gana el boosting, pero ninguna familia corrige el nivel de Chapinero
     "cmp.fuentes",                     # Fuentes

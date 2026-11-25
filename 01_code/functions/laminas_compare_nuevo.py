@@ -67,6 +67,7 @@ ORDINAL = {1: "primero", 2: "segundo", 3: "tercero", 4: "cuarto", 5: "quinto", 6
 CARD = {5: "cinco", 6: "seis", 7: "siete"}
 LADOS = pd.read_csv(D / "ppt_lados.csv")
 SOBRE_SIN = LADOS[(LADOS["esquema"] == CH) & (LADOS["version"] == "Sin ajuste")]["sobre_10"].iloc[0]
+SOBRE_CON = LADOS[(LADOS["esquema"] == CH) & (LADOS["version"] == "Con ajuste x1,08")]["sobre_10"].iloc[0]
 DIST = pd.read_parquet(D / "distancias_vecino.parquet")
 PCT0 = {e: 100 * float((g_["distancia_m"] == 0).mean()) for e, g_ in DIST.groupby("esquema")}
 MED = {e: float(g_["distancia_m"].median()) for e, g_ in DIST.groupby("esquema")}
@@ -198,21 +199,22 @@ def _mejor_modelo(deck):
         "Recibe 162 variables del aviso, su texto y su entorno (mapa, satélite y Catastro) y predice el precio en millones "
         "de pesos, minimizando el error cuadrático.",
         "Tasa de aprendizaje 0,05; hasta 63 hojas por árbol; 80 % de los avisos y 70 % de las variables en cada árbol; 252 "
-        "árboles por parada temprana (semilla 2026); promedio de 5 corridas."],
+        "árboles, elegidos con parada temprana (se suman mientras baje el error en avisos apartados); promedio de 5 "
+        "corridas."],
         tipo="definicion")
     tarjeta(s, 0.55, 3.77, 6.1, 1.45, "Dos ajustes al final", [
         "La distancia a la media del entrenamiento (654) se multiplica por 1,08, porque se quedaba corto en los avisos "
         "caros. En 78 avisos de prueba cuya descripción repite la de uno del entrenamiento, pesa 0,7 el precio de ese aviso."],
         tipo="recordar")
     filas = [("Medida", "Error absoluto medio, MAE (millones)"),
-             ("Kaggle, tabla privada (80 % de la prueba)", f"{n(P02)}: {ORDINAL[PUESTO]} de {CARD[len(CLAS)]} equipos"),
-             ("Kaggle, tabla pública (20 %)", n(U02)),
-             ("Chapinero fuera, sin los dos ajustes",
+             ("Kaggle, tabla privada", f"{n(P02)}: {ORDINAL[PUESTO]} de {CARD[len(CLAS)]} equipos"),
+             ("Kaggle, tabla pública", n(U02)),
+             ("Chapinero fuera (entrenar sin sus 307 avisos y predecirlos), sin los dos ajustes",
               f"{n(M[('lightgbm', CH)])} (intervalo de 95 %: {n(BO['lightgbm']['ic_bajo'], 0)} a "
               f"{n(BO['lightgbm']['ic_alto'], 0)})")]
     y1 = _tabla(s, 0.55, 5.37, filas, [2.75, 3.35], size=12, minimo=0.3)
-    texto(s, 6.95, 1.3, 5.85, 0.62, "Chapinero fuera: MAE de las siete especificaciones, con las mismas 162 variables y los "
-          "mismos pliegues (millones)", size=13, color="muted")
+    texto(s, 6.95, 1.3, 5.85, 0.62, "Chapinero fuera: MAE de las siete especificaciones, con las mismas 162 variables "
+          "(millones)", size=13, color="muted")
     vals = [M[(f, CH)] for f, _ in FAM]
     cols = ["azul", "azul_suave"] + ["gris_claro"] * 5
     ch = barras(s, 6.85, 1.9, 5.95, 3.45, [nom for _, nom in FAM], [("MAE", vals, cols)], minimo=0, maximo=215, gap=35,
@@ -222,17 +224,16 @@ def _mejor_modelo(deck):
         "Por qué el boosting le gana a las otras cinco familias con las mismas reglas, si esa ventaja es real y qué se "
         "sacrifica con cada alternativa."], tipo="neutra")
     FIN[id(s)] = y1
-    notas = ("Empezamos por el resultado. El mejor modelo es boosting de árboles, con la librería LightGBM: suma árboles de "
-             "decisión en secuencia, y cada uno corrige el error que dejaron los anteriores. Recibe 162 variables, entre "
-             "ellas el texto del aviso, el entorno en el mapa y el satélite, y 11 variables del Catastro de Bogotá. Al final "
-             "estiramos un 8 % sus predicciones alrededor de la media, porque se quedaba corto en los avisos caros, y para 78 "
-             "avisos cuya descripción repite la de uno del entrenamiento usamos sobre todo el precio de ese gemelo. En la "
-             f"tabla privada de Kaggle obtuvo un error absoluto medio de {n(P02)} millones, segundo de seis equipos, y bajó "
-             f"{n(PREVIO - P02)} millones frente al mejor envío previo del equipo. La validación que imita la tarea, "
-             f"entrenar sin Chapinero y predecirlo, le da {n(M[('lightgbm', CH)])} millones. A la derecha está la "
-             "comparación que vamos a explicar: con las mismas variables y los mismos pliegues, el boosting, en azul, tiene "
-             "el menor error; CatBoost es otra versión de boosting. La pregunta es por qué, si la ventaja es real y qué "
-             "se pierde con cada alternativa.")
+    notas = ("Empezamos por el resultado. El mejor modelo es un boosting de árboles, con la librería LightGBM: suma "
+             "árboles de decisión en secuencia, y cada uno corrige el error que dejaron los anteriores. Recibe 162 "
+             "variables: el aviso, su texto, su entorno en el mapa y el satélite, y 11 variables del Catastro de "
+             "Bogotá. Al final estiramos un 8 % sus predicciones alrededor de la media, porque se quedaba corto en "
+             "los avisos caros, y en 78 avisos cuya descripción repite la de uno del entrenamiento usamos sobre todo"
+             " el precio de ese gemelo. En la tabla privada de Kaggle obtuvo un error absoluto medio de 150,8 "
+             "millones, segundo de seis equipos. La validación que imita la tarea, entrenar sin Chapinero y "
+             "predecirlo, le da 143,8. A la derecha está la comparación que vamos a explicar: con las mismas "
+             "variables y las mismas pruebas, el boosting, en azul, tiene el menor error. La pregunta es por qué, si"
+             " la ventaja es real y qué se pierde con cada alternativa.")
     return s, notas
 
 
@@ -272,15 +273,14 @@ def _criterios(deck):
              ("Fuera del rango conocido", "qué hace con valores que no vio al entrenar")]
     y1 = _tabla(s, 6.95, 3.4, filas, [2.15, 3.7], size=13, minimo=0.32)
     FIN[id(s)] = max(y1, 6.95)
-    notas = ("Antes de comparar, cómo comparamos. Lo que importa es el error en avisos que el modelo no vio: dentro de la "
-             "muestra cualquier modelo flexible parece bueno. Usamos el error absoluto medio, MAE, en millones, que es la "
-             "medida de Kaggle. Ese error tiene tres partes. El sesgo es el error de una forma demasiado rígida, como una "
-             "recta donde el precio se curva. La varianza es cuánto cambia la predicción si cambian los avisos con que se "
-             "entrena, el problema de un modelo que memoriza. Y el ruido nadie lo predice. Un modelo más flexible baja el "
-             "sesgo pero sube la varianza; los hiperparámetros, como cuánto encoger los coeficientes, la profundidad de un "
-             "árbol o cuántos árboles sumar, fijan ese punto, y se eligen mirando el error en avisos apartados. A la "
-             "derecha, lo que vamos a mirar de cada familia: el error, si la diferencia es real, el sesgo, el riesgo de "
-             "pagar de más, si se entiende cómo predice y qué hace fuera de lo que conoce.")
+    notas = ("Antes de comparar, cómo comparamos. Lo que importa es el error en avisos que el modelo no vio. Usamos "
+             "el error absoluto medio, en millones, que es la medida de Kaggle. Ese error tiene tres partes. El "
+             "sesgo es el error de una forma demasiado rígida, como una recta donde el precio se curva. La varianza "
+             "es cuánto cambia la predicción si cambian los avisos con que se entrena: el problema de un modelo que "
+             "memoriza. Y el ruido nadie lo predice. Un modelo más flexible baja el sesgo y sube la varianza; los "
+             "hiperparámetros fijan ese punto y se eligen mirando el error en avisos apartados. A la derecha, lo que"
+             " miramos de cada familia: el error, si la diferencia es real, el sesgo, el riesgo de pagar de más, si "
+             "se entiende cómo predice y qué hace fuera de lo que conoce.")
     return s, notas
 
 
@@ -291,7 +291,8 @@ def _como_predice(deck):
     s = _nueva(deck, "Cómo predice cada familia y qué controla su flexibilidad", "fam")
     COLW, GAP = 2.32, 0.15
     desc = [("Regresión lineal y Elastic Net", "Una suma ponderada de las variables. Elastic Net además encoge los "
-             "coeficientes hacia cero y puede anular algunos.", "cuánto se encoge (λ) y la mezcla de lasso y ridge (α)"),
+             "coeficientes hacia cero y puede anular algunos.", "cuánto se encogen los coeficientes (λ) y la mezcla (α) "
+             "entre anularlos (lasso) y solo encogerlos (ridge)"),
             ("CART: un árbol", "Preguntas de sí o no que parten los avisos en hojas; predice el promedio de la hoja.",
              "profundidad y avisos mínimos por hoja"),
             ("Random Forest", "300 árboles, cada uno con avisos y variables sorteados; promedia sus predicciones.",
@@ -299,7 +300,8 @@ def _como_predice(deck):
             ("Boosting: LightGBM y CatBoost", "Árboles pequeños en secuencia: cada uno corrige el error que dejaron los "
              "anteriores.", "número de árboles, tasa de aprendizaje y tamaño de cada árbol"),
             ("Red con atención", "Capas de neuronas que transforman las variables; la atención pondera el precio de 20 "
-             "vecinos.", "capas y neuronas, épocas, dropout y decaimiento de pesos")]
+             "vecinos.", "capas y neuronas, pasadas por los datos (épocas) y frenos para no memorizar (dropout y "
+             "decaimiento de pesos)")]
     for i, (tit, txt, ctrl) in enumerate(desc):
         x0 = 0.55 + i * (COLW + GAP)
         forma(s, MSO_SHAPE.ROUNDED_RECTANGLE, x0, 1.3, COLW, 5.65, relleno="tinte", radio=0.04)
@@ -351,16 +353,17 @@ def _como_predice(deck):
             texto(s, x0 + COLW - 0.95, ya + 1.5, 0.9, 0.3, "vecinos", size=12, color="muted", align="center")
         texto(s, x0 + 0.12, 4.05, COLW - 0.24, 1.45, txt, size=14, color="tinta")
         texto(s, x0 + 0.12, 5.5, COLW - 0.24, 0.3, "Su flexibilidad depende de", size=12, color="muted")
-        texto(s, x0 + 0.12, 5.8, COLW - 0.24, 1.1, ctrl, size=13, color="azul")
+        texto(s, x0 + 0.12, 5.78, COLW - 0.24, 1.15, ctrl, size=12, color="azul")
     FIN[id(s)] = 6.95
-    notas = ("Primero, qué hace cada familia. La regresión lineal suma las variables con pesos fijos; Elastic Net hace lo "
-             "mismo pero encoge esos pesos hacia cero, y puede anular algunos. CART es un solo árbol de decisión: hace "
-             "preguntas de sí o no, por ejemplo si el área pasa de cierto valor, y en cada hoja predice el promedio de sus "
-             "avisos. Random Forest entrena 300 árboles distintos, cada uno con avisos y variables sorteados, y promedia. El "
-             "boosting suma árboles pequeños en secuencia: cada uno corrige lo que los anteriores dejaron mal; lo corrimos "
-             "con dos librerías, LightGBM y CatBoost. La red con atención aprende capas de neuronas y además mira el precio "
-             "de los 20 vecinos más cercanos. Abajo, en azul, lo que controla qué tan flexible es cada una: son los "
-             "hiperparámetros que vamos a ver.")
+    notas = ("Qué hace cada familia. La regresión lineal suma las variables con pesos fijos; Elastic Net hace lo "
+             "mismo pero encoge esos pesos hacia cero y puede anular algunos. Solo suman efectos: el área pesa igual"
+             " en cualquier barrio. CART es un solo árbol de decisión: preguntas de sí o no y, en cada hoja, el "
+             "promedio de sus avisos. Random Forest entrena 300 árboles, cada uno con avisos y variables sorteados, "
+             "y los promedia: el promedio cancela el ruido de cada árbol. El boosting suma árboles pequeños en "
+             "secuencia; cada uno corrige el error que dejaron los anteriores, y entra con un paso pequeño. Lo "
+             "corrimos con dos librerías, LightGBM y CatBoost. La red con atención pasa las variables por capas de "
+             "neuronas y además mira el precio de los 20 avisos de entrenamiento más cercanos. Abajo, en azul, lo "
+             "que controla la flexibilidad de cada una: sus hiperparámetros.")
     return s, notas
 
 
@@ -464,14 +467,12 @@ def _boosting(deck):
         "espacial con variables anteriores: 31 hojas y 50 avisos por hoja dieron 148,8 en Chapinero fuera, frente a 150,1 con "
         "63 y 20, casi lo mismo."], tipo="recordar")
     FIN[id(s)] = 6.95
-    notas = ("El boosting empieza prediciendo el promedio y suma árboles pequeños. Cada árbol nuevo aprende el error que "
-             "dejaron los anteriores, el residuo, y entra con un paso pequeño, la tasa de aprendizaje de 0,05: el modelo "
-             "aprende despacio. Mientras el bosque promedia árboles independientes para bajar la varianza, el boosting suma "
-             "correcciones y baja sobre todo el sesgo; por eso hay que pararlo a tiempo. La parada temprana suma árboles "
-             "mientras el error baje en avisos apartados y para cuando deja de bajar. Lo corrimos con dos librerías. "
-             "LightGBM hace crecer cada árbol por la hoja que más ayuda, con hasta 63 hojas; CatBoost hace árboles "
-             "simétricos de profundidad 8. El número de árboles se eligió con la partición interna; lo demás lo fijamos a "
-             "mano, y en LightGBM comparamos antes la pérdida y el número de hojas: casi no cambiaba.")
+    notas = ("El boosting empieza prediciendo el promedio y suma árboles pequeños. Cada árbol nuevo aprende el "
+             "residuo, el error que dejaron los anteriores, y entra con un paso pequeño, la tasa de 0,05: aprende "
+             "despacio. El bosque promedia árboles independientes y baja la varianza; el boosting suma correcciones "
+             "y baja sobre todo el sesgo, por eso hay que pararlo a tiempo con parada temprana. LightGBM crece por "
+             "la hoja que más ayuda, hasta 63 hojas; CatBoost hace árboles simétricos de profundidad 8. Solo el "
+             "número de árboles se eligió con datos.")
     return s, notas
 
 
@@ -501,14 +502,11 @@ def _red(deck):
         f"fue otra, más simple: dos capas de 10 neuronas ({n(PRIV['nn_clase_2x10_D_coordenadas'])} en la privada)."],
         tipo="recordar")
     FIN[id(s)] = 6.95
-    notas = ("La sexta familia es una red neuronal. Las 162 variables pasan por dos capas de 256 y 128 neuronas que las "
-             "transforman; luego un mecanismo de atención mira los 20 avisos de entrenamiento más cercanos y decide cuánto "
-             "pesa cada uno según qué tan parecido y qué tan cerca está; los pesos suman uno, así que es un promedio "
-             "ponderado de la vecindad, con su precio. Una última capa da el precio. Como las redes tienden a sobreajustar, "
-             "la regularizamos con dropout, que apaga neuronas al azar mientras entrena, normalización por lotes, "
-             "decaimiento de pesos y parada temprana. Las épocas se eligen con la partición interna; el resto lo fijamos a "
-             "mano. Los vecinos salen solo del entrenamiento del pliegue, sin copias del mismo aviso. La red que subimos a "
-             "Kaggle fue una más sencilla, de dos capas de 10 neuronas.")
+    notas = ("La sexta familia es una red neuronal. Las 162 variables pasan por capas de 256 y 128 neuronas; luego "
+             "la atención mira los 20 avisos de entrenamiento más cercanos y decide cuánto pesa cada uno según qué "
+             "tan parecido y cercano es: un promedio ponderado de la vecindad, con su precio. Para que no memorice "
+             "usamos dropout, que apaga neuronas al azar, decaimiento de pesos y parada temprana. Los vecinos salen "
+             "solo del entrenamiento del pliegue, sin copias del mismo aviso.")
     return s, notas
 
 
@@ -529,21 +527,25 @@ def _hiperparametros(deck):
               "épocas con la partición interna; el resto a mano")]
     y1 = _tabla(s, 0.55, 1.3, filas, [1.85, 3.2, 3.6, 3.6], size=13, minimo=0.34)
     tarjeta(s, 0.55, y1 + 0.15, 6.05, 6.95 - y1 - 0.15, "Partición interna", [
-        "Dentro del entrenamiento de cada pliegue se aparta una parte con la misma lógica de la validación: 20 % al azar en "
-        "la CV aleatoria, un clúster en la de clústeres y una localidad entera en Chapinero fuera. Así se elige sin mirar "
-        "los avisos que se validan."], tipo="definicion")
+        "Para elegir, dentro de los avisos de entrenamiento se aparta una parte con la misma lógica de la validación: "
+        "avisos al azar si se valida al azar, o una zona entera si se valida por zonas. Así se elige sin mirar los avisos "
+        "que se validan."], tipo="definicion")
     tarjeta(s, 6.75, y1 + 0.15, 6.05, 6.95 - y1 - 0.15, "Limitación", [
-        "Solo Elastic Net y CART tienen rejilla; en el boosting y la red solo se eligió el número de árboles o de épocas. "
+        "Solo Elastic Net y CART prueban una lista de valores (rejilla); en el boosting y la red solo se eligió con datos "
+        "el número de árboles o de épocas, con parada temprana: parar cuando el error en avisos apartados deja de bajar. "
         "Afinar más acortaría distancias, pero en LightGBM cambiar las hojas movió 1,3 millones y entre familias hay de 6 "
         "a 42."], tipo="recordar")
     FIN[id(s)] = 6.95
-    notas = ("Esta es la ficha de las siete especificaciones. La regresión lineal no tiene nada que elegir. Elastic Net "
-             "prueba 120 parejas de lambda y alfa con tres particiones espaciales. CART elige su profundidad entre cinco "
-             "valores. Random Forest usa valores fijos de uso común. En el boosting y en la red, lo que se elige con datos es "
-             "cuándo parar: el número de árboles o de épocas; lo demás se fijó a mano. Todo lo que se elige con datos usa "
-             "una partición interna que imita la validación: si validamos dejando Chapinero fuera, la parte apartada para "
-             "elegir es otra localidad entera. Lo decimos de frente: no hubo una rejilla completa para el boosting ni la red. "
-             "Pero lo que movían esos ajustes, cerca de un millón, es poco frente a lo que separa a las familias.")
+    notas = ("Esta es la ficha de las siete especificaciones. La regresión lineal no tiene nada que elegir. Elastic "
+             "Net prueba 120 parejas de lambda y alfa con tres particiones espaciales. CART elige su profundidad "
+             "entre cinco valores. Random Forest usa valores fijos de uso común. En el boosting y en la red, lo que "
+             "se elige con datos es cuándo parar: el número de árboles o de épocas; lo demás se fijó a mano. Todo lo"
+             " que se elige con datos usa una partición interna que imita la validación: si validamos dejando "
+             "Chapinero fuera, la parte apartada para elegir es otra localidad entera. Lo decimos de frente: no hubo"
+             " una rejilla completa para el boosting ni la red. Pero lo que movían esos ajustes, cerca de un millón,"
+             " es poco frente a lo que separa a las familias.\n"
+             "Para preguntas: la rejilla de Elastic Net es de 4 valores de α por 30 de λ; la red enviada a Kaggle "
+             "fue otra, de dos capas de 10 neuronas (184,4 en la tabla privada).")
     return s, notas
 
 
@@ -558,7 +560,8 @@ def _reglas(deck):
              ("Mismos pliegues", "los mismos sorteos (semilla 2026) para todas: cada aviso se predice con modelos que no lo "
                                  "vieron"),
              ("Misma medida", "MAE en millones sobre todas las predicciones fuera de pliegue juntas; además, el sesgo medio"),
-             ("Sin fuga del precio", "el puntaje de precio del texto se recalcula en cada pliegue sin los avisos validados"),
+             ("Sin fuga del precio", "el puntaje de precio del texto (el precio que sugieren las palabras del aviso) se "
+                                     "recalcula en cada pliegue sin los avisos validados"),
              ("Misma lógica para elegir", "lo que se elige con datos usa una partición interna hecha como la validación externa")]
     y1 = _tabla(s, 0.55, 1.3, filas, [2.6, 9.65], size=15, minimo=0.5)
     tarjeta(s, 0.55, y1 + 0.2, 6.05, 6.95 - y1 - 0.2, "Lo que no es igual, y por qué", [
@@ -567,22 +570,24 @@ def _reglas(deck):
         tipo="recordar")
     tarjeta(s, 6.75, y1 + 0.2, 6.05, 6.95 - y1 - 0.2, "Qué se corrió", [
         "Las siete especificaciones con clústeres y Chapinero fuera; todas menos CatBoost con la CV aleatoria (por tiempo). "
-        "LightGBM, además, con bloques de 2 km, bloques con buffer de 300 m y kNNDM."], tipo="neutra")
+        "LightGBM, además, con bloques de 2 km, bloques con una franja de 300 m y kNNDM (pliegues con la misma distancia al "
+        "entrenamiento que la prueba)."], tipo="neutra")
     FIN[id(s)] = 6.95
-    notas = ("Para que la comparación sea justa, las reglas son las mismas. Las siete especificaciones reciben exactamente las "
-             "mismas 162 variables, se prueban con los mismos pliegues, sorteados con la misma semilla, y se miden igual: el "
-             "error absoluto medio de todas las predicciones fuera de pliegue. El puntaje de precio que sale del texto se "
-             "vuelve a calcular en cada pliegue sin los avisos que se validan, para que ningún modelo vea el precio por la "
-             "puerta de atrás. Y todo lo que se elige con datos usa una partición interna hecha como la validación. Hay "
-             "diferencias necesarias: los lineales y la red no aceptan vacíos, así que se llenan y se estandarizan; la red usa "
-             "el precio de sus vecinos. CatBoost no se corrió con la validación aleatoria por tiempo.")
+    notas = ("Para que la comparación sea justa, las reglas son las mismas. Las siete especificaciones reciben las "
+             "mismas 162 variables, se prueban con los mismos pliegues y se miden igual: el error absoluto medio de "
+             "todas las predicciones. El puntaje de precio del texto se vuelve a calcular en cada pliegue sin los "
+             "avisos que se validan, para que ningún modelo vea el precio por la puerta de atrás. Y todo lo que se "
+             "elige con datos usa una partición interna hecha como la validación. Hay diferencias necesarias: los "
+             "lineales y la red no aceptan vacíos, así que se llenan y se estandarizan, y la red usa el precio de "
+             "sus vecinos.")
     return s, notas
 
 
 def _validaciones(deck):
     s = _nueva(deck, "Tres validaciones: del azar a predecir una zona que el modelo no vio", "reg")
     imagen(s, IMG3 / "mapas_validaciones.png", 0.45, 1.3, w=5.3, alt="Mapas de un pliegue de cada validación y de la prueba real")
-    filas = [("Validación", "Cómo se arma cada pliegue", "Pliegues", "Vecino mediano"),
+    filas = [("Validación", "Cómo se arma cada pliegue (el grupo de avisos que se esconde y se predice)", "Pliegues",
+              "Vecino mediano"),
              ("CV aleatoria", "cada aviso se sortea a uno de los pliegues", str(PL["aleatoria"]["pliegues"]),
               f"0 m ({n(PCT0['CV aleatoria'], 0)} % en la misma coordenada)"),
              ("Clústeres k-means", "k-means agrupa las coordenadas en 10 zonas; cada zona es un pliegue",
@@ -593,22 +598,24 @@ def _validaciones(deck):
               ("", "naranja"), (f"{n(MED['Prueba real (Kaggle)'], 0)} m ({n(PCT0['Prueba real (Kaggle)'], 0)} % en la misma "
                                 "coordenada)", "naranja"))]
     y1 = _tabla(s, 6.0, 1.3, filas, [1.55, 2.6, 0.95, 1.7], size=12, minimo=0.3)
-    texto(s, 6.0, y1 + 0.05, 6.8, 0.62, "Vecino mediano: distancia típica entre un aviso que se predice y su aviso de "
-          "entrenamiento más cercano. Las dos primeras predicen los 38.644 avisos una vez.", size=12, color="muted")
-    tarjeta(s, 6.0, y1 + 0.8, 6.8, 6.95 - y1 - 0.8, "Por qué Chapinero fuera es la principal", [
+    texto(s, 6.0, y1 + 0.05, 6.8, 0.82, "CV: validación cruzada; se entrena con todos los pliegues menos uno y se predice "
+          "el que quedó fuera. Vecino mediano: distancia típica entre un aviso que se predice y su aviso de entrenamiento más "
+          "cercano. Las dos primeras predicen los 38.644 avisos una vez.", size=12, color="muted")
+    tarjeta(s, 6.0, y1 + 0.95, 6.8, 6.95 - y1 - 0.95, "Por qué Chapinero fuera es la principal", [
         "Imita la tarea: predecir una zona cara que el modelo casi no vio. La CV aleatoria deja vecinos en el entrenamiento "
-        "y premia memorizar lo local; los clústeres quitan los vecinos, pero sus zonas se parecen más al resto de la ciudad "
-        "que Chapinero."],
+        "y premia memorizar lo local (Roberts y otros, 2017); los clústeres quitan los vecinos, pero sus zonas se parecen "
+        "más al resto de la ciudad que Chapinero."],
         tipo="clave")
     FIN[id(s)] = 6.95
-    notas = ("Probamos cada familia de tres formas. En los mapas, en naranja, los avisos que se predicen en un pliegue, y en "
-             "gris, con los que se entrena. La validación cruzada aleatoria sortea avisos sueltos en 5 pliegues: casi dos de "
-             "cada tres avisos validados tienen otro de entrenamiento en la misma coordenada, a veces el mismo inmueble "
-             "publicado dos veces. Los clústeres agrupan la ciudad en 10 zonas con k-means, un método que junta puntos "
-             "cercanos, y cada zona es un pliegue: el vecino de entrenamiento queda a casi un kilómetro. Chapinero fuera "
-             "entrena con toda la ciudad menos Chapinero y predice sus 307 avisos. El último mapa es la prueba real de "
-             "Kaggle. Usamos Chapinero fuera como principal porque es la que imita la tarea. Con LightGBM probamos además "
-             "bloques de 2 kilómetros, un buffer de 300 metros y kNNDM; esos resultados están en el otro deck.")
+    notas = ("Probamos cada familia de tres formas. En los mapas, en naranja, los avisos que se predicen, y en gris,"
+             " con los que se entrena. La validación cruzada aleatoria sortea avisos sueltos en 5 pliegues: casi dos"
+             " de cada tres avisos validados tienen otro de entrenamiento en la misma coordenada, a veces el mismo "
+             "inmueble publicado dos veces. Los clústeres agrupan la ciudad en 10 zonas con k-means, un método que "
+             "junta puntos cercanos; cada zona es un pliegue y el vecino de entrenamiento queda a casi un kilómetro."
+             " Chapinero fuera entrena con toda la ciudad menos Chapinero y predice sus 307 avisos. El último mapa "
+             "es la prueba real. Usamos Chapinero fuera como principal porque es la que imita la tarea. Con LightGBM"
+             " probamos además bloques de 2 kilómetros, con y sin una franja de 300 metros, y kNNDM: no cambian la "
+             "conclusión.")
     return s, notas
 
 
@@ -648,16 +655,16 @@ def _resultado(deck):
         f"{n(d['cart'], 0)} a CART, {n(d['nn_atencion'], 0)} a la red y {n(d['elastic_net'], 0)} a "
         f"{n(d['ols'], 0)} a los lineales."], tipo="neutra")
     tarjeta(s, 8.6, 5.2, 4.2, 1.75, "Elastic Net y la regresión lineal empatan", [
-        f"{n(M[('elastic_net', CH)])} frente a {n(M[('ols', CH)])}: con tantos avisos por variable, encoger los coeficientes "
-        "había poca varianza que quitar."], tipo="recordar")
+        f"{n(M[('elastic_net', CH)])} frente a {n(M[('ols', CH)])}: con tantos avisos por variable, había poca varianza que "
+        "quitar al encoger los coeficientes."], tipo="recordar")
     FIN[id(s)] = 6.95
     notas = (f"Este es el resultado. Con las mismas reglas, el boosting es el mejor en las tres validaciones: LightGBM en la "
              f"aleatoria y en Chapinero fuera, y CatBoost, por menos de un millón, en clústeres. En Chapinero fuera, que es la "
              f"que imita la tarea, LightGBM se equivoca {n(M[('lightgbm', CH)])} millones en promedio; le siguen CatBoost, "
              f"Random Forest, el árbol solo y la red, y al final los dos lineales, con unos 185. Elastic Net y la regresión "
              "lineal empatan: con 38.644 avisos para 162 variables, la varianza de los coeficientes ya es pequeña y "
-             "encogerlos no ayuda. Fíjense también en el nivel: con la validación aleatoria todos parecen mucho mejores. A "
-             "eso vamos ahora.")
+             "encogerlos no ayuda. Fíjense también en el nivel: con la validación aleatoria todos parecen mucho mejores. "
+             "Volveremos a eso.")
     return s, notas
 
 
@@ -809,14 +816,17 @@ def _estandar_espacial(deck):
         tipo="recordar")
     tarjeta(s, 8.85, 5.0, 3.95, 1.95, "Por qué cae la red", [
         f"Es segunda en la CV aleatoria ({n(M[('nn_atencion', AL)])}) porque promedia precios de vecinos que allí están a "
-        f"metros; sin Chapinero, el vecino mediano queda a {n(MED['Chapinero fuera'], 0)} m y en otro mercado, y queda "
-        "detrás de Random Forest y de CART."], tipo="neutra")
+        f"metros; sin Chapinero, el vecino mediano queda a {n(MED['Chapinero fuera'], 0)} m. Su error se multiplica por "
+        f"{n(R['optimismo']['nn_atencion']['razon'], 1)}; el de LightGBM, por {n(R['optimismo']['lightgbm']['razon'], 1)}; "
+        f"el de CART y los lineales, por {n(R['optimismo']['cart']['razon'], 1)}."], tipo="neutra")
     FIN[id(s)] = 6.95
     notas = ("¿La validación estándar y las espaciales eligen lo mismo? Para el ganador, sí: el boosting queda primero en las "
              "tres. Para el resto, no del todo. La red con atención, en ámbar, es segunda con pliegues aleatorios "
              "y queda detrás de Random Forest y de CART cuando tiene que predecir Chapinero sin haberlo visto, "
              "porque depende de los precios de vecinos cercanos que allí no tiene. Medido con la correlación de los puestos, "
-             "la aleatoria y Chapinero fuera coinciden en 0,83; los clústeres y Chapinero fuera solo en 0,54. Conclusión: la "
+             "la aleatoria y Chapinero fuera coinciden en 0,83; los clústeres y Chapinero fuera solo en 0,54. Y no es solo "
+             "la red: al dejar Chapinero fuera el error de todas sube, y más el de las que se apoyan en lo cercano: se "
+             "duplica en la red y sube 80 % en LightGBM, frente a 50 % en el árbol y los lineales. Conclusión: la "
              "validación aleatoria no se equivoca de ganador, pero sí exagera a los modelos que se apoyan en lo local.")
     return s, notas
 
@@ -837,9 +847,10 @@ def _kaggle(deck):
                 minimo=0, maximo=300, gap=35, grid=False)
     etiquetas_puntos(ch, [[n(v) for v in MEJOR_FAM["privado"]]])
     tarjeta(s, 0.55, 4.7, 4.0, 2.25, "El nivel", [
-        f"Chapinero fuera queda a {n(P01 - M[('lightgbm', CH)], 0)} millones de la tabla privada; los clústeres, a "
-        f"{n(P01 - M[('lightgbm', CL)], 0)}; la CV aleatoria, a {n(P01 - M[('lightgbm', AL)], 0)}: promete un error "
-        f"{n(100 * (1 - M[('lightgbm', AL)] / P01), 0)} % menor."], tipo="clave")
+        f"Chapinero fuera queda a {n(P01 - M[('lightgbm', CH)], 0)} millones de la tabla privada y a "
+        f"{n(U01 - M[('lightgbm', CH)], 0)} de la pública; los clústeres, a {n(P01 - M[('lightgbm', CL)], 0)} de la privada; "
+        f"la CV aleatoria, a {n(P01 - M[('lightgbm', AL)], 0)}: promete un error {n(100 * (1 - M[('lightgbm', AL)] / P01), 0)} "
+        "% menor."], tipo="clave")
     tarjeta(s, 4.7, 4.7, 4.0, 2.25, "El orden entre familias", [
         "En Kaggle el boosting también gana, pero cada envío usó variables distintas, así que ese orden no sirve para elegir "
         "la validación."], tipo="neutra")
@@ -852,9 +863,8 @@ def _kaggle(deck):
              f"{n(P01 - M[('lightgbm', CL)], 0)} millones por debajo: no basta con alejarse, hay que predecir otro mercado, "
              f"el de Chapinero, más caro. La validación aleatoria promete {n(M[('lightgbm', AL)])}, casi la mitad. A la "
              "derecha, el mejor envío de cada familia en Kaggle: el boosting también gana, pero esa comparación es "
-             "imperfecta, porque cada envío usó variables distintas. El taller pedía envíos de las seis familias y Elastic "
-             "Net no se envió; la evaluamos con las mismas reglas que las demás y empata con la regresión lineal, así que no "
-             "habría cambiado el orden.")
+             "imperfecta, porque cada envío usó variables distintas. Elastic Net no se envió a Kaggle; la evaluamos con las "
+             "mismas reglas que las demás y empata con la regresión lineal, así que no habría cambiado el orden.")
     return s, notas
 
 
@@ -915,13 +925,15 @@ def _promediar_corregir(deck):
     texto(s, 0.55, 5.3, 6.0, 0.6, "Sesgo medio: promedio de la predicción menos el precio; los tres predicen de menos en "
           "Chapinero.", size=12, color="muted")
     tarjeta(s, 0.55, 5.95, 6.0, 1.0, None, [
-        "La varianza de cada familia no se midió por separado: el error total y el sesgo sí."], tipo="recordar")
+        "La varianza de cada familia no se midió por separado: se midieron el error total y el sesgo medio (predicción "
+        "menos precio)."], tipo="recordar")
     tarjeta(s, 6.85, 1.3, 5.95, 1.6, "Un árbol", [
         f"Reglas que se leen a simple vista, pero inestables: cambiar unos avisos cambia los cortes. Error "
         f"{n(M[('cart', CH)])} y sesgo {n(S[('cart', CH)], 0)}."], tipo="neutra")
     tarjeta(s, 6.85, 3.05, 5.95, 1.75, "Un bosque", [
-        f"Promediar 300 árboles distintos baja la varianza: {n(M[('cart', CH)] - M[('random_forest', CH)], 1)} millones menos. "
-        "Sus árboles son más profundos (5 avisos por hoja frente a 20), lo que también baja el sesgo."], tipo="neutra")
+        "Promediar 300 árboles distintos cancela parte de la inestabilidad de cada uno: el error baja "
+        f"{n(M[('cart', CH)] - M[('random_forest', CH)], 1)} millones. Sus árboles son más profundos (5 avisos por hoja "
+        "frente a 20), lo que también baja el sesgo."], tipo="neutra")
     tarjeta(s, 6.85, 4.95, 5.95, 2.0, "Árboles en secuencia", [
         f"Cada árbol ataca el error que quedó: el sesgo baja a {n(S[('lightgbm', CH)], 0)} y el error, otros "
         f"{n(M[('random_forest', CH)] - M[('lightgbm', CH)], 1)} millones. La tasa de 0,05 y la parada temprana evitan que "
@@ -1005,7 +1017,8 @@ def _riesgo(deck):
     _ejes(ch, valor_visible=False, invertir_cat=True, grid=False)
     etiquetas_puntos(ch, [[f"{n(RIESGO[f][k], 0)} %" for f in orden] for _, k, _ in partes], color="blanco")
     texto(s, 0.55, 6.4, 7.7, 0.55, "Precio real: el del aviso. Error relativo: predicción entre precio menos uno. Los 307 avisos "
-          "de Chapinero, predichos sin haberlo visto.", size=12, color="muted")
+          "de Chapinero, predichos sin haberlo visto y sin el ajuste ×1,08 (con el ajuste, LightGBM pasa de "
+          f"{n(RIESGO['lightgbm']['sobre_10'], 0)} % a {n(SOBRE_CON, 0)} % arriba).", size=12, color="muted")
     r = RIESGO
     tarjeta(s, 8.5, 1.3, 4.3, 1.95, "Lineales: el menor sesgo, el mayor riesgo", [
         f"Sobrevaloran más de 10 % el {n(r['ols']['sobre_10'], 0)} % ({n(r['elastic_net']['sobre_10'], 0)} % Elastic Net) "
@@ -1068,7 +1081,7 @@ def _algoritmo_datos(deck):
 
 
 def _complejidad(deck):
-    s = _nueva(deck, "Añadir complejidad al LightGBM no ayudó; describir mejor Chapinero, sí", "mov")
+    s = _nueva(deck, "Qué movió el resultado: entre familias, el algoritmo; dentro del boosting, los datos", "mov")
     rk = RK
     filas = [("Idea", "Validación con que se probó", "Chapinero fuera", "Kaggle, tabla privada"),
              ("Variables de Catastro", (f"clústeres: {n(LGB['clusters'] - RES[('lightgbm', 'sin')].loc['clusters', 'MAE'], 1)}",
@@ -1093,17 +1106,24 @@ def _complejidad(deck):
           "lenguaje en español, probado antes de agregar Catastro. Kriging: interpolación espacial de los residuos.",
           size=12, color="muted")
     tarjeta(s, 0.55, 5.75, 12.25, 1.2, None, [
-        "La columna clave es Chapinero fuera: solo Catastro y el ajuste la mejoran. Que un modelo pueda representar casi "
-        "cualquier función no garantiza que generalice; entre modelos parecidos conviene el más simple (James y otros, "
-        "2021), y lo complejo puede rendir menos cuando la prueba viene de otra distribución (Ash y Hansen, 2023)."],
+        "La columna clave es Chapinero fuera: solo Catastro y el ajuste la mejoran. Entre familias pesa el algoritmo: de la "
+        f"regresión lineal al boosting el error baja {n(M[('ols', CH)] - M[('lightgbm', CH)], 0)} millones con las mismas "
+        "variables. Dentro del boosting pesan los datos: Catastro baja "
+        f"{n(CAT[('lightgbm', 'sin')] - CAT[('lightgbm', 'con')])} millones con LightGBM y "
+        f"{n(CAT[('catboost', 'sin')] - CAT[('catboost', 'con')])} con CatBoost; cambiar de librería, "
+        f"{n(CAT[('catboost', 'con')] - CAT[('lightgbm', 'con')])}. Lo complejo puede rendir menos cuando los avisos por "
+        "predecir son distintos de los del entrenamiento (Ash y Hansen, 2023)."],
         tipo="neutra")
     FIN[id(s)] = 6.95
-    notas = ("Cada cifra es el cambio en el error al agregar una idea al LightGBM; negativo, en azul, es mejor. Miren la "
-             "columna de Chapinero fuera: solo los datos de Catastro y el ajuste por 1,08 la mejoran, y el 1,08 se eligió "
-             "mirando esa misma validación, así que su mejora es optimista; Kaggle la confirmó. Las ideas más complejas, "
-             "mezclar con CatBoost, sumar BETO ajustado, interpolar los residuos con kriging o cambiar a la red con atención, "
-             "mejoraban a veces la validación con que se probaron, pero empeoraban Chapinero, que es lo que pide el negocio. "
-             "Lo que sí funcionó fue agregar datos que describen ese mercado.")
+    notas = ("¿Qué pesó más, el algoritmo o los datos? Entre familias pesó el algoritmo: con las mismas 162 "
+             "variables, pasar de la regresión lineal al boosting baja el error 42 millones. Dentro del boosting "
+             "pesaron los datos. Cada cifra de la tabla es el cambio en el error al agregar una idea al LightGBM; "
+             "negativo, en azul, es mejor. Miren la columna de Chapinero fuera: solo los datos de Catastro y el "
+             "ajuste por 1,08 la mejoran, y el 1,08 se eligió mirando esa misma validación, así que su mejora es "
+             "optimista; Kaggle la confirmó. Las ideas más complejas, mezclar con CatBoost, sumar BETO ajustado, "
+             "interpolar los residuos con kriging o cambiar a la red con atención, mejoraban a veces la validación "
+             "con que se probaron, pero empeoraban Chapinero. Lo que sí funcionó fue agregar datos que describen ese"
+             " mercado.")
     return s, notas
 
 
@@ -1123,7 +1143,8 @@ def _compromisos(deck):
     for f, nom in FAM:
         filas.append((nom, n(M[(f, CH)]), n(S[(f, CH)], 0), f"{n(RIESGO[f]['sobre_10'], 0)} %") + info[f])
     y1 = _tabla(s, 0.55, 1.3, filas, [1.85, 0.85, 0.8, 1.25, 2.4, 2.55, 2.55], size=13, minimo=0.4)
-    texto(s, 0.55, y1 + 0.05, 12.25, 0.4, "Chapinero fuera. MAE y sesgo en millones; sesgo: predicción menos precio real.",
+    texto(s, 0.55, y1 + 0.05, 12.25, 0.4, "Chapinero fuera, sin el ajuste ×1,08. MAE y sesgo en millones; sesgo: predicción "
+          "menos precio real.",
           size=12, color="muted")
     tarjeta(s, 0.55, y1 + 0.55, 12.25, 6.95 - y1 - 0.55, "Para el negocio", [
         "El boosting da el menor error y la mayor proporción de avisos dentro de ±10 %, y se explica aviso por "
@@ -1205,7 +1226,7 @@ def _fuentes(deck):
     texto(s, 0.55, 1.3, 6.0, 5.65, refs[:mitad], size=12, color="tinta", espacio=4)
     texto(s, 6.8, 1.3, 6.0, 5.65, refs[mitad:], size=12, color="tinta", espacio=4)
     FIN[id(s)] = 6.95
-    notas = "Referencias citadas en la presentación, incluidas las de la parte de datos."
+    notas = "Fuentes de los datos y de los métodos usados, incluidas las de la parte de datos."
     return s, notas
 
 
