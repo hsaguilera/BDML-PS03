@@ -22,7 +22,8 @@ catastro/
 cache_puntajes_texto/
 
 # Datos de las láminas: se regeneran en cada corrida (scripts 12 a 15, 18 y 19), salvo los que dependen de Catastro
-# (scripts 16 y 17) y las dos tablas de Kaggle escritas a mano, que sí se versionan
+# (scripts 16 y 17), las dos tablas de Kaggle escritas a mano y los de los scripts 24 a 31, que sí se versionan (los
+# constructores 21 y 22 corren antes que ellos en el orden numérico)
 laminas/*
 !laminas/clasificacion.csv
 !laminas/envios_equipo.csv
@@ -39,3 +40,11 @@ laminas/*
 !laminas/ppt_palabras_ridge.csv
 !laminas/ppt_varios2.json
 !laminas/ppt_ganancia_precision.csv
+!laminas/ppt_fuentes.json
+!laminas/ppt_variables.json
+!laminas/ppt_modelos_texto.json
+!laminas/ppt_graficas_clase.json
+!laminas/etapas2a4.json
+!laminas/etapas2a4_camino.json
+!laminas/busqueda_hiperparametros.json
+!laminas/compare_nuevo.json

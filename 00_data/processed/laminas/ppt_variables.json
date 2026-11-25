@@ -1,0 +1,1166 @@
+{
+ "columnas": [
+  "es_apartamento",
+  "bedrooms",
+  "rooms",
+  "banos_imp",
+  "area_imp",
+  "log_area",
+  "parqueaderos_imp",
+  "piso_texto",
+  "estrato_texto",
+  "antiguedad_texto",
+  "tiempo",
+  "area_desde_texto",
+  "area_falta",
+  "banos_desde_texto",
+  "area_inconsistente",
+  "ln_dist_parque_m",
+  "ln_area_parque_m2",
+  "ln_n_restaurantes_2km",
+  "ln_dist_parque_grande_m",
+  "ln_n_restaurantes_500m",
+  "ln_n_bares_cafes_500m",
+  "ln_dist_transmilenio_m",
+  "ln_dist_via_principal_m",
+  "ln_dist_universidad_m",
+  "ln_n_colegios_1km",
+  "ln_dist_centro_comercial_m",
+  "ln_n_supermercados_1km",
+  "ln_dist_hospital_m",
+  "ln_dist_policia_m",
+  "ln_n_paraderos_500m",
+  "ln_dist_p93_m",
+  "ln_dist_zonat_m",
+  "ln_dist_centro_internacional_m",
+  "elevacion_m",
+  "pendiente_grados",
+  "ndvi_200m",
+  "luces_nocturnas",
+  "altura_construida_m",
+  "ln_poblacion_100m",
+  "ln_n_oficina_500m",
+  "ln_n_oficina_1000m",
+  "ln_n_edificio_oficinas_500m",
+  "ln_n_hotel_1000m",
+  "ln_n_banco_500m",
+  "ln_n_gimnasio_1000m",
+  "ln_n_embajada_1000m",
+  "ln_dist_embajada_m",
+  "ln_n_restaurante_300m",
+  "ln_n_restaurante_1km",
+  "ln_n_bar_cafe_300m",
+  "ln_n_bar_cafe_1km",
+  "ln_n_supermercado_300m",
+  "ln_n_supermercado_1km",
+  "ln_n_paradero_300m",
+  "ln_n_paradero_1km",
+  "ln_n_colegio_300m",
+  "ln_n_colegio_1km",
+  "ln_n_transmilenio_1km",
+  "ln_area_parques_500m_ha",
+  "ln_dist_area_protegida_m",
+  "elevacion_relativa_1km",
+  "ln_n_avisos_500m",
+  "prop_apartamentos_500m",
+  "ln_area_mediana_500m",
+  "coord_redondeada",
+  "txt_parqueadero",
+  "txt_piscina",
+  "txt_ascensor",
+  "txt_terraza_balcon",
+  "txt_vigilancia",
+  "txt_remodelado",
+  "txt_cocina_integral",
+  "txt_zona_social",
+  "txt_chimenea",
+  "txt_vista",
+  "txt_estudio",
+  "txt_apartaestudio",
+  "txt_duplex_penthouse",
+  "txt_exterior",
+  "txt_gimnasio",
+  "txt_deposito",
+  "txt_conjunto",
+  "txt_nuevo_estrenar",
+  "txt_para_remodelar",
+  "topico_00",
+  "topico_01",
+  "topico_02",
+  "topico_03",
+  "topico_04",
+  "topico_05",
+  "topico_06",
+  "topico_07",
+  "topico_08",
+  "topico_09",
+  "lsa_00",
+  "lsa_01",
+  "lsa_02",
+  "lsa_03",
+  "lsa_04",
+  "lsa_05",
+  "lsa_06",
+  "lsa_07",
+  "lsa_08",
+  "lsa_09",
+  "lsa_10",
+  "lsa_11",
+  "lsa_12",
+  "lsa_13",
+  "lsa_14",
+  "lsa_15",
+  "lsa_16",
+  "lsa_17",
+  "lsa_18",
+  "lsa_19",
+  "lsa_20",
+  "lsa_21",
+  "lsa_22",
+  "lsa_23",
+  "lsa_24",
+  "lsa_25",
+  "lsa_26",
+  "lsa_27",
+  "lsa_28",
+  "lsa_29",
+  "lsa_30",
+  "lsa_31",
+  "lsa_32",
+  "lsa_33",
+  "lsa_34",
+  "lsa_35",
+  "lsa_36",
+  "lsa_37",
+  "lsa_38",
+  "lsa_39",
+  "lsa_40",
+  "lsa_41",
+  "lsa_42",
+  "lsa_43",
+  "lsa_44",
+  "lsa_45",
+  "lsa_46",
+  "lsa_47",
+  "lsa_48",
+  "lsa_49",
+  "alcobas_texto",
+  "banos_texto",
+  "parqueaderos_texto",
+  "area_texto",
+  "x_km",
+  "y_km",
+  "ln_vref_manzana",
+  "ln_vref_300m",
+  "ln_avaluo_ph_manzana",
+  "ln_avaluo_ph_300m",
+  "pisos_manzana",
+  "pisos_300m",
+  "estrato_manzana",
+  "estrato_medio_300m",
+  "prop_estrato6_300m",
+  "n_manzanas_300m",
+  "dist_manzana_m"
+ ],
+ "variables": {
+  "es_apartamento": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.8009196811771919,
+   "promedio_original": null
+  },
+  "bedrooms": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 2.9840588595953403,
+   "promedio_original": null
+  },
+  "rooms": {
+   "entrenamiento": 52.748162716074944,
+   "prueba": 55.454015166245384,
+   "promedio": 2.866911990187059,
+   "promedio_original": null
+  },
+  "banos_imp": {
+   "entrenamiento": 85.17751785529448,
+   "prueba": 86.4573206299825,
+   "promedio": 2.791217202037839,
+   "promedio_original": null
+  },
+  "area_imp": {
+   "entrenamiento": 53.296760169754684,
+   "prueba": 56.69842504374879,
+   "promedio": 143.82249886484033,
+   "promedio_original": null
+  },
+  "log_area": {
+   "entrenamiento": 53.296760169754684,
+   "prueba": 56.69842504374879,
+   "promedio": 4.784826644826035,
+   "promedio_original": null
+  },
+  "parqueaderos_imp": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 1.1381974248927038,
+   "promedio_original": null
+  },
+  "piso_texto": {
+   "entrenamiento": 29.484525411448093,
+   "prueba": 25.91872447987556,
+   "promedio": 3.5455192034139404,
+   "promedio_original": null
+  },
+  "estrato_texto": {
+   "entrenamiento": 7.382776110133527,
+   "prueba": 5.405405405405405,
+   "promedio": 4.509826928718099,
+   "promedio_original": null
+  },
+  "antiguedad_texto": {
+   "entrenamiento": 2.9241279370665563,
+   "prueba": 3.7235076803422125,
+   "promedio": 12.992068737607402,
+   "promedio_original": null
+  },
+  "tiempo": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 2020.7015804891341,
+   "promedio_original": null
+  },
+  "area_desde_texto": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.2229715920703045,
+   "promedio_original": null
+  },
+  "area_falta": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.45988146331493973,
+   "promedio_original": null
+  },
+  "banos_desde_texto": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.1111996730022481,
+   "promedio_original": null
+  },
+  "area_inconsistente": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.013856529736358062,
+   "promedio_original": null
+  },
+  "ln_dist_parque_m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 4.268057218851716,
+   "promedio_original": 112.1521876367483
+  },
+  "ln_area_parque_m2": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 8.222965805697022,
+   "promedio_original": 9872.462351434493
+  },
+  "ln_n_restaurantes_2km": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 5.424741521733927,
+   "promedio_original": 268.70128755364806
+  },
+  "ln_dist_parque_grande_m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 5.466339829663807,
+   "promedio_original": 351.82305614655183
+  },
+  "ln_n_restaurantes_500m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 2.4663851765606126,
+   "promedio_original": 19.553055385244228
+  },
+  "ln_n_bares_cafes_500m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 1.859210386437578,
+   "promedio_original": 9.885898221949724
+  },
+  "ln_dist_transmilenio_m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 6.5404654749923905,
+   "promedio_original": 955.6399717171076
+  },
+  "ln_dist_via_principal_m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 5.0821332928387335,
+   "promedio_original": 262.90412074476666
+  },
+  "ln_dist_universidad_m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 6.425330805979884,
+   "promedio_original": 816.1026822037951
+  },
+  "ln_n_colegios_1km": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 1.79230565418349,
+   "promedio_original": 6.316676885346413
+  },
+  "ln_dist_centro_comercial_m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 6.151251852381469,
+   "promedio_original": 594.8282101828089
+  },
+  "ln_n_supermercados_1km": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 2.8538821266823424,
+   "promedio_original": 18.525894134477827
+  },
+  "ln_dist_hospital_m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 5.817176913254238,
+   "promedio_original": 459.72941200237636
+  },
+  "ln_dist_policia_m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 6.295215082413627,
+   "promedio_original": 652.8604704046953
+  },
+  "ln_n_paraderos_500m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 2.205169801879849,
+   "promedio_original": 9.964888616390763
+  },
+  "ln_dist_p93_m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 8.140123211356205,
+   "promedio_original": 4440.585849921434
+  },
+  "ln_dist_zonat_m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 8.271840930792111,
+   "promedio_original": 4811.554614570023
+  },
+  "ln_dist_centro_internacional_m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 8.973225036129188,
+   "promedio_original": 8818.261317366027
+  },
+  "elevacion_m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 2566.775332107092,
+   "promedio_original": null
+  },
+  "pendiente_grados": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 3.8729281683421783,
+   "promedio_original": null
+  },
+  "ndvi_200m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.2088144390477789,
+   "promedio_original": null
+  },
+  "luces_nocturnas": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 55.09435308294844,
+   "promedio_original": null
+  },
+  "altura_construida_m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 13.58764650529327,
+   "promedio_original": null
+  },
+  "ln_poblacion_100m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 5.832551005378238,
+   "promedio_original": 403.31986515703494
+  },
+  "ln_n_oficina_500m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 1.4879342218201728,
+   "promedio_original": 6.212814224402207
+  },
+  "ln_n_oficina_1000m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 2.866242476481016,
+   "promedio_original": 24.823216840384223
+  },
+  "ln_n_edificio_oficinas_500m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 2.0101104661612976,
+   "promedio_original": 11.888820764357245
+  },
+  "ln_n_hotel_1000m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 1.7066047480250761,
+   "promedio_original": 10.048824851829144
+  },
+  "ln_n_banco_500m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 1.3269016979065347,
+   "promedio_original": 4.704353157572042
+  },
+  "ln_n_gimnasio_1000m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 1.8554536748795574,
+   "promedio_original": 7.017003883098304
+  },
+  "ln_n_embajada_1000m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.9336235068155099,
+   "promedio_original": 3.8142652769262213
+  },
+  "ln_dist_embajada_m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 6.890942645675796,
+   "promedio_original": 1734.5948097344115
+  },
+  "ln_n_restaurante_300m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 1.4194672363899998,
+   "promedio_original": 6.746760678520335
+  },
+  "ln_n_restaurante_1km": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 4.0578804737040866,
+   "promedio_original": 77.82630288166769
+  },
+  "ln_n_bar_cafe_300m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 1.0027909147729575,
+   "promedio_original": 3.4383200490496626
+  },
+  "ln_n_bar_cafe_1km": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 3.297448643628399,
+   "promedio_original": 39.200326997751894
+  },
+  "ln_n_supermercado_300m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.7996798886089732,
+   "promedio_original": 1.8000408747189862
+  },
+  "ln_n_supermercado_1km": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 2.8538821266823424,
+   "promedio_original": 18.525894134477827
+  },
+  "ln_n_paradero_300m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 1.2851365406662232,
+   "promedio_original": 3.5898017576129164
+  },
+  "ln_n_paradero_1km": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 3.572262271357979,
+   "promedio_original": 37.636501124054774
+  },
+  "ln_n_colegio_300m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.30657219715183126,
+   "promedio_original": 0.5333333333333333
+  },
+  "ln_n_colegio_1km": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 1.79230565418349,
+   "promedio_original": 6.316676885346413
+  },
+  "ln_n_transmilenio_1km": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.8038545138473809,
+   "promedio_original": 1.9994481912936848
+  },
+  "ln_area_parques_500m_ha": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 1.5217283325696216,
+   "promedio_original": 4.519330728496187
+  },
+  "ln_dist_area_protegida_m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 8.212926028093605,
+   "promedio_original": 4375.168027114319
+  },
+  "elevacion_relativa_1km": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 3.237114244839567,
+   "promedio_original": null
+  },
+  "ln_n_avisos_500m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 6.130689758634809,
+   "promedio_original": 758.367259350092
+  },
+  "prop_apartamentos_500m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.8034121344650833,
+   "promedio_original": null
+  },
+  "ln_area_mediana_500m": {
+   "entrenamiento": 99.76451713073182,
+   "prueba": 99.970834143496,
+   "promedio": 4.783048045382729,
+   "promedio_original": 123.91685436972725
+  },
+  "coord_redondeada": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.42693643981197626,
+   "promedio_original": null
+  },
+  "txt_parqueadero": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.6993051297772328,
+   "promedio_original": null
+  },
+  "txt_piscina": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.07672184753729819,
+   "promedio_original": null
+  },
+  "txt_ascensor": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.17316574698548948,
+   "promedio_original": null
+  },
+  "txt_terraza_balcon": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.4687512773349683,
+   "promedio_original": null
+  },
+  "txt_vigilancia": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.2527692622113223,
+   "promedio_original": null
+  },
+  "txt_remodelado": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.13574494175352544,
+   "promedio_original": null
+  },
+  "txt_cocina_integral": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.2565092989985694,
+   "promedio_original": null
+  },
+  "txt_zona_social": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.32571019824238706,
+   "promedio_original": null
+  },
+  "txt_chimenea": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.24847741671776005,
+   "promedio_original": null
+  },
+  "txt_vista": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.2569589209074188,
+   "promedio_original": null
+  },
+  "txt_estudio": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.3449008788064582,
+   "promedio_original": null
+  },
+  "txt_apartaestudio": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.050398528510116496,
+   "promedio_original": null
+  },
+  "txt_duplex_penthouse": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.0868587778459023,
+   "promedio_original": null
+  },
+  "txt_exterior": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.23926016758634785,
+   "promedio_original": null
+  },
+  "txt_gimnasio": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.23934191702432045,
+   "promedio_original": null
+  },
+  "txt_deposito": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.4033926016758635,
+   "promedio_original": null
+  },
+  "txt_conjunto": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.15072552626200694,
+   "promedio_original": null
+  },
+  "txt_nuevo_estrenar": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.04385857347230738,
+   "promedio_original": null
+  },
+  "txt_para_remodelar": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.02080523196403025,
+   "promedio_original": null
+  },
+  "topico_00": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.03704907775219896,
+   "promedio_original": null
+  },
+  "topico_01": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.07845258364326496,
+   "promedio_original": null
+  },
+  "topico_02": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.08409782804196099,
+   "promedio_original": null
+  },
+  "topico_03": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.016215793235843528,
+   "promedio_original": null
+  },
+  "topico_04": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.07452229526397937,
+   "promedio_original": null
+  },
+  "topico_05": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.10558192835947464,
+   "promedio_original": null
+  },
+  "topico_06": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.12827810756965072,
+   "promedio_original": null
+  },
+  "topico_07": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.13859142233433572,
+   "promedio_original": null
+  },
+  "topico_08": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.31564717728989306,
+   "promedio_original": null
+  },
+  "topico_09": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.02156378650939811,
+   "promedio_original": null
+  },
+  "lsa_00": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.17672473254897392,
+   "promedio_original": null
+  },
+  "lsa_01": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.012959092101693383,
+   "promedio_original": null
+  },
+  "lsa_02": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.006333243456266147,
+   "promedio_original": null
+  },
+  "lsa_03": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.01028699439634234,
+   "promedio_original": null
+  },
+  "lsa_04": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": -0.006822637819766613,
+   "promedio_original": null
+  },
+  "lsa_05": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.0014558992216285136,
+   "promedio_original": null
+  },
+  "lsa_06": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.0021996285455962764,
+   "promedio_original": null
+  },
+  "lsa_07": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": -0.0006169717736527204,
+   "promedio_original": null
+  },
+  "lsa_08": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.003658641604116004,
+   "promedio_original": null
+  },
+  "lsa_09": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": -0.0013267192663578206,
+   "promedio_original": null
+  },
+  "lsa_10": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.0025162808640946856,
+   "promedio_original": null
+  },
+  "lsa_11": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.0017095943703024157,
+   "promedio_original": null
+  },
+  "lsa_12": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": -0.0025557824156216776,
+   "promedio_original": null
+  },
+  "lsa_13": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.0004290688527058245,
+   "promedio_original": null
+  },
+  "lsa_14": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": -0.00017468637079542135,
+   "promedio_original": null
+  },
+  "lsa_15": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.0012510735005551107,
+   "promedio_original": null
+  },
+  "lsa_16": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.0015665255590036767,
+   "promedio_original": null
+  },
+  "lsa_17": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.0007165590673639482,
+   "promedio_original": null
+  },
+  "lsa_18": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.003446932181740002,
+   "promedio_original": null
+  },
+  "lsa_19": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.0017418206055427245,
+   "promedio_original": null
+  },
+  "lsa_20": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": -0.00022939182754254717,
+   "promedio_original": null
+  },
+  "lsa_21": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.0011816803419649406,
+   "promedio_original": null
+  },
+  "lsa_22": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.00017107806609043653,
+   "promedio_original": null
+  },
+  "lsa_23": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.0006494751024364898,
+   "promedio_original": null
+  },
+  "lsa_24": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": -0.00042152583250826525,
+   "promedio_original": null
+  },
+  "lsa_25": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.0008893784413657801,
+   "promedio_original": null
+  },
+  "lsa_26": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": -0.00025035077758666854,
+   "promedio_original": null
+  },
+  "lsa_27": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": -0.0002313856321749993,
+   "promedio_original": null
+  },
+  "lsa_28": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": -0.00047165368290996945,
+   "promedio_original": null
+  },
+  "lsa_29": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.0010345387888959095,
+   "promedio_original": null
+  },
+  "lsa_30": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": -4.665971505694054e-05,
+   "promedio_original": null
+  },
+  "lsa_31": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 5.597005865544618e-05,
+   "promedio_original": null
+  },
+  "lsa_32": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": -0.0007302670098904568,
+   "promedio_original": null
+  },
+  "lsa_33": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": -0.0006309121439530706,
+   "promedio_original": null
+  },
+  "lsa_34": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": -0.0006610056767749872,
+   "promedio_original": null
+  },
+  "lsa_35": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": -3.5446939367986574e-06,
+   "promedio_original": null
+  },
+  "lsa_36": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.0003969526864755577,
+   "promedio_original": null
+  },
+  "lsa_37": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.00011557178721859808,
+   "promedio_original": null
+  },
+  "lsa_38": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 6.48116386505888e-05,
+   "promedio_original": null
+  },
+  "lsa_39": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": -0.0004417050690365132,
+   "promedio_original": null
+  },
+  "lsa_40": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.0004173061663392754,
+   "promedio_original": null
+  },
+  "lsa_41": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.00032067745654448587,
+   "promedio_original": null
+  },
+  "lsa_42": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": -0.00021026360728311903,
+   "promedio_original": null
+  },
+  "lsa_43": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.000509885315164083,
+   "promedio_original": null
+  },
+  "lsa_44": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.00048289556956067846,
+   "promedio_original": null
+  },
+  "lsa_45": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": -6.90765276283311e-05,
+   "promedio_original": null
+  },
+  "lsa_46": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": -0.0005576959684033324,
+   "promedio_original": null
+  },
+  "lsa_47": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.00019686391455672538,
+   "promedio_original": null
+  },
+  "lsa_48": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 0.00028351209942027283,
+   "promedio_original": null
+  },
+  "lsa_49": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 3.2345590458195436e-05,
+   "promedio_original": null
+  },
+  "alcobas_texto": {
+   "entrenamiento": 68.8101645792361,
+   "prueba": 65.16624538207272,
+   "promedio": 2.7779780140565866,
+   "promedio_original": null
+  },
+  "banos_texto": {
+   "entrenamiento": 39.405858606769485,
+   "prueba": 32.42271048026444,
+   "promedio": 2.3157356030813987,
+   "promedio_original": null
+  },
+  "parqueaderos_texto": {
+   "entrenamiento": 47.88841734810061,
+   "prueba": 54.30682481042193,
+   "promedio": 1.8913747302008965,
+   "promedio_original": null
+  },
+  "area_texto": {
+   "entrenamiento": 30.06417555118518,
+   "prueba": 32.62687147579234,
+   "promedio": 148.91057833578202,
+   "promedio_original": null
+  },
+  "x_km": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 4882.41410395448,
+   "promedio_original": null
+  },
+  "y_km": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 2075.8841526451047,
+   "promedio_original": null
+  },
+  "ln_vref_manzana": {
+   "entrenamiento": 99.68170996791223,
+   "prueba": 99.3583511569123,
+   "promedio": 15.072306986134688,
+   "promedio_original": null
+  },
+  "ln_vref_300m": {
+   "entrenamiento": 99.86543836041818,
+   "prueba": 99.94166828699203,
+   "promedio": 15.090662944512365,
+   "promedio_original": null
+  },
+  "ln_avaluo_ph_manzana": {
+   "entrenamiento": 84.91357002380707,
+   "prueba": 93.58351156912308,
+   "promedio": 14.950891665966513,
+   "promedio_original": null
+  },
+  "ln_avaluo_ph_300m": {
+   "entrenamiento": 99.54973605216851,
+   "prueba": 99.7958390044721,
+   "promedio": 14.951659764438068,
+   "promedio_original": null
+  },
+  "pisos_manzana": {
+   "entrenamiento": 99.96118414242832,
+   "prueba": 99.62084386544818,
+   "promedio": 3.558024388247811,
+   "promedio_original": null
+  },
+  "pisos_300m": {
+   "entrenamiento": 99.89907877031364,
+   "prueba": 99.98055609566401,
+   "promedio": 2.738121049724887,
+   "promedio_original": null
+  },
+  "estrato_manzana": {
+   "entrenamiento": 99.98447365697133,
+   "prueba": 99.66945362628816,
+   "promedio": 4.426426672121088,
+   "promedio_original": null
+  },
+  "estrato_medio_300m": {
+   "entrenamiento": 99.62219231963564,
+   "prueba": 99.970834143496,
+   "promedio": 4.649832719344816,
+   "promedio_original": null
+  },
+  "prop_estrato6_300m": {
+   "entrenamiento": 99.62219231963564,
+   "prueba": 99.970834143496,
+   "promedio": 0.3234342681101426,
+   "promedio_original": null
+  },
+  "n_manzanas_300m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 22.988575516043326,
+   "promedio_original": null
+  },
+  "dist_manzana_m": {
+   "entrenamiento": 99.97671048545699,
+   "prueba": 99.62084386544818,
+   "promedio": 2.2221130430420706,
+   "promedio_original": null
+  },
+  "puntaje_ridge": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0,
+   "promedio": 6.412837905845632,
+   "promedio_original": 647.050299350447,
+   "largo": 48930
+  }
+ },
+ "osm_objetos": {
+  "via_principal": 5111,
+  "restaurante": 4486,
+  "parque": 3866,
+  "paradero": 3614,
+  "bar_cafe": 2342,
+  "supermercado": 1703,
+  "colegio": 1193,
+  "hospital": 436,
+  "estacion": 267,
+  "centro_comercial": 215,
+  "policia": 209,
+  "universidad": 181
+ },
+ "osm_extra_objetos": {
+  "edificio_oficinas": 2182,
+  "oficina": 1529,
+  "banco": 840,
+  "hotel": 398,
+  "gimnasio": 365,
+  "embajada": 65
+ },
+ "n_filas": {
+  "entrenamiento": 38644,
+  "prueba": 10286
+ }
+}

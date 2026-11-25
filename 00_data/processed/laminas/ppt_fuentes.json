@@ -1,0 +1,530 @@
+{
+ "n": {
+  "prueba": 10286,
+  "entrenamiento_resto": 38337,
+  "entrenamiento_chapinero": 307
+ },
+ "avisos": {
+  "area_m2": {
+   "prueba": 119.0,
+   "entrenamiento_resto": 112.0,
+   "entrenamiento_chapinero": 110.0
+  },
+  "alcobas": {
+   "prueba": 2.0,
+   "entrenamiento_resto": 3.0,
+   "entrenamiento_chapinero": 2.0
+  },
+  "banos": {
+   "prueba": 3.0,
+   "entrenamiento_resto": 3.0,
+   "entrenamiento_chapinero": 3.0
+  },
+  "parqueaderos": {
+   "prueba": 1.0,
+   "entrenamiento_resto": 1.0,
+   "entrenamiento_chapinero": 1.0
+  },
+  "pct_apartamento": {
+   "prueba": 97.33618510596928,
+   "entrenamiento_resto": 75.46495552599316,
+   "entrenamiento_chapinero": 80.13029315960912
+  },
+  "avisos_500m": {
+   "prueba": 884.0,
+   "entrenamiento_resto": 641.0,
+   "entrenamiento_chapinero": 1006.0
+  },
+  "pct_apartamentos_500m": {
+   "prueba": 97.8579277500152,
+   "entrenamiento_resto": 86.4367816091954,
+   "entrenamiento_chapinero": 97.90123456790123
+  }
+ },
+ "texto": {
+  "txt_ascensor": {
+   "prueba": 20.309158078942254,
+   "entrenamiento_resto": 16.467120536296527,
+   "entrenamiento_chapinero": 23.12703583061889
+  },
+  "txt_terraza_balcon": {
+   "prueba": 49.26113163523235,
+   "entrenamiento_resto": 46.20079818452148,
+   "entrenamiento_chapinero": 51.14006514657981
+  },
+  "txt_vigilancia": {
+   "prueba": 26.327046470931364,
+   "entrenamiento_resto": 25.017607011503245,
+   "entrenamiento_chapinero": 22.475570032573287
+  },
+  "txt_chimenea": {
+   "prueba": 29.95333462959362,
+   "entrenamiento_resto": 23.436888645433914,
+   "entrenamiento_chapinero": 29.967426710097723
+  },
+  "txt_gimnasio": {
+   "prueba": 24.450709702508263,
+   "entrenamiento_resto": 23.778595090904346,
+   "entrenamiento_chapinero": 26.058631921824105
+  },
+  "txt_conjunto": {
+   "prueba": 4.326268714757924,
+   "entrenamiento_resto": 18.0426220100686,
+   "entrenamiento_chapinero": 4.234527687296417
+  },
+  "txt_piscina": {
+   "prueba": 7.12619093914058,
+   "entrenamiento_resto": 7.820121553590526,
+   "entrenamiento_chapinero": 7.491856677524431
+  },
+  "txt_vista": {
+   "prueba": 32.68520318880031,
+   "entrenamiento_resto": 23.796854213944755,
+   "entrenamiento_chapinero": 28.664495114006517
+  },
+  "txt_deposito": {
+   "prueba": 40.33637954501264,
+   "entrenamiento_resto": 40.32657745780838,
+   "entrenamiento_chapinero": 42.01954397394137
+  },
+  "txt_estudio": {
+   "prueba": 31.644954306824815,
+   "entrenamiento_resto": 35.30792706784568,
+   "entrenamiento_chapinero": 27.68729641693811
+  }
+ },
+ "osm_conteos": {
+  "n_oficina_1000m": {
+   "prueba": 48.0,
+   "entrenamiento_resto": 13.0,
+   "entrenamiento_chapinero": 49.0
+  },
+  "n_hotel_1000m": {
+   "prueba": 24.0,
+   "entrenamiento_resto": 2.0,
+   "entrenamiento_chapinero": 27.0
+  },
+  "n_embajada_1000m": {
+   "prueba": 11.0,
+   "entrenamiento_resto": 0.0,
+   "entrenamiento_chapinero": 11.0
+  },
+  "n_bar_cafe_1km": {
+   "prueba": 63.0,
+   "entrenamiento_resto": 21.0,
+   "entrenamiento_chapinero": 55.0
+  },
+  "n_restaurante_1km": {
+   "prueba": 124.0,
+   "entrenamiento_resto": 54.0,
+   "entrenamiento_chapinero": 111.0
+  },
+  "n_supermercado_1km": {
+   "prueba": 17.0,
+   "entrenamiento_resto": 19.0,
+   "entrenamiento_chapinero": 17.0
+  }
+ },
+ "osm_distancias": {
+  "dist_transmilenio_m": {
+   "prueba": 657.9541895796123,
+   "entrenamiento_resto": 834.9898914503799,
+   "entrenamiento_chapinero": 595.8654850146935
+  },
+  "dist_area_protegida_m": {
+   "prueba": 1780.3639829576273,
+   "entrenamiento_resto": 4649.661445415072,
+   "entrenamiento_chapinero": 1853.6209212757694
+  },
+  "dist_centro_comercial_m": {
+   "prueba": 679.050998821047,
+   "entrenamiento_resto": 509.6729532841126,
+   "entrenamiento_chapinero": 659.7367200998178
+  },
+  "dist_p93_m": {
+   "prueba": 1179.0407649452384,
+   "entrenamiento_resto": 4712.687519569963,
+   "entrenamiento_chapinero": 955.0014339643742
+  },
+  "dist_parque_grande_m": {
+   "prueba": 439.56077551919475,
+   "entrenamiento_resto": 289.6023268019083,
+   "entrenamiento_chapinero": 457.5329816260481
+  }
+ },
+ "satelite": {
+  "luces_nocturnas": {
+   "prueba": 58.413333892822266,
+   "entrenamiento_resto": 55.74833297729492,
+   "entrenamiento_chapinero": 58.413333892822266
+  },
+  "elevacion_m": {
+   "prueba": 2572.0,
+   "entrenamiento_resto": 2557.0,
+   "entrenamiento_chapinero": 2566.0
+  },
+  "ndvi_200m": {
+   "prueba": 0.1890922412276268,
+   "entrenamiento_resto": 0.19122138619422913,
+   "entrenamiento_chapinero": 0.17311236262321472
+  },
+  "altura_construida_m": {
+   "prueba": 11.982728004455566,
+   "entrenamiento_resto": 12.615220069885254,
+   "entrenamiento_chapinero": 11.12362003326416
+  },
+  "poblacion_100m": {
+   "prueba": 354.08319091796875,
+   "entrenamiento_resto": 366.84234619140625,
+   "entrenamiento_chapinero": 330.6828308105469
+  },
+  "pendiente_grados": {
+   "prueba": 4.637220859527588,
+   "entrenamiento_resto": 2.6259312629699707,
+   "entrenamiento_chapinero": 4.637224197387695
+  },
+  "elevacion_relativa_1km": {
+   "prueba": 2.0,
+   "entrenamiento_resto": 0.0,
+   "entrenamiento_chapinero": 3.0
+  }
+ },
+ "catastro": {
+  "suelo_300m": {
+   "prueba": 6.000000000000004,
+   "entrenamiento_resto": 3.1500000000000026,
+   "entrenamiento_chapinero": 5.800000000000004
+  },
+  "avaluo_ph_300m": {
+   "prueba": 4.157376254999997,
+   "entrenamiento_resto": 3.0294059399999984,
+   "entrenamiento_chapinero": 4.121795895000001
+  },
+  "pisos_300m": {
+   "prueba": 4.0,
+   "entrenamiento_resto": 2.0,
+   "entrenamiento_chapinero": 3.5
+  },
+  "estrato_medio_300m": {
+   "prueba": 5.88,
+   "entrenamiento_resto": 4.458333333333333,
+   "entrenamiento_chapinero": 5.947368421052632
+  },
+  "pct_estrato6_300m": {
+   "prueba": 91.66666666666666,
+   "entrenamiento_resto": 0.0,
+   "entrenamiento_chapinero": 94.73684210526315
+  }
+ },
+ "catastro_deciles": [
+  {
+   "decil": 0.0,
+   "suelo": 1.9,
+   "precio": 480.0,
+   "n": 4286
+  },
+  {
+   "decil": 1.0,
+   "suelo": 2.3999999999999995,
+   "precio": 520.0,
+   "n": 3729
+  },
+  {
+   "decil": 2.0,
+   "suelo": 2.5999999999999996,
+   "precio": 520.0,
+   "n": 4821
+  },
+  {
+   "decil": 3.0,
+   "suelo": 2.900000000000002,
+   "precio": 474.945,
+   "n": 2806
+  },
+  {
+   "decil": 4.0,
+   "suelo": 3.049999999999998,
+   "precio": 480.0,
+   "n": 3686
+  },
+  {
+   "decil": 5.0,
+   "suelo": 3.250000000000002,
+   "precio": 480.0,
+   "n": 3833
+  },
+  {
+   "decil": 6.0,
+   "suelo": 4.5,
+   "precio": 650.0,
+   "n": 7129
+  },
+  {
+   "decil": 7.0,
+   "suelo": 4.6000000000000005,
+   "precio": 650.0,
+   "n": 998
+  },
+  {
+   "decil": 8.0,
+   "suelo": 4.699999999999997,
+   "precio": 690.0,
+   "n": 4547
+  },
+  {
+   "decil": 9.0,
+   "suelo": 5.150000000000001,
+   "precio": 790.0,
+   "n": 2757
+  }
+ ],
+ "catastro_p99_suelo": 5.899999999999997,
+ "catastro_pct_prueba_sobre_p99": 56.785922613260745,
+ "avisos_variables": {
+  "es_apartamento": {
+   "no_nulos": 100.0,
+   "promedio": 0.8009196811771919
+  },
+  "bedrooms": {
+   "no_nulos": 100.0,
+   "promedio": 2.9840588595953403
+  },
+  "rooms": {
+   "no_nulos": 53.316983445738806,
+   "promedio": 2.866911990187059
+  },
+  "area_imp": {
+   "no_nulos": 54.01185366850603,
+   "promedio": 143.82249886484033
+  },
+  "log_area": {
+   "no_nulos": 54.01185366850603,
+   "promedio": 4.784826644826035
+  },
+  "area_desde_texto": {
+   "no_nulos": 100.0,
+   "promedio": 0.2229715920703045
+  },
+  "area_falta": {
+   "no_nulos": 100.0,
+   "promedio": 0.45988146331493973
+  },
+  "area_inconsistente": {
+   "no_nulos": 100.0,
+   "promedio": 0.013856529736358062
+  },
+  "banos_imp": {
+   "no_nulos": 85.44655630492541,
+   "promedio": 2.791217202037839
+  },
+  "banos_desde_texto": {
+   "no_nulos": 100.0,
+   "promedio": 0.1111996730022481
+  },
+  "parqueaderos_imp": {
+   "no_nulos": 100.0,
+   "promedio": 1.1381974248927038
+  },
+  "piso_texto": {
+   "no_nulos": 28.7349274473738,
+   "promedio": 3.5455192034139404
+  },
+  "estrato_texto": {
+   "no_nulos": 6.967095851216023,
+   "promedio": 4.509826928718099
+  },
+  "antiguedad_texto": {
+   "no_nulos": 3.0921724913141224,
+   "promedio": 12.992068737607402
+  },
+  "tiempo": {
+   "no_nulos": 100.0,
+   "promedio": 2020.7015804891341
+  },
+  "x_km": {
+   "no_nulos": 100.0,
+   "promedio": 4882.41410395448
+  },
+  "y_km": {
+   "no_nulos": 100.0,
+   "promedio": 2075.8841526451047
+  },
+  "coord_redondeada": {
+   "no_nulos": 100.0,
+   "promedio": 0.42693643981197626
+  },
+  "n_avisos_500m": {
+   "no_nulos": 100.0,
+   "promedio": 758.367259350092
+  },
+  "prop_apartamentos_500m": {
+   "no_nulos": 100.0,
+   "promedio": 0.8034121344650833
+  },
+  "area_mediana_500m": {
+   "no_nulos": 99.80788882076436,
+   "promedio": 123.91685436972725
+  }
+ },
+ "avisos_brutas_no_nulos": {
+  "property_type": 100.0,
+  "bedrooms": 100.0,
+  "rooms": 53.316983445738806,
+  "surface_covered": 23.282239934600447,
+  "surface_total": 19.861025955446557,
+  "bathrooms": 74.3265890047006,
+  "month": 100.0,
+  "year": 100.0,
+  "lat": 100.0,
+  "lon": 100.0,
+  "title": 99.93664418557123,
+  "description": 99.96934396076027
+ },
+ "n_avisos_total": 48930,
+ "n_filas": {
+  "entrenamiento": 38644,
+  "prueba": 10286,
+  "columnas": 16
+ },
+ "precio_promedio_entrenamiento": 654.5346752914036,
+ "avisos_variables_grupo": {
+  "es_apartamento": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0
+  },
+  "bedrooms": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0
+  },
+  "rooms": {
+   "entrenamiento": 52.748162716074944,
+   "prueba": 55.454015166245384
+  },
+  "area_imp": {
+   "entrenamiento": 53.296760169754684,
+   "prueba": 56.69842504374879
+  },
+  "log_area": {
+   "entrenamiento": 53.296760169754684,
+   "prueba": 56.69842504374879
+  },
+  "area_desde_texto": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0
+  },
+  "area_falta": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0
+  },
+  "area_inconsistente": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0
+  },
+  "banos_imp": {
+   "entrenamiento": 85.17751785529448,
+   "prueba": 86.4573206299825
+  },
+  "banos_desde_texto": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0
+  },
+  "parqueaderos_imp": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0
+  },
+  "piso_texto": {
+   "entrenamiento": 29.484525411448093,
+   "prueba": 25.91872447987556
+  },
+  "estrato_texto": {
+   "entrenamiento": 7.382776110133527,
+   "prueba": 5.405405405405405
+  },
+  "antiguedad_texto": {
+   "entrenamiento": 2.9241279370665563,
+   "prueba": 3.7235076803422125
+  },
+  "tiempo": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0
+  },
+  "x_km": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0
+  },
+  "y_km": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0
+  },
+  "coord_redondeada": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0
+  },
+  "n_avisos_500m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0
+  },
+  "prop_apartamentos_500m": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0
+  },
+  "area_mediana_500m": {
+   "entrenamiento": 99.76451713073182,
+   "prueba": 99.970834143496
+  }
+ },
+ "avisos_brutas_no_nulos_grupo": {
+  "price": {
+   "entrenamiento": 100.0,
+   "prueba": 0.0
+  },
+  "property_type": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0
+  },
+  "bedrooms": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0
+  },
+  "rooms": {
+   "entrenamiento": 52.748162716074944,
+   "prueba": 55.454015166245384
+  },
+  "surface_covered": {
+   "entrenamiento": 22.16385467342925,
+   "prueba": 27.48395877892281
+  },
+  "surface_total": {
+   "entrenamiento": 20.32398302453162,
+   "prueba": 18.121718841143302
+  },
+  "bathrooms": {
+   "entrenamiento": 73.93903322637408,
+   "prueba": 75.78261714952362
+  },
+  "month": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0
+  },
+  "year": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0
+  },
+  "lat": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0
+  },
+  "lon": {
+   "entrenamiento": 100.0,
+   "prueba": 100.0
+  },
+  "title": {
+   "entrenamiento": 99.93530690404721,
+   "prueba": 99.94166828699203
+  },
+  "description": {
+   "entrenamiento": 99.96894731394266,
+   "prueba": 99.970834143496
+  }
+ }
+}
