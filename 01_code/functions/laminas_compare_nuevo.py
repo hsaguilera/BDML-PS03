@@ -624,7 +624,7 @@ def _validaciones(deck):
 # ------------------------------------------------------------------------------------------------------------------
 def _resultado(deck):
     s = _nueva(deck, "Resultado: el boosting tiene el menor error en las tres validaciones", "res")
-    texto(s, 0.55, 1.3, 7.8, 0.4, "MAE por validación (millones); CatBoost no se corrió con la CV aleatoria", size=13,
+    texto(s, 0.55, 1.3, 7.8, 0.4, "MAE por validación (millones)", size=13,
           color="muted")
     cd = CategoryChartData()
     cd.categories = [nom for _, nom in FAM]
@@ -816,9 +816,7 @@ def _estandar_espacial(deck):
         tipo="recordar")
     tarjeta(s, 8.85, 5.0, 3.95, 1.95, "Por qué cae la red", [
         f"Es segunda en la CV aleatoria ({n(M[('nn_atencion', AL)])}) porque promedia precios de vecinos que allí están a "
-        f"metros; sin Chapinero, el vecino mediano queda a {n(MED['Chapinero fuera'], 0)} m. Su error se multiplica por "
-        f"{n(R['optimismo']['nn_atencion']['razon'], 1)}; el de LightGBM, por {n(R['optimismo']['lightgbm']['razon'], 1)}; "
-        f"el de CART y los lineales, por {n(R['optimismo']['cart']['razon'], 1)}."], tipo="neutra")
+        f"metros; sin Chapinero, el vecino mediano queda a {n(MED['Chapinero fuera'], 0)} m. "], tipo="neutra")
     FIN[id(s)] = 6.95
     notas = ("¿La validación estándar y las espaciales eligen lo mismo? Para el ganador, sí: el boosting queda primero en las "
              "tres. Para el resto, no del todo. La red con atención, en ámbar, es segunda con pliegues aleatorios "

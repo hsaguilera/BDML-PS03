@@ -45,10 +45,14 @@ SELECCION = [
     # El mejor modelo
     "cmp.mejor_modelo",                # El mejor modelo: boosting de árboles (LightGBM) con texto, entorno y Catastro
     # Problema y Etapa 1 (datos): las mismas láminas de best
-    "e1.problema",                     # Para la empresa, pagar de más cuesta más que dejar de comprar
+    "e1.problema",
+    "e1.ruta",                     # Para la empresa, pagar de más cuesta más que dejar de comprar
     "e1.mapa_precio",                  # Entrenamos con Bogotá, casi sin Chapinero, para predecir Chapinero
     "e1.hedonicas",                    # 162 variables: el precio refleja la vivienda y su entorno (precios hedónicos)
-    "e1.pasos_modelos",                # Del texto crudo a 84 variables: pasos, modelos y lo que queda en los datos
+    "e1.pasos_modelos",
+    "e1.aviso_real",
+    "e1.lsa_lda",
+    "e1.ridge",                # Del texto crudo a 84 variables: pasos, modelos y lo que queda en los datos
     # Cuerpo de la comparación
     "cmp.criterios",                   # Cómo comparamos: el error en avisos que el modelo no vio
     "cmp.como_predice",                # Cómo predice cada familia y qué controla su flexibilidad
@@ -56,7 +60,7 @@ SELECCION = [
     "cmp.red",                         # Red con atención: capas de neuronas que además miran el precio de 20 vecinos
     "cmp.hiperparametros",             # Hiperparámetros de cada familia: qué fija su flexibilidad y cómo se eligió
     "cmp.validaciones",                # Tres validaciones: del azar a predecir una zona que el modelo no vio
-    "cmp.reglas",                      # Las mismas reglas para las seis familias
+    # "cmp.reglas",  (quitada por el usuario)                      # Las mismas reglas para las seis familias
     "cmp.resultado",                   # Resultado: el boosting tiene el menor error en las tres validaciones
     "cmp.diferencias",                 # ¿Son reales las diferencias? Sí: ningún intervalo toca el cero
     "cmp.estandar_espacial",           # Validación estándar y espacial: el mismo ganador, distinto orden detrás
@@ -65,8 +69,8 @@ SELECCION = [
     "cmp.promediar_corregir",          # Por qué gana el boosting (2): promediar baja la varianza; corregir baja el sesgo
     "cmp.subestiman",                  # Dónde fallan: todas subestiman Chapinero, y más los avisos que predicen caros
     "cmp.riesgo",                      # Para la empresa: un sesgo medio bajo no es un riesgo bajo
-    "cmp.complejidad",                 # Qué movió el resultado: entre familias, el algoritmo; dentro del boosting, los datos
-    "cmp.compromisos",                 # Compromisos: qué se gana y qué se pierde con cada familia
+    # "cmp.complejidad",  (quitada por el usuario)                 # Qué movió el resultado: entre familias, el algoritmo; dentro del boosting, los datos
+    # "cmp.compromisos",  (quitada por el usuario)                 # Compromisos: qué se gana y qué se pierde con cada familia
     "cmp.conclusion",                  # Gana el boosting, pero ninguna familia corrige el nivel de Chapinero
     "cmp.fuentes",                     # Fuentes
 ]

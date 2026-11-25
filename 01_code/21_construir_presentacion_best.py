@@ -53,7 +53,7 @@ SELECCION = [
     "e1.ridge",                        # Ridge: el puntaje de precio del texto, aprendido de las palabras
     # Etapa 2. Algoritmo
     "e2.general_arbol",                # Un árbol de decisión: preguntas de sí o no que terminan en hojas
-    "e2.general_boosting",             # Boosting: sumar muchos árboles pequeños que corrigen el error poco a poco
+    # "e2.general_boosting",  (quitada a pedido del usuario: ejemplo de juguete confuso)             # Boosting: sumar muchos árboles pequeños que corrigen el error poco a poco
     "e2.corte",                        # En nuestros datos, la mejor primera pregunta es el puntaje de precio del texto
     "e2.hiperparametros",              # El modelo estimado: qué minimiza, sus hiperparámetros y cómo se eligieron
     "e2.parada",                       # La parada temprana eligió 252 árboles: parar cuando el error deja de bajar

@@ -176,8 +176,12 @@ def _general_arbol(deck):
         "Rama: la respuesta, sí o no.",
         "Hoja: el grupo de avisos al final de las ramas; todos reciben el mismo valor."], tipo="definicion")
     tarjeta(s, 9.0, 5.0, 3.8, 1.95, "", [
-        "Un árbol grande memoriza el ruido y uno pequeño es tosco: aquí A y B reciben 400 aunque valen 300 y 500. El boosting "
-        "suma muchos árboles pequeños."], tipo="recordar")
+        "Un árbol grande memoriza el ruido y uno pequeño es tosco: aquí A y B reciben 400 aunque valen 300 y 500."],
+        tipo="recordar")
+    texto(s, 4.6, 5.2, 4.2, 1.55, "LightGBM arma así cada árbol, con tres atajos: agrupa cada variable en hasta 255 intervalos y "
+          "solo prueba sus bordes; hace crecer el árbol por la hoja que más baja el error, hasta 63 hojas; y manda los vacíos "
+          "al lado que más lo baja. Suma 252 árboles: cada uno aprende el error que dejaron los anteriores y entra "
+          "multiplicado por 0,05.", size=13, color="tinta")
     FIN[id(s)] = 6.95
     notas = ("Antes de nuestro modelo, la idea con cuatro avisos inventados: dos pequeños, de 300 y 500 millones, y "
              "dos grandes, de 700 y 900. Un árbol de decisión es una secuencia de preguntas de sí o no. Este tiene "
@@ -222,8 +226,8 @@ def _general_boosting(deck):
     texto(s, 0.55, y1 + 0.15, 7.4, 0.62, "Predicción = promedio + η × (hoja del árbol 1 + hoja del árbol 2 + … + hoja del "
           "árbol M)", size=16, color="navy")
     texto(s, 0.55, y1 + 0.8, 7.4, 6.95 - (y1 + 0.8), "Paso 3, para A: 600 + 0,1 × (−200) = 580. Las correcciones se achican "
-          "en cada vuelta y A y B se acercan a 400: separar A de B exige otra pregunta, sobre otra variable. Por eso nuestro "
-          "modelo usa 162 variables y árboles de hasta 63 hojas.", size=13, color="tinta")
+          "en cada vuelta y, como aquí todos los árboles repiten la misma pregunta, A y B se acercan a 400; con otro umbral, "
+          "por ejemplo área ≤ 70 m², los siguientes árboles los separan. Nuestro modelo usa 162 variables y hasta 63 hojas.", size=13, color="tinta")
     tarjeta(s, 8.2, y1 + 0.15, 4.6, 6.95 - (y1 + 0.15), "", [
         "Residuo: lo que falta por explicar, el precio real menos la predicción actual.",
         "Tasa de aprendizaje η: la fracción de cada corrección que se suma. Pasos cortos evitan aprender el ruido; a cambio se "
@@ -944,8 +948,9 @@ def _esquemas(deck):
              "más exigente: al azar; por bloques de 2 kilómetros, con y sin una franja de 300 metros; por 10 zonas "
              "de la ciudad; kNNDM, que imita la distancia al vecino de la prueba; y la que imita el reto: entrenar "
              "sin los 307 avisos de Chapinero y predecirlos. El último mapa es la prueba real.\n"
-             "Para preguntas: entre avisos validados al azar que comparten coordenada con uno de entrenamiento, los "
-             "errores tienen correlación de 0,31.")
+             "Para preguntas: en la validación por clústeres, entre avisos validados que comparten coordenada, los "
+             "errores tienen correlación de 0,31; con pliegues al azar casi no la tienen (0,02), porque el vecino suele "
+             "estar en el entrenamiento y el modelo se apoya en él.")
     return s, notas
 
 
