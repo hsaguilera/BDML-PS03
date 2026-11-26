@@ -8,14 +8,19 @@ archivos.
 
 | Archivo | Función |
 |---|---|
-| `main_data_extractor.R` | Orquestador. Ejecuta las etapas `abiertos`, `osm` y `procedencia`. |
+| `main_data_extractor.R` | Orquestador. Ejecuta las etapas `abiertos`, `osm`, `gee` y `procedencia`. Sin etapa, corre todas menos `gee`. |
 | `ext_download/datos_abiertos_raw.R` | Descarga las fuentes de Datos Abiertos Bogotá (etapa `abiertos`). |
 | `ext_download/osm_raw.R` | Descarga las categorías de OpenStreetMap (etapa `osm`). |
+| `ext_download/gee_raw.R` | Descarga las seis capas de Google Earth Engine para cada coordenada única (etapa `gee`). |
 | `external_raw/` | Carpeta de salida. Se crea sola si no existe. |
 
 ## Requisitos
 
 - R con los paquetes `sf`, `readr`, `dplyr`, `tibble`, `jsonlite` y `osmdata`.
+- Para la etapa `gee`, además, el paquete `rgee` (con su Python y `earthengine-api` instalados por `rgee`), credenciales
+  de Earth Engine (`rgee::ee_Authenticate()`) y estas variables de entorno: `PS3_GEE_PROYECTO`, el ID de su proyecto de
+  Google Cloud registrado en Earth Engine (no tiene valor por defecto), y `GEE_COORDENADAS`, una o más rutas de CSV con
+  columnas `lat` y `lon`, separadas por comas.
 - Internet. Las descargas no se hacen si el archivo ya existe, salvo con `--reemplazar`.
 - Herramientas del sistema: `sha256sum` (para verificar el zip catastral) y GDAL, que viene con `sf` (para convertir la base
   catastral a GeoPackage).
@@ -32,6 +37,7 @@ Rscript main_data_extractor.R abiertos upz localidades         # solo esas fuent
 Rscript main_data_extractor.R abiertos --reemplazar           # vuelve a descargar y reemplaza
 Rscript main_data_extractor.R osm                             # todas las categorías de OSM
 Rscript main_data_extractor.R osm parques transporte          # solo esas categorías
+PS3_GEE_PROYECTO=mi-proyecto GEE_COORDENADAS=ruta/train.csv,ruta/test.csv Rscript main_data_extractor.R gee
 Rscript main_data_extractor.R procedencia                     # calcula los MD5 de los archivos
 ```
 
@@ -69,4 +75,5 @@ Los scripts de `ext_download/` también se pueden ejecutar solos, desde esta car
 | `bd_uaecd_2025.gpkg` | Base catastral 2025 convertida a GeoPackage. |
 | `bd_uaecd_2025_procedencia.json` | Origen de la base catastral: URL, fecha, tamaño y SHA-256 del zip. |
 | `osm_parques.csv`, `osm_restaurantes.csv`, `osm_transporte_masivo.csv`, `osm_centros_comerciales.csv`, `osm_universidades.csv` | Puntos y áreas de cada categoría de OpenStreetMap, con su centroide. |
+| `gee_features.csv` | Una fila por coordenada única (`lat`, `lon`) y las seis capas: `elevacion_m`, `pendiente_grados`, `ndvi_200m`, `luces_nocturnas`, `altura_construida_m`, `poblacion_100m`. |
 | `procedencia_osm.txt` | Fecha, versiones de paquetes, parámetros de la consulta y MD5 de los archivos. |
