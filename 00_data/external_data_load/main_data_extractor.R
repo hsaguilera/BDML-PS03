@@ -1,5 +1,5 @@
 # main_data_extractor.R
-# Descarga las fuentes externas a external_raw/, junto a este archivo. Requiere internet y se ejecuta en terminal.
+# Descarga las fuentes externas a external_raw/, junto a este archivo. 
 #
 #   Rscript main_data_extractor.R                          # abiertos, OSM y procedencia
 #   Rscript main_data_extractor.R abiertos [FUENTES] [--reemplazar]
