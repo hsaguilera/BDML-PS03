@@ -10,8 +10,7 @@
 #             ya existe en external_raw; --reemplazar vuelve a bajarlo.
 # osm      -> ext_download/osm_raw.R        (parques, restaurantes, transporte, centros_comerciales, universidades)
 
-#
-# Se detiene en el primer error. Las opciones de cada etapa se pasan tal cual.
+
 
 # ===== Configuración =========================================================
 
