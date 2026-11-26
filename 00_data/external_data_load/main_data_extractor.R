@@ -9,7 +9,7 @@
 # abiertos -> ext_download/datos_abiertos_raw.R   (localidades, upl, upz, manzanas, catastro_2025). Por defecto no descarga lo que
 #             ya existe en external_raw; --reemplazar vuelve a bajarlo.
 # osm      -> ext_download/osm_raw.R        (parques, restaurantes, transporte, centros_comerciales, universidades)
-# procedencia -> md5 de los archivos anteriores en procedencia_osm.txt (R base no tiene sha256).
+
 #
 # Se detiene en el primer error. Las opciones de cada etapa se pasan tal cual.
 
